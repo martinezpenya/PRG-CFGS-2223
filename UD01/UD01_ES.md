@@ -56,14 +56,10 @@ Cada disciplina dispone de estrategias específicas para resolver problemas de s
 
 - **Razonamiento analógico** : Se apoya en el establecimiento de una analogía entre una situación que resulte familiar y la situación problema. Requiere conocimientos suficientes de ambas situaciones.
 
-- **Lluvia de ideas** : Consiste en formular soluciones viables a un problema. El modelo propuesto por
-  Mayer (1992) plantea: definir el problema; generar muchas soluciones (sin evaluarlas); decidir los
-  criterios para estimar las soluciones generadas; y emplear esos criterios para seleccionar la mejor
-  solución. Requiere que los estudiantes no emitan juicios con respecto a las posibles soluciones hasta que terminen de formularlas.
-
-- **Sistemas de producción** : Se basa en la aplicación de una red de secuencias de condición y acción
-  (Anderson, 1990). 
-
+- **Lluvia de ideas** : Consiste en formular soluciones viables a un problema. El modelo propuesto por Mayer (1992) plantea: definir el problema; generar muchas soluciones (sin evaluarlas); decidir los criterios para estimar las soluciones generadas; y emplear esos criterios para seleccionar la mejor solución. Requiere que los estudiantes no emitan juicios con respecto a las posibles soluciones hasta que terminen de formularlas.
+  
+- **Sistemas de producción** : Se basa en la aplicación de una red de secuencias de condición y acción (Anderson, 1990). 
+  
 - **Pensamiento lateral** : Se apoya en el pensamiento creativo, formulado por Edwar de Bono (1970), el cual difiere completamente del pensamiento lineal (lógico). El pensamiento lateral requiere que se exploren y consideren la mayor cantidad posible de alternativas para solucionar un problema. Su importancia para la educación radica en permitir que el estudiante: explore (escuche y acepte puntos de vista diferentes, busque alternativas); avive (promueva el uso de la fantasía y del humor); libere (use la discontinuidad y escape de ideas preestablecidas); y contrarreste la rigidez (vea las cosas desde diferentes ángulos y evite dogmatismos). Este es un método adecuado cuando el problema que se desea resolver no requiere información adicional, sino un reordenamiento de la información disponible; cuando hay ausencia del problema y es necesario apercibirse de que hay un problema; o cuando se debe reconocer la posibilidad de perfeccionamiento y redefinir esa posibilidad como un problema (De Bono, 1970).
 
   Ejemplos:
@@ -222,6 +218,10 @@ Un algoritmo, para que sea válido, tiene que tener ciertas características fun
 - **Definibilidad**: han de estar definidos de forma exacta y precisa, sin ambigüedades.
 - **Eficiencia**: han de resolver el problema de forma rápida y eficiente.
 
+> Juego de las monedas (Eduardo Sáenz Cabezón) https://youtu.be/BbA5dpS4CcI?t=1610
+>
+> Desde el comienzo del enlace hasta 7 minutos después.
+
 ### Representación de algoritmos
 
 Los métodos más usuales para representar algoritmos son los diagramas de flujo y el pseudocódigo. Ambos son sistemas de representación independientes de cualquier lenguaje de programación. Hay que tener en cuenta que el diseño de un algoritmo constituye un paso previo a la codificación de un programa en un lenguaje de programación determinado (C, C++, Java, Pascal). La independencia del algoritmo del lenguaje de programación facilita, precisamente, la posterior codificación en el lenguaje elegido.
@@ -345,7 +345,7 @@ nombreLargo = nombreLargo2*
               4*nombreLargo5;
 ```
 
-Siempre hay excepciones. Puede resultar  que al aplicar estas reglas, en operaciones muy largas, o expresiones  lógicas enormes, el sangrado sea ilegible. En estos casos, el convenio  se puede relajar.
+Siempre hay excepciones. Puede resultar  que al aplicar estas reglas, en operaciones muy largas, o expresiones lógicas enormes, el sangrado sea ilegible. En estos casos, el convenio  se puede relajar.
 
 # Java
 
@@ -390,7 +390,7 @@ Java 2 es la tercera versión del lenguaje, pero es algo más que un lenguaje de
 - Un conjunto de herramientas para el desarrollo de programas, como es el compilador de bytecodes, el generador de documentación, un depurador, etc.
 - Un entorno de ejecución que en definitiva es una máquina virtual que ejecuta los programas traducidos a bytecodes.
 
-## Compilar y ejecutar un programa Java. Uso de la consola.
+## Compilar y ejecutar un programa `Java`. Uso de la consola.
 
 Veamos los pasos para compilar e interpretar nuestro primer programa escrito en lenguaje Java.
 
@@ -645,7 +645,7 @@ Ejemplo:
 double num1, num2, suma, resta, producto, division, resto;
 num1 =8;
 num2 =5;
-suma = num1 + num2;        // 13
+suma = num1 + num2;      // 13
 resta = num1 - num2;     // 3
 producto = num1 * num2;  // 40
 division = num1 / num2;  // 1.6
