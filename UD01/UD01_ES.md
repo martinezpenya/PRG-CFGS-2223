@@ -1,10 +1,10 @@
 ---
 title: UD01: Elementos de un programa informático
 language: ES
-author: David Martínez Peña [www.martinezpenya.es]
+author: www.martinezpenya.es
 subject: Programación
 keywords: [PRG, 2022, Programacion, Java]
-IES: IES Eduardo Primo Marqués (Carlet) [www.ieseduardoprimo.es]
+IES: www.ieseduardoprimo.es
 header: ${title} - ${subject} (ver. ${today}) 
 footer:${currentFileName}.pdf - ${author} - ${IES} - ${pageNo}/${pageCount}
 typora-root-url:${filename}/../
