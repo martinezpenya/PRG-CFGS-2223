@@ -403,7 +403,7 @@ El código de nuestro programa en Java será el siguiente:
 ```java
 /* Ejemplo Hola Mundo */
 public class Ejemplo {
-    public static void main(String[ ] arg) {
+    public static void main(String[ ] args) {
         System.out.println("Hola Mundo");
     }
 }
