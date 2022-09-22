@@ -600,7 +600,7 @@ Sin embargo, también podemos escribir varias líneas usando una única sentenci
 
 # Constantes y literales.
 
-Las constantes se utilizan para almacenar datos que no varían nunca, asegurándonos que el valor no va a poder ser modificado.
+Las **constantes** se utilizan para almacenar datos que no varían nunca, asegurándonos que el valor no va a poder ser modificado.
 
 Podemos declarar una constante utilizando:
 
@@ -614,7 +614,7 @@ El calificador final indica que es constante. A continuación indicaremos el tip
 final double IVA = 0.21;
 ```
 
-Los literales pueden ser de tipo simple, null o string, como por ejemplo 230, null o "Java".
+Los **literales** pueden ser de tipo simple, null o string, como por ejemplo 230, null o "Java".
 
 Respecto a los literales existen unos caracteres especiales que se representan utilizando secuencias de escape:
 
@@ -656,14 +656,14 @@ resto = num1 % num2;     // 3
 
 Los **Operadores Relacionales** permiten evaluar (la respuesta es un booleano: si o no) la igualdad de los operandos:
 
-| Operador | Uso    | Operación             |
-| -------- | ------ | --------------------- |
-| <        | A < B  | A menor que B         |
-| >        | A > B  | A mayor que B         |
-| <=       | A <= B | A menor o igual que B |
-| >=       | A >= B | A mayor o igual que B |
-| !=       | A != B | A distinto de B       |
-| ==       | A == B | A igual a B           |
+| Operador | Uso      | Operación             |
+| -------- | -------- | --------------------- |
+| `<`      | `a < b`  | a menor que b         |
+| `>`      | `a > b`  | a mayor que b         |
+| `<=`     | `a <= b` | a menor o igual que b |
+| `>=`     | `a >= b` | a mayor o igual que b |
+| `!=`     | `a != b` | a distinto de b       |
+| `==`     | `a == b` | a igual a b           |
 
 Por ejemplo:
 
@@ -683,12 +683,12 @@ compara = valor1 != valor2; // true
 
 Los **Operadores Lógicos** permiten realizar operaciones lógicas:
 
-| Operador  | Uso                    | Operación                                                    |
-| --------- | ---------------------- | ------------------------------------------------------------ |
-| && o &    | A && B o<br />A & B    | A AND B. El resultado será true si ambos operadores son true y false en caso contrario. |
-| \|\| o \| | A \|\| B o<br />A \| B | A OR B. El resultado será false si ambos operandos son false y true en caso contrario |
-| !         | !A                     | NOT A. Si el operando es true el resultado es false y si el operando es false el resultado es true. |
-| ^         | A ^ B                  | A XOR B. El resultado será true si un operando es true y el otro false, y false en caso contrario. |
+| Operador   | Uso                 | Operación                                                    |
+| ---------- | ------------------- | ------------------------------------------------------------ |
+| `&&` o `&` | `a&&b` o<br />`a&b` | a AND b. El resultado será true si ambos operadores son true y false en caso contrario. |
+| `||` o `|` | `a||b` o<br />`a|b` | a OR b. El resultado será false si ambos operandos son false y true en caso contrario |
+| `!`        | `!a`                | NOT a. Si el operando es true el resultado es false y si el operando es false el resultado es true. |
+| `^`        | `a^b`               | a XOR b. El resultado será true si un operando es true y el otro false, y false en caso contrario. |
 
 Ejemplo:
 
@@ -699,29 +699,29 @@ booleanlogica;
 logica = (sueldo>1000 & edad<40);   //true
 logica = (sueldo>1000 && edad >40); //false
 logica = (sueldo>1000 | edad>40);   //true
-logica = (sueldo<1000 ||edad >40);  //false
+logica = (sueldo<1000 || edad >40); //false
 logica = !(edad <40);               //false
-logica = (sueldo>1000  ^edad>40);   //true
-logica = (sueldo<1000  ^edad>40);   //false
+logica = (sueldo>1000 ^ edad>40);   //true
+logica = (sueldo<1000 ^ edad>40);   //false
 ```
 
 Para representar resultados de operadores Lógicos también se pueden usar tablas de verdad a las que conviene acostumbrarse:
 
-| A     | B     | A && B | A \|\| B | !A    |
-| ----- | ----- | ------ | -------- | ----- |
-| false | false | false  | false    | true  |
-| true  | false | false  | true     | false |
-| false | true  | false  | true     | true  |
-| true  | true  | true   | true     | false |
+|   `a`   |   `b`   | `a && b` | `a || b` |  `!a`   |  `a^b`  |
+| :-----: | :-----: | :------: | :------: | :-----: | :-----: |
+| `false` | `false` | `false`  | `false`  | `true`  | `false` |
+| `true`  | `false` | `false`  |  `true`  | `false` | `true`  |
+| `false` | `true`  | `false`  |  `true`  | `true`  | `true`  |
+| `true`  | `true`  |  `true`  |  `true`  | `false` | `false` |
 
 ## Operadores Unarios o Unitarios
 
 Los **Operadores Unarios** o **Unitarios** permiten realizar incrementos y decrementos:
 
-| Operador | Uso       | Operación       |
-| -------- | --------- | --------------- |
-| ++       | A++ o ++A | Incremento de A |
-| --       | A-- o --A | Decremento de A |
+| Operador | Uso           | Operación       |
+| -------- | ------------- | --------------- |
+| `++`     | `a++` o `++a` | Incremento de a |
+| `--`     | `a--` o `--a` | Decremento de a |
 
 Ejemplo:
 
@@ -731,7 +731,7 @@ m++; // 6
 n--; // 2
 ```
 
-En el caso de utilizarlo como prefijo el valor de asignación será el  valor del operando más el incremento de la unidad. Y si lo utilizamos  como sufijo se asignará el valor del operador y luego se incrementará la unidad sobre el operando.
+En el caso de utilizarlo como prefijo el valor de asignación será el  valor del operando más el incremento de la unidad. Y si lo utilizamos como sufijo se asignará el valor del operador y luego se incrementará la unidad sobre el operando.
 
 ```java
 int A = 1, B;
@@ -743,14 +743,14 @@ B = A++; // A vale 3 y B vale 2
 
 Los **Operadores de Asignación** permiten asignar valores:
 
-| Operador | Uso    | Operación                                                    |
-| -------- | ------ | ------------------------------------------------------------ |
-| =        | A = B  | Asignación (como ya hemos visto)                             |
-| *=       | A *= B | Multiplicación y asignación. La operación A*=B equivale a A=A\*B |
-| /=       | A /= B | División y asignación. La operación A/=B equivale a A=A/B    |
-| %=       | A %= B | Módulo y asignación. La operación A%=B equivale a A=A%B      |
-| +=       | A += B | Suma y asignación. La operación A+=B equivale a A=A+B        |
-| -=       | A -= B | Resta y asignación. La operación A-=B equivale a A=A-B       |
+| Operador | Uso      | Operación                                                    |
+| -------- | -------- | ------------------------------------------------------------ |
+| `=`      | `a = b`  | Asignación (como ya hemos visto)                             |
+| `*=`     | `a *= b` | Multiplicación y asignación. La operación `a*=b` equivale a `a=a*b` |
+| `/=`     | `a /= b` | División y asignación. La operación `a/=b` equivale a `a=a/b` |
+| `%=`     | `a %= b` | Módulo y asignación. La operación `a%=b` equivale a `a=a%b`  |
+| `+=`     | `a += b` | Suma y asignación. La operación `a+=b` equivale a `a=a+b`    |
+| `-=`     | `a -= b` | Resta y asignación. La operación `a-=b` equivale a `a=a-b`   |
 
 Ejemplo:
 
@@ -764,21 +764,19 @@ dato2-=dato1; // dato2 vale 2
 dato1%=dato2; // dato1 vale0
 ```
 
-Los operadores tienen diferente Prioridad por lo que es interesante utilizar paréntesis para controlar las operaciones sin necesidad de depender de la prioridad de los operadores.
-
 ## Operadores de desplazamiento
 
 Los **Operadores de desplazamiento** permiten desplazar los bits de los valores:
 
 | Operador | Utilización | Resultado                                                    |
 | -------- | ----------- | ------------------------------------------------------------ |
-| <<       | A << B      | Desplazamiento de A a la izquierda en B posiciones. Multiplica por 2 el número B de veces. |
-| >>       | A >> B      | Desplazamiento de A a la derecha en B posiciones, tiene en cuenta el signo. Divide por 2 el número B de veces. |
-| >>>      | A >>> B     | Desplazamiento de A a la derecha en B posiciones, no tiene en cuenta el signo. (simplemente agrega ceros por la izquierda) |
-| &        | A & B       | Operación AND a nivel de bits                                |
-| \|       | A \| B      | Operación OR a nivel de bits                                 |
-| ^        | A ^ B       | Operación XOR a nivel de bits                                |
-| ~        | ~A          | Complemento de A a nivel de bits                             |
+| `<<`     | `a << b`    | Desplazamiento de `a` a la izquierda en `b` posiciones. Multiplica por 2 el número b de veces. |
+| `>>`     | `a >> b`    | Desplazamiento de `a` a la derecha en `b` posiciones, tiene en cuenta el signo. Divide por 2 el número `b` de veces. |
+| `>>>`    | `a >>> b`   | Desplazamiento de a a la derecha en b posiciones, no tiene en cuenta el signo. (simplemente agrega ceros por la izquierda) |
+| `&`      | `a & b`     | Operación AND a nivel de bits                                |
+| `|`      | `a | b`     | Operación OR a nivel de bits                                 |
+| `^`      | `a ^ b`     | Operación XOR a nivel de bits                                |
+| `~`      | `~a`        | Complemento de A a nivel de bits                             |
 
 Por ejemplo:
 
@@ -813,11 +811,11 @@ int u = q ^ r; // u: 00000000000000000000000000010100
 int v = ~q;    // v: 11111111111111111111111101111011 
 // El resultado da -133 
 ```
-## Operador condicional `?:`
+## Operador condicional o ternario `?:`
 
 El **operador condicional** `?:` sirve para evaluar una condición y devolver un resultado en función de si es verdadera o falsa dicha condición. Es el único operador ternario de Java, y como tal, necesita tres operandos para formar una expresión.
 
-El primer operando se sitúa a la izquierda del símbolo de interrogación, y siempre será una expresión booleana, también llamada condición. El siguiente operando se sitúa a la derecha del símbolo de interrogación y antes de los dos puntos, y es el valor que devolverá el operador condicional si la condición es verdadera. El último operando, que aparece después de los dos puntos, es la expresión cuyo resultado se devolverá si la condición evaluada es falsa.
+El primer operando se sitúa a la izquierda del símbolo de interrogación, y siempre será una expresión booleana, también llamada **condición**. El siguiente operando se sitúa a la derecha del símbolo de interrogación y antes de los dos puntos, y es el **valor** que devolverá el operador condicional **si la condición es verdadera**. El último operando, que aparece después de los dos puntos, es la expresión cuyo **resultado se devolverá si la condición evaluada es falsa**.
 
 ```java
 condición ? exp1 : exp2
@@ -829,7 +827,7 @@ Por ejemplo, en la expresión:
 (x>y)?x:y;
 ```
 
-Se evalúa la condición de si x es mayor que y, en caso afirmativo se devuelve el valor de la variable x, y en caso contrario se devuelve el valor de y.
+Se evalúa la condición de si **x es mayor que y**, en caso **afirmativo** se devuelve el valor de la variable **x**, y **en caso contrario** se devuelve el valor de **y**.
 
 Ejemplo para calcular qué número es mayor:
 
@@ -847,22 +845,22 @@ Los operadores tienen diferente **Prioridad** por lo que es interesante utilizar
 
 Prevalencia de operadores, ordenados de arriba a abajo de más a menos prioridad:
 
-| Descripción               | Operadores                              |
-| ------------------------- | --------------------------------------- |
-| operadores posfijos       | op++ op--                               |
-| operadores unarios        | ++op --op +op -op ~ !                   |
-| multiplicación y división | * / %                                   |
-| suma y resta              | + -                                     |
-| desplazamiento            | << >> >>>                               |
-| operadores relacionales   | < > <= =>                               |
-| equivalencia              | == !=                                   |
-| operador AND              | &                                       |
-| operador XOR              | ^                                       |
-| operador OR               | \|                                      |
-| AND booleano              | &&                                      |
-| OR  booleano              | \|\|                                    |
-| condicional               | ?:                                      |
-| operadores de asignación  | = += -= *= /= %= &= ^= \|= <<= >>= >>>= |
+| Descripción               | Operadores                                |
+| ------------------------- | ----------------------------------------- |
+| operadores posfijos       | `op++` `op--`                             |
+| operadores unarios        | `++op --op +op -op ~ !`                   |
+| multiplicación y división | `* / %`                                   |
+| suma y resta              | `+ -`                                     |
+| desplazamiento            | `<< >> >>>`                               |
+| operadores relacionales   | `< > <= =>`                               |
+| equivalencia              | `== !=`                                   |
+| operador AND              | `&`                                       |
+| operador XOR              | `^`                                       |
+| operador OR               | `|`                                       |
+| AND booleano              | `&&`                                      |
+| OR  booleano              | `||`                                      |
+| condicional               | `?:`                                      |
+| operadores de asignación  | `= += -= *= /= %= &= ^= \|= <<= >>= >>>=` |
 
 Por ejemplo:
 
@@ -872,9 +870,11 @@ x = y1 + y2 * y3;   // 22
 x = (y1 + y2) * y3; // 64
 ```
 
+> Recuerda: "**Los paréntesis son como las patatas fritas, cuantas más, mejor!**" (Ana de mates)
+
 # Conversiones de tipo.
 
-Existen dos tipos de conversiones: Implícitas y Explicitas. Debemos evitar las conversiones de tipos ya que pueden suponer perdidas de información.
+Existen dos tipos de conversiones: **Implícitas** y **Explicitas**. Debemos evitar las conversiones de tipos ya que pueden suponer perdidas de información.
 
 ## Conversiones Implícitas
 
@@ -890,7 +890,7 @@ destino=origen;  // 5
 
 ## Conversión Explícita
 
-En la **Conversión Explícita** el programador fuerza la conversión con la operación llamada "cast":
+En la **Conversión Explícita** el programador fuerza la conversión con la operación llamada "**cast**":
 
 Ejemplo:
 ```java
@@ -1032,7 +1032,7 @@ public class EjemploUD01 {
 
         // uso de la constante
         double precio = 430;
-        double preciofinal = precio + ((precio - (precio * dto)) * IVA) - (precio * dto);
+		double preciofinal = precio - (precio * dto) + ((precio - (precio * dto)) * IVA) ;
         System.out.println(IVA);
         System.out.println(preciofinal);
 

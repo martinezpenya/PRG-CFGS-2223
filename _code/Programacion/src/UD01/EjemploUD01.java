@@ -34,14 +34,14 @@ public class EjemploUD01 {
         System.out.println("e vale " + e);
         System.out.println("f vale " + f);
         System.out.println("g vale " + g);
-        System.out.println("g vale " + l);
-        System.out.println("g vale " + car1);
-        System.out.println("g vale " + letra);
-        System.out.println("g vale " + par);
+        System.out.println("l vale " + l);
+        System.out.println("car1 vale " + car1);
+        System.out.println("letra vale " + letra);
+        System.out.println("par vale " + par);
         
         // uso de la constante
         double precio = 430;
-        double preciofinal = precio + ((precio - (precio * dto)) * IVA) - (precio * dto);
+        double preciofinal = precio - (precio * dto) + ((precio - (precio * dto)) * IVA) ;
         System.out.println(IVA);
         System.out.println(preciofinal);
 
