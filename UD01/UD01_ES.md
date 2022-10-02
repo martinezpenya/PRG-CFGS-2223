@@ -695,7 +695,7 @@ Ejemplo:
 ```java
 double sueldo = 1400;
 int edad = 34;
-booleanlogica;
+boolean logica;
 logica = (sueldo>1000 & edad<40);   //true
 logica = (sueldo>1000 && edad >40); //false
 logica = (sueldo>1000 | edad>40);   //true
