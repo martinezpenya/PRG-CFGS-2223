@@ -45,16 +45,16 @@ imgcover:/media/DADES/NextCloud/DOCENCIA/PRG_2223/PRG-CFGS-2223/UD01/assets/cove
 
    - `void frena(int menos)`. Permite reducir la velocidad del objeto moto.
 
-3. Crea una clase Rebajas con un método `descubrePorcentaje()` que descubra el descuento aplicado en un producto. El método recibe el precio original del producto y el rebajado y devuelve el porcentaje aplicado. Podemos calcular el descuento realizando la operación:
+3. Crea una clase `Rebajas` con un método `descubrePorcentaje()` que descubra el descuento aplicado en un producto. El método recibe el precio original del producto y el rebajado y devuelve el porcentaje aplicado. Podemos calcular el descuento realizando la operación:
    $$
    porcentajeDescuento = \frac{precioOriginal-precioRebajado}{precioOriginal}
    $$
 
-4. Realiza una clase finanzas que convierta dólares a euros y viceversa. Codifica los métodos `dolaresToEuros` y `eurosToDolares`. Prueba que dicha clase funciona correctamente haciendo conversiones entre euros y dólares. La clase tiene que tener:
+4. Realiza una clase `Finanzas` que convierta dólares a euros y viceversa. Codifica los métodos `dolaresToEuros` y `eurosToDolares`. Prueba que dicha clase funciona correctamente haciendo conversiones entre euros y dólares. La clase tiene que tener:
       - Un constructor `finanzas()` por defecto el cual establece el cambio Dólar-Euro en 1.36.
       - Un constructor `finanzas(double cambio)`, el cual permitirá configurar el cambio Dólar-euro a una cantidad personalizada.
 
-5. Realiza una clase `minumero` que proporcione el doble, triple y cuádruple de un número proporcionado en su constructor (realiza un método para `doble`, otro para `triple` y otro para `cuádruple`). Haz que la clase tenga un método `main` y comprueba los distintos métodos.
+5. Realiza una clase `MiNumero` que proporcione el doble, triple y cuádruple de un número proporcionado en su constructor (realiza un método para `doble`, otro para `triple` y otro para `cuadruple`). Haz que la clase tenga un método `main` y comprueba los distintos métodos.
 
 6. Realiza una clase número que almacene un número entero y tenga las siguientes características:
 
@@ -67,7 +67,7 @@ imgcover:/media/DADES/NextCloud/DOCENCIA/PRG_2223/PRG-CFGS-2223/UD01/assets/cove
     - Método `getTriple`. Devuelve el triple del valor interno.
     - Método `setNumero`. Inicializa de nuevo el valor interno.
 
-7. Crea la clase peso, la cual tendrá las siguientes características:
+7. Crea la clase `Peso`, la cual tendrá las siguientes características:
 
     - Deberá tener un atributo donde se almacene el peso de un objeto en kilogramos.
       En el constructor se le pasará el peso y la medida en la que se ha tomado ("Lb" para libras, "Li" para lingotes, "Oz" para onzas, "P" para peniques, "K" para kilos, "G" para gramos y "Q" para quintales).
