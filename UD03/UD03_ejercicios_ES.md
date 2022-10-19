@@ -16,7 +16,7 @@ imgcover:/media/DADES/NextCloud/DOCENCIA/PRG_2223/PRG-CFGS-2223/UD01/assets/cove
 
 # Retos
 
-1. Repte 1: modifiqueu el programa perquè, en lloc de fer un descompte del 8% si la compra és de 100 € o més, apliqui una penalització de 2 € si el preu és inferior a 30 €.
+1. Repte 1: modifiqueu el programa perquè, en lloc de fer un descompte del 8% si la compra és de 100 € o més, apliqui una penalització de 20 € si el preu és inferior a 300 €.
 
    ```java
    import java.util.Scanner;
