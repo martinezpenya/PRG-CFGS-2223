@@ -38,6 +38,7 @@ public class EjemploUD02 {
         System.out.println(nombre.substring(0, 3));//JAVI
         System.out.println(nombre.toLowerCase());//javier
         System.out.println(nombre.trim());//Javier sin espacios finales
+        System.out.println(nombre.toUpperCase().substring(0, 4).indexOf("i"));
         System.out.printf("%,.2f\n", 12345.1684);
         
         System.out.format("El valor de la variable float es %f"
