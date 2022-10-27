@@ -190,6 +190,7 @@ if (expresión-lógica)
 	sentencia1;
 else
 	sentencia2;
+sentencia3;
 ```
 
 ```java
@@ -830,14 +831,11 @@ public class Sentencias_Condicionales {
              */
             if (nota >= 5 && nota < 6) {
                 calificacion = "SUFICIENTE";
-            }
-            if (nota >= 6 && nota < 7) {
+            } else if (nota >= 6 && nota < 7) {
                 calificacion = "BIEN";
-            }
-            if (nota >= 7 && nota < 9) {
+            } else if (nota >= 7 && nota < 9) {
                 calificacion = "NOTABLE";
-            }
-            if (nota >= 9 && nota <= 10) {
+            } else if (nota >= 9 && nota <= 10) {
                 calificacion = "SOBRESALIENTE";
             }
         }

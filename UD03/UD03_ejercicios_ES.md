@@ -179,7 +179,7 @@ imgcover:/media/DADES/NextCloud/DOCENCIA/PRG_2223/PRG-CFGS-2223/UD01/assets/cove
 
 4. (NotasTexto) Escribir un programa que acepte del usuario la nota de un examen (valor numérico entre 1 y 10) y muestre el literal correspondiente a dicha nota según (insuficiente, suficiente, bien, notable, sobresaliente).
 
-5. (LetraNif) Escribir un programa que lea de teclado un nif (sin guiones ni puntos). Si el nif introducido lleva la letra, se comprobará si ésta es correcta y se le indicará al usuario si lo es o no. Si el nif no lleva letra, se calculará la que le corresponde y se mostrará al usuario. Te aconsejo que dividas el problema en partes: tieneLetra(), extraerUltimoChar(),  extraeNumero(), validarLetra(), calcularLetra()...
+5. ~~(LetraNif) Escribir un programa que lea de teclado un nif (sin guiones ni puntos). Si el nif introducido lleva la letra, se comprobará si ésta es correcta y se le indicará al usuario si lo es o no. Si el nif no lleva letra, se calculará la que le corresponde y se mostrará al usuario. Te aconsejo que dividas el problema en partes: tieneLetra(), extraerUltimoChar(),  extraeNumero(), validarLetra(), calcularLetra()...~~
 
 6. (División) Escribir un programa que pida al usuario dos números enteros y le muestre el resultado de la división. Tener en cuenta que si dividimos un número por cero se producirá un error de ejecución y debemos evitarlo.
 
