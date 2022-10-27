@@ -33,7 +33,7 @@ Cuando hablamos de Programación Orientada a Objetos, existen una serie de carac
   la jerarquía "es parte de", llamada agregación. Conviene detallar algunos aspectos:
   - La generalización o especialización, también conocida como herencia, permite crear una clase nueva en términos de una clase ya existente (herencia simple) o de varias clases ya existentes (herencia múltiple). Por ejemplo, podemos crear la clase CochedeCarreras a partir de la clase Coche, y así sólo tendremos que definir las nuevas características que tenga.
   - La agregación, también conocida como inclusión, permite agrupar objetos relacionados entre sí dentro de una clase. Así, un Coche está formado por Motor, Ruedas, Frenos y Ventanas. Se dice que Coche es una agregación y Motor, Ruedas, Frenos y Ventanas son agregados de Coche.
-- **Polimorfismo**. Esta propiedad indica la capacidad de que varias clases creadas a partir de una antecesora realicen una misma acción de forma diferente. Por ejemplo, pensemos en la clase Animal y la acción de expresarse. Nos encontramos que cada tipo de Animal puede hacerlo de manera distinta, los Perros ladran, los Gatos maullan, las Personas hablamos, etc. Dicho de otra manera, el polimorfismo indica la posibilidad de tomar un objeto (de tipo Animal, por ejemplo), e indicarle que realice la acción de expresarse, esta acción será diferente según el tipo de mamífero del que se trate.
+- **Polimorfismo**. Esta propiedad indica la capacidad de que varias clases creadas a partir de una antecesora realicen una misma acción de forma diferente. Por ejemplo, pensemos en la clase `Animal` y la acción de expresarse. Nos encontramos que cada tipo de `Animal` puede hacerlo de manera distinta, los `Perros` ladran, los `Gatos` maullan, las `Personas` hablamos, etc. Dicho de otra manera, el polimorfismo indica la posibilidad de tomar un objeto (de tipo `Animal`, por ejemplo), e indicarle que realice la acción de expresarse, esta acción será diferente según el tipo de mamífero del que se trate.
 
 # Objetos y Clases
 
@@ -193,7 +193,7 @@ public class NombreDeLaClase {
 
 Significa que la clase que se define es pública. Una clase pública es una clase accesible desde otras clases o, dicho de otra forma,  que puede ser utilizada por otras clases. Ya hemos dicho que un programa, de alguna manera, consiste en la creación de objetos de distintas clases, que se relacionan entre sí. Lo más común es que las clases que definimos sean públicas y que en cada fichero de extensión `.java` se defina una única clase.
 
-Sin embargo, en ocasiones se definen clases (A) que solo van a ser utilizadas por una clase determinada (B). En ese caso, decimos que la clase A es una clase privada de la clase B.  Las clases A y B se definen en el mismo fichero `.java`. En un fichero pueden definirse varias clases pero solo una de ellas puede ser pública. De esta forma, si en un fichero se definen varias clases, una de ellas sería pública y el resto serían clases privadas de la primera, a las que solo ésta tendría acceso.
+Sin embargo, en ocasiones se definen clases (`A`) que solo van a ser utilizadas por una clase determinada (`B`). En ese caso, decimos que la clase `A` es una clase privada de la clase `B`.  Las clases `A` y `B` se definen en el mismo fichero `.java`. En un fichero pueden definirse varias clases pero solo una de ellas puede ser pública. De esta forma, si en un fichero se definen varias clases, una de ellas sería pública y el resto serían clases privadas de la primera, a las que solo ésta tendría acceso.
 
 # Utilización de Objetos
 
@@ -817,13 +817,13 @@ public class EjemploUD02 {
         System.out.println("La clase String");
         String nombre = "Javier "; //Observa que hay un espacio final
         System.out.println(nombre.toUpperCase()); //JAVIER 
-        System.out.println(nombre.charAt(4)); //E
+        System.out.println(nombre.charAt(4)); //e
         System.out.println(nombre.indexOf("i"));//3
-        System.out.println(nombre.substring(0, 3));//JAVI
+        System.out.println(nombre.substring(0, 3));//Javi
         System.out.println(nombre.toLowerCase());//javier
         System.out.println(nombre.trim());//Javier sin espacios finales
         System.out.printf("%,.2f\n", 12345.1684);
-        
+        nombre.toUpperCase().substring(0,3).indexOf("I"); //3
         System.out.format("El valor de la variable float es %f"
                 + ", mientras que el valor del entero es %d"
                 + " y el string contiene %s", doble3, entero2, texto);
@@ -857,23 +857,21 @@ Lo primero que debemos hacer es crear la clase `Pajaro`, con sus métodos y atri
 
 ```java
 public class Pajaro {
-
+    //atributos/variables
     String nombre;
     int posX, posY;
-
+    //constructores
     public Pajaro() {
     }
-
     public Pajaro(String nombre) {
         this.nombre = nombre;
     }
-
     public Pajaro(String nombre, int posX, int posY) {
         this.nombre = nombre;
         this.posX = posX;
         this.posY = posY;
     }
-
+    //metodos
     double volar(int posX, int posY) {
         double desplazamiento = Math.sqrt(posX * posX + posY * posY);
         this.posX = posX;

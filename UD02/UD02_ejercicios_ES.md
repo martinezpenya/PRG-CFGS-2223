@@ -40,7 +40,7 @@ imgcover:/media/DADES/NextCloud/DOCENCIA/PRG_2223/PRG-CFGS-2223/UD01/assets/cove
    ```
 
      Añade los siguientes métodos:
-      - `int getVelocidad`. Devuelve la velocidad del objeto moto.
+      - `int getVelocidad()`. Devuelve la velocidad del objeto moto.
       - `void acelera(int mas)`. Permite aumentar la velocidad del objeto moto.
 
    - `void frena(int menos)`. Permite reducir la velocidad del objeto moto.
@@ -51,8 +51,8 @@ imgcover:/media/DADES/NextCloud/DOCENCIA/PRG_2223/PRG-CFGS-2223/UD01/assets/cove
    $$
 
 4. Realiza una clase `Finanzas` que convierta dólares a euros y viceversa. Codifica los métodos `dolaresToEuros` y `eurosToDolares`. Prueba que dicha clase funciona correctamente haciendo conversiones entre euros y dólares. La clase tiene que tener:
-      - Un constructor `finanzas()` por defecto el cual establece el cambio Dólar-Euro en 1.36.
-      - Un constructor `finanzas(double cambio)`, el cual permitirá configurar el cambio Dólar-euro a una cantidad personalizada.
+      - Un constructor `Finanzas()` por defecto el cual establece el cambio Dólar-Euro en 1.36.
+      - Un constructor `Finanzas(double cambio)`, el cual permitirá configurar el cambio Dólar-euro a una cantidad personalizada.
 
 5. Realiza una clase `MiNumero` que proporcione el doble, triple y cuádruple de un número proporcionado en su constructor (realiza un método para `doble`, otro para `triple` y otro para `cuadruple`). Haz que la clase tenga un método `main` y comprueba los distintos métodos.
 
@@ -172,36 +172,24 @@ imgcover:/media/DADES/NextCloud/DOCENCIA/PRG_2223/PRG-CFGS-2223/UD01/assets/cove
       - Calcula el IVA de los dos objetos `Producto` que hemos creado.
       - Mostrar los datos de los dos objetos `Producto`, así como sus importes de IVA y los precios finales de cada una de las instancias.
 
-16. Crear una clase llamada `Password` con las siguientes características:
+16. Crea una clase llamada `Cuenta` que tendrá los siguientes atributos: `titular` y `cantidad` (puede tener decimales).
 
-     - Propiedades: `clave`.
-     - Los métodos que implementa serán:
+     Al crear una instancia del objeto Cuenta, el titular será obligatorio y la cantidad es opcional. Crea dos constructores que cumplan lo anterior, es decir debemos crear dos métodos constructores con el mismo nombre que será el nombre del objeto.
 
-       - Un constructor sin parámetros que generará una clave aleatoria con longitud 8.
-       - Un constructor que recibirá por parámetro un `int` que le indicará la longitud de la clave a generar.
-       - `generarClave()`: genera la clave del objeto con la longitud que tenga.
-       - Método get para clave.
-       - Método set para clave.
-     - Crear una clase principal `main` que compruebe todos los métodos creados.
+     Crea sus métodos get, set y el método `mostrarDatos` que muestre los datos de la cuenta. Tendrá dos métodos especiales:
 
-17. Crea una clase llamada `Cuenta` que tendrá los siguientes atributos: `titular` y `cantidad` (puede tener decimales).
+     - `ingresar(double cantidad)`: se ingresa una cantidad a la cuenta, si la cantidad introducida es negativa, no se hará nada.
+     - `retirar(double cantidad)`: se retira una cantidad a la cuenta, si restando la cantidad actual a la que nos pasan es negativa, la cantidad de la cuenta pasa a ser 0 retirando el importe máximo en función de la cantidad disponible en el objeto.
 
-    Al crear una instancia del objeto Cuenta, el titular será obligatorio y la cantidad es opcional. Crea dos constructores que cumplan lo anterior, es decir debemos crear dos métodos constructores con el mismo nombre que será el nombre del objeto.
+     Crear una clase principal `main` ejecutable:
 
-    Crea sus métodos get, set y el método `mostrarDatos` que muestre los datos de la cuenta. Tendrá dos métodos especiales:
-
-    - `ingresar(double cantidad)`: se ingresa una cantidad a la cuenta, si la cantidad introducida es negativa, no se hará nada.
-    - `retirar(double cantidad)`: se retira una cantidad a la cuenta, si restando la cantidad actual a la que nos pasan es negativa, la cantidad de la cuenta pasa a ser 0 retirando el importe máximo en función de la cantidad disponible en el objeto.
-
-    Crear una clase principal `main` ejecutable:
-
-    - Crear una instancia del objeto Cuenta llamada `cuentaParticular1` con el nombre del titular.
-    - Crear una instancia del objeto Cuenta llamada `cuentaEmpresa1` con el nombre del titular y una cantidad inicial de dinero.
-    - Mostrar el titular de la instancia `cuentaParticular1`.
-    - Mostrar el saldo de la instancia `cuentaEmpresa1`.
-    - Ingresar 1000 € en la instancia `cuentaParticular1`.
-    - Retirar 500 € en la instancia `cuentaEmpresa1`.
-    - Mostrar los datos de las dos instancias del objeto `Cuenta`.
+     - Crear una instancia del objeto Cuenta llamada `cuentaParticular1` con el nombre del titular.
+     - Crear una instancia del objeto Cuenta llamada `cuentaEmpresa1` con el nombre del titular y una cantidad inicial de dinero.
+     - Mostrar el titular de la instancia `cuentaParticular1`.
+     - Mostrar el saldo de la instancia `cuentaEmpresa1`.
+     - Ingresar 1000 € en la instancia `cuentaParticular1`.
+     - Retirar 500 € en la instancia `cuentaEmpresa1`.
+     - Mostrar los datos de las dos instancias del objeto `Cuenta`.
 
 18. Crea una clase llamada `Libro` que guarde la información de cada uno de los libros de una biblioteca. La clase debe guardar las siguientes propiedades:
 
@@ -284,7 +272,7 @@ imgcover:/media/DADES/NextCloud/DOCENCIA/PRG_2223/PRG-CFGS-2223/UD01/assets/cove
        - `retencionMedico`: Permite calcular la retención aplicada al sueldo del médico. Se le pasa el dato del porcentaje de retención.
        - `mostrarDatos`: Muestra los datos del médico.
      - Crear una clase principal `main` ejecutable que:
-       - Crear dos instancias de la clase `Medico`llamados `medicoDigestivo` y `medicoTraumatologo`.
+       - Crear dos instancias de la clase `Medico` llamados `medicoDigestivo` y `medicoTraumatologo`.
        - Cambia el sueldo del `medicoTraumatologo`.
        - Muestra el sueldo del `medicoTraumatologo`.
        - Cambia el dni del `medicoDigestivo`.
