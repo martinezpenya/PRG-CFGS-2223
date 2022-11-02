@@ -502,9 +502,23 @@ En ese momento el control del flujo del programa pasará a la siguiente instrucc
 
 ## Bucle infinito
 
-Uno de los errores más comunes al implementar cualquier tipo de bucle es que nunca pueda salir, es decir, el bucle se ejecuta durante un número infinito de veces. Esto sucede cuando la condición falla por alguna razón.
+Uno de los errores más comunes al implementar cualquier tipo de bucle es que nunca pueda salir, es decir, el bucle se ejecuta durante un número infinito de veces.
 
-Ejemplo:
+Podemos provocarlo intencionadamente como en estos dos ejemplos equivalentes (NO RECOMENDABLE):
+
+```java
+for(;;){
+    //sentencias
+}
+```
+
+```java
+while(true){
+    //sentencias
+}
+```
+
+O sucede cuando la condición falla por alguna razón, como en el siguiente ejemplo:
 
 ```java
 //Programa Java para ilustrar varias trampas de bucles.
