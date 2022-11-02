@@ -265,8 +265,8 @@ switch (expresion) {
         ....
         break;
     case valor2:
-    ....
-        case valorN:
+        ....
+    case valorN:
         sentenciaN_1;
         sentenciaN_2;
         ....
@@ -341,6 +341,7 @@ En resumen, se ha de comparar el valor de una expresión con un conjunto de cons
 # Estructuras de repetición
 
 Nuestros programas ya son capaces de controlar su ejecución teniendo en cuenta determinadas condiciones, pero aún hemos de aprender un conjunto de estructuras que nos permita repetir una secuencia de instrucciones determinada. La función de estas estructuras es repetir la ejecución de una serie de instrucciones teniendo en cuenta una condición.
+
 A este tipo de estructuras se las denomina estructuras de repetición, estructuras repetitivas, bucles o estructuras iterativas. En Java existen cuatro clases de bucles:
 
 - Bucle `for` (repite para)
@@ -404,9 +405,10 @@ Donde...:
 
 ## Estructura `for`/`in`
 
-Junto a la estructura `for`, `for`/`in` también se considera un bucle controlado por contador. Este bucle es una mejora incorporada en la versión 5.0. de Java. 
+Junto a la estructura `for`, `for`/`in` también se considera un bucle controlado por contador. Este bucle es una mejora incorporada en la versión 5.0 de Java. 
 
 Este tipo de bucles permite realizar recorridos sobre arrays y colecciones de objetos. Los arrays son colecciones de variables que tienen el mismo tipo y se referencian por un nombre común. Así mismo, las colecciones de objetos son objetos que se dice son iterables, o que se puede iterar sobre ellos.
+
 Este bucle es nombrado también como bucle `for` mejorado, o bucle `foreach`. En otros lenguajes de programación existen bucles muy parecidos a este.
 
 La sintaxis es la siguiente:
@@ -495,6 +497,8 @@ do {
 El cuerpo del bucle se ejecuta la primera vez, a continuación se evaluará la condición y, si ésta es falsa, el cuerpo el bucle volverá a repetirse. El bucle finalizará cuando la evaluación de la condición sea verdadera. 
 
 En ese momento el control del flujo del programa pasará a la siguiente instrucción que exista justo detrás del bucle do‐while. La condición se evaluará siempre después de una primera ejecución del cuerpo del bucle, por lo que no se dará el caso de que las instrucciones contenidas en él no lleguen a ejecutarse nunca.
+
+<img src="/assets/roadrunner.jpg" alt="roadrunner" style="zoom: 33%;" />
 
 ## Bucle infinito
 
