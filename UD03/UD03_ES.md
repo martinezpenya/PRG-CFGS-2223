@@ -504,7 +504,7 @@ En ese momento el control del flujo del programa pasará a la siguiente instrucc
 
 Uno de los errores más comunes al implementar cualquier tipo de bucle es que nunca pueda salir, es decir, el bucle se ejecuta durante un número infinito de veces.
 
-Podemos provocarlo intencionadamente como en estos dos ejemplos equivalentes (NO RECOMENDABLE):
+Podemos provocarlo intencionadamente como en estos dos ejemplos equivalentes (**NO RECOMENDABLE**):
 
 ```java
 for(;;){
