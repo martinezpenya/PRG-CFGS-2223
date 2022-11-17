@@ -755,14 +755,14 @@ Donde `IOException` y `NumberFormatException`, serían dos posibles excepciones 
 
 Existen dos grupos de excepciones: **comprobadas** y **no comprobadas** (Observa la figura del apartado “Jerarquía de excepciones”
 
-- Excepciones **comprobadas**, verificadas ( o checked):
+- Excepciones **comprobadas**, verificadas (o checked):
 
   - Su tratamiento es obligatorio y el compilador comprueba que se haga. Es necesario capturarlas (con `try-catch`) o propagarlas (con `throws`), de lo contrario se produce error de compilación.
   - Son excepciones que un programa bien escrito debería prever, tratar y recuperarse de ellas.
   - Supongamos por ejemplo que nuestro programa va a leer y mostrar por pantalla el contenido de un fichero cuyo nombre indica el usuario. En la mayoría de ocasiones el usuario indicará el nombre de un fichero existente y válido y el programa lo mostrará, pero es posible que en alguna ocasión el usuario se equivoque e indique el nombre de un fichero que no existe. En tal caso se producirá una excepción `FileNotFoundException`. El programa debería ser capaz de manejar la situación, informar al usuario y permitirle, si se estima oportuno, que introduzca un nombre de fichero válido.
   - Son comprobadas las derivadas de `java.lang.IOException` y las excepciones de usuario (que trataremos más adelante)
 
-- Excepciones **no** **comprobadas**, no verificadas ( o `unchecked`):
+- Excepciones **no** **comprobadas**, no verificadas (o `unchecked`):
 
   - Su tratamiento no es obligatorio y el compilador obliga a que se utilice un bloque `try-catch` o a que se anuncie su propagación usando `throws`. Aunque no es obligatorio, puede hacerse si se estima conveniente.
 
@@ -774,7 +774,7 @@ Existen dos grupos de excepciones: **comprobadas** y **no comprobadas** (Observa
 
   - Son no comprobadas las clases derivadas de `java.lang.Error` y de `java.lang.RuntimeException`  	
 
-## Crear y lanzar excepciones de usuario:
+## Crear y lanzar excepciones de usuario
 
 Las excepciones de usuario son subclases de la clase `Exception` que podemos crear y lanzar en nuestros programas para avisar sobre determinadas situaciones.
 
@@ -1207,23 +1207,24 @@ Vamos a realizar un programa en Java en el que se solicite al usuario la introdu
 package UD03;
 
 import java.io.*;
+import java.util.Scanner;
 
-public class Excepciones {
+public class P6_Excepciones {
 
     public static void main(String[] args) {
         int numero = -1;
         int intentos = 0;
         String linea;
-        BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
+        Scanner teclado = new Scanner(System.in);
         do {
             try {
                 System.out.print("Introduzca un número entre 0 y 100: ");
-                linea = teclado.readLine();
+                linea = teclado.nextLine();
                 numero = Integer.parseInt(linea);
-            } catch (IOException e) {
-                System.out.println("Error al leer del teclado.");
             } catch (NumberFormatException e) {
                 System.out.println("Debe introducir un número entre 0 y 100.");
+            } catch (Exception e) {
+                System.out.println("Error al leer del teclado.");
             } finally {
                 intentos++;
             }
@@ -1236,7 +1237,7 @@ public class Excepciones {
 
 En este programa se solicita repetidamente un número utilizando una estructura `do­ while`, mientras el número introducido sea menor que 0 y mayor que 100. Como al solicitar el número pueden producirse los errores siguientes:
 
-- De entrada de información a través de la excepción `IOException` generada por el método `readLine()` de la clase `BufferedReader`.
+- De entrada de información a través de la excepción `Exception` generada por el método `nextLine()` de la clase `Scanner`.
 - De conversión de tipos a través de la excepción `NumberFormatException` generada por el método `parseInt()`.
 
 Entonces se hace necesaria la utilización de bloques `catch` que gestionen cada una de las excepciones que puedan producirse. Cuando se produce una excepción, se compara si coincide con la excepción del primer `catch`. Si no coincide, se compara con la del segundo `catch` y así sucesivamente. Si se encuentra un `catch` que coincide con la excepción a gestionar, se ejecutará el bloque de sentencias asociado a éste.

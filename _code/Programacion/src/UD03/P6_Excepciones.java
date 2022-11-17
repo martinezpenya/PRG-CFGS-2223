@@ -9,12 +9,10 @@ public class P6_Excepciones {
         int numero = -1;
         int intentos = 0;
         String linea;
-        //BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
-        Scanner teclado = new Scanner (System.in);
+        Scanner teclado = new Scanner(System.in);
         do {
             try {
                 System.out.print("Introduzca un número entre 0 y 100: ");
-                //linea = teclado.readLine();
                 linea = teclado.nextLine();
                 numero = Integer.parseInt(linea);
             } catch (NumberFormatException e) {

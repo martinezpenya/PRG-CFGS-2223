@@ -384,7 +384,7 @@ imgcover:/media/DADES/NextCloud/DOCENCIA/PRG_2223/PRG-CFGS-2223/UD01/assets/cove
     5 por 10, 50
     ```
 
-46. (PrimosHastaN) Programa que solicite al usuario un numero `n` y muestre todos los números primos menores o iguales que `n`.
+46. (PrimosHastaN) Programa que solicite al usuario un numero `n` y muestre todos los números primos menores o iguales que `n`. (IGUAL AL 27!!)
 
 47. (CombinarLetras2) Escribir un programa que muestre todas las palabras de dos letras que se pueden formar con los cuatro primeros caracteres del alfabeto en minúsculas ('a', 'b', 'c', 'd'):
 
@@ -499,7 +499,7 @@ imgcover:/media/DADES/NextCloud/DOCENCIA/PRG_2223/PRG-CFGS-2223/UD01/assets/cove
 
 51. (dibujarFiguras2) Escribe una clase que contenga los métodos que se indican a continuación. En el método main solicita al usuario las dimensiones de las figuras necesarias en cada caso y llama al método correspondiente para que se muestre por pantalla
 
-    1. `void dibRectNumeros3 (int ancho, int alto` dibuja un rectángulo 	utilizando números, como el siguiente. En el ejemplo ancho es 7 y alto es 3
+    1. `void dibRectNumeros3 (int ancho, int alto)` dibuja un rectángulo 	utilizando números, como el siguiente. En el ejemplo ancho es 7 y alto es 3
 
        ```sh
        1 2 3 4 5 6 7 7 6 5 4 3 2 1
@@ -628,7 +628,7 @@ imgcover:/media/DADES/NextCloud/DOCENCIA/PRG_2223/PRG-CFGS-2223/UD01/assets/cove
 
     - Si total < 500 €, no se aplica descuento.
     - Si 500 € <= total <= 2000 €, se aplica un descuento del 30 %.
-    - Si total > 2000e, entonces se aplica un descuento del 50 %
+    - Si total > 2000 €, entonces se aplica un descuento del 50 %
 
     ¿Cual de los siguientes fragmentos de programa asigna a la variable desc el descuento correcto? Indica "Si" o "NO" al lado de cada fragmento
 
@@ -1364,7 +1364,7 @@ Indica cual será la salida producida por los siguientes programas, teniendo en 
    2 x 2 = 4
    ...
    2 x 10 = 20
-   ...
+   
    Tabla del 3
    ***********
    ...
