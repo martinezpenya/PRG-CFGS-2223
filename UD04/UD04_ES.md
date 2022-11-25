@@ -155,10 +155,10 @@ Vamos a resolverlo ahora ayudándonos de arrays:
 
 ```java
 public static String nombreMes(int mes){
-    String nombre[] = {" " ,"enero", "febrero", "marzo", "abril",
+    String[] nombre = {"enero", "febrero", "marzo", "abril",
                        "mayo", "junio", "julio","agosto",
                        "septiembre", "octubre", "noviembre", "diciembre"};
-    return nombre[mes];
+    return nombre[mes-1];
 }
 ```
 
@@ -169,7 +169,7 @@ Devolver el nombre del mes indicado se reduce a devolver el componente del array
 
 Hasta el momento sólo se ha considerado el paso de parámetros por valor; de manera que cualquier cambio que el método realice sobre los parámetros formales no modifica el valor que tiene el parámetro real con el que se llama al método. En java, todos los parámetros de tipo simple (`byte`, `short`, `int`, ...) se pasan por valor.
 
-Por el contrario, los arrays no son variables de tipo primitivo, y como cualquier otro objeto, se pasa siempre por referencia.
+> Por el contrario, los arrays no son variables de tipo primitivo, y como cualquier otro objeto, se pasa siempre por referencia.
 
 En el paso de parámetros por referencia lo que se pasa en realidad al método es la dirección de la variable u objeto. Es por esto que el papel del parámetro formal es el de ser una referencia al parámetro real; la llamada al método no provoca la creación de una nueva variable. De esta forma, las modificaciones que el método pueda realizar sobre estos parámetros se realizan efectivamente sobre los parámetros reales. En este caso, ambos parámetros (formal y real) se pueden considerar como la misma variable con dos nombres, uno en el método llamante y otro en el llamado o invocado, pero hacen referencia a la misma posición de memoria.
 
@@ -178,13 +178,13 @@ En el siguiente ejemplo, la variable `a`, de tipo primitivo, no cambia de valor 
 ```java
 public static void main(String[] args){
     int a = 1;
-    int v[] = {1,1,1};
+    int[] v = {1,1,1};
     metodo(v,a); //Pasar un array como parámetro
     System.out.println(a); // Muesta 1
     System.out.println(v[0]); // Muestra 2
 }
 
-public static void metodo(int x[], int y){ //recibir un array como parámetro
+public static void metodo(int[] x, int y){ //recibir un array como parámetro
     x[0]++;
     y++;
 }
@@ -199,7 +199,7 @@ En la cabecera del método, sin embargo, tenemos que utilizar los corchetes `[]`
 Todas las variables de tipo array tienen un atributo `length` que permite consultar el número de componentes del array. Su uso se realiza posponiendo `.length` al nombre de la variable:
 
 ```java
-double estatura[] = new double[25];
+double[] estatura = new double[25];
 ...
 System.out.println(estatura.length); // Mostrará por pantalla: 25
 ```
@@ -243,9 +243,10 @@ En el siguiente ejemplo se muestra un método en java para devolver, a partir de
 ```java
 public static double pluviosidadMediaAscendente(double lluvia[]){
     double suma = 0;
-    //Recorremos el array
-    for (int i = 0; i<lluvia.length; i++)
+    //Recorremos el array ascendentemente
+    for (int i = 0; i<lluvia.length; i++){
         suma += lluvia[i];
+    }
     double media = suma / lluvia.length;
     return media;
 }
@@ -258,7 +259,7 @@ El mismo problema resuelto con un recorrido descendente sería como sigue:
 ```java
 public static double pluviosidadMediaDescendente(double lluvia[]){
     double suma = 0;
-    //Recorremos el array
+    //Recorremos el array descendentemente
     for (int i = lluvia.length-1; i>=0; i--)
     	suma += lluvia[i];
     double media = suma / lluvia.length;
@@ -270,7 +271,7 @@ También realizamos un recorrido para obtener la pluviosidad máxima del mes (la
 
 ```java
 public static double pluviosidadMaxima(double[] lluvia){
-    // Suponemos el la pluviosidad máxima se produjo el primer día
+    // Suponemos que la pluviosidad máxima se produjo el primer día
     double max = lluvia[0];
     //Recorremos el array desde la posición 1, comprobando si hay una pluviosidad mayor
     for (int i = 1; i<lluvia.length; i++)
