@@ -461,7 +461,7 @@ imgcover:/media/DADES/NextCloud/DOCENCIA/PRG_2223/PRG-CFGS-2223/UD01/assets/cove
 
        ```sh
        01 02 03 04 05 06 07
-       08 09 19 11 12 13 14
+       08 09 10 11 12 13 14
        15 16 17 18 19 20 21
        ```
 
@@ -517,7 +517,7 @@ imgcover:/media/DADES/NextCloud/DOCENCIA/PRG_2223/PRG-CFGS-2223/UD01/assets/cove
 
     3. `void dibRectAsteriscos2 (int ancho, int alto)` dibuja un rectángulo utilizando asteriscos (*), espacios en blanco y el carácter ‘+’, como el siguiente. En el ejemplo ancho es 7 y alto es 3
 
-       ```sh
+       ```yaml
        * + * + * + *
        * + * + * + *
        * + * + * + *
@@ -586,7 +586,7 @@ imgcover:/media/DADES/NextCloud/DOCENCIA/PRG_2223/PRG-CFGS-2223/UD01/assets/cove
     1.  fragmento a
 
        ```java
-       if x > 25
+       if (x > 25)
        	y = x
        else
        	y = z;
@@ -630,7 +630,7 @@ imgcover:/media/DADES/NextCloud/DOCENCIA/PRG_2223/PRG-CFGS-2223/UD01/assets/cove
     - Si 500 € <= total <= 2000 €, se aplica un descuento del 30 %.
     - Si total > 2000 €, entonces se aplica un descuento del 50 %
 
-    ¿Cual de los siguientes fragmentos de programa asigna a la variable desc el descuento correcto? Indica "Si" o "NO" al lado de cada fragmento
+    ¿Cuál de los siguientes fragmentos de programa asigna a la variable `desc` el descuento correcto? Indica "Si" o "NO" al lado de cada fragmento
 
     1. fragmento a
 
@@ -700,8 +700,8 @@ imgcover:/media/DADES/NextCloud/DOCENCIA/PRG_2223/PRG-CFGS-2223/UD01/assets/cove
     Se pide la traducción de dicho análisis por casos a Java mediante:
 
     - Una única instrucción if sin anidamientos.
-    - Una única instrucción, de la forma p = ... , sin sentencias if ni utilizar el operador ternario.
     - Una única instrucción, de la forma p = ..., que utilice el operador ternario.
+    - Una única instrucción, de la forma p = ... , sin sentencias if ni utilizar el operador ternario.
 
 ## Trazas
 
@@ -1058,7 +1058,7 @@ Indica cual será la salida producida por los siguientes programas, teniendo en 
        2. Si se introduce mal la edad de una persona, el programa muestra un mensaje de error, no calcula la media y termina.
        3. Si se introduce mal la edad de una persona, el programa vuelve a solicitar la edad de las cinco personas (comienza el proceso).
 
-2. Escribe programas que se indican a continuación. Ejecuta cada programa haciendo que la entrada del usuario provoque una excepción. Anota el nombre de la excepción que se produce y cuál es la jerarquía de objetos de la que desciende:
+2. Escribe los programas que se indican a continuación. Ejecuta cada programa haciendo que la entrada del usuario provoque una excepción. Anota el nombre de la excepción que se produce y cuál es la jerarquía de objetos de la que desciende:
 
    1. Programa que solicita dos números enteros (a y b) y muestra el resultado de su división (a/b).
 
