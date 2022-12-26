@@ -1,6 +1,5 @@
 package UD03;
 
-import java.io.*;
 import java.util.Scanner;
 
 public class P6_Excepciones {
@@ -16,7 +15,7 @@ public class P6_Excepciones {
                 linea = teclado.nextLine();
                 numero = Integer.parseInt(linea);
             } catch (NumberFormatException e) {
-                System.out.println("Debe introducir un número entre 0 y 100.");
+                System.out.println("aDebe introducir un número entre 0 y 100.");
             } catch (Exception e) {
                 System.out.println("Error al leer del teclado.");
             } finally {

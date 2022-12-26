@@ -790,7 +790,7 @@ Indica cual será la salida producida por los siguientes programas, teniendo en 
           int x,y,a;
           x = tec.nextInt();
           y = tec.nextInt();
-          a = x;
+          a = x;2
           doble(a);
           System.out.format("%d%n%d%n%d%n",x,y,a);
       }
@@ -809,7 +809,7 @@ Indica cual será la salida producida por los siguientes programas, teniendo en 
           System.out.format("%d%n%d%n%d%n",x,y,a);
       }
       public static int calcular (int x, int y){
-      	return x-y;
+      	return x-y;3
       }
       ```
       
@@ -1404,6 +1404,13 @@ Indica cual será la salida producida por los siguientes programas, teniendo en 
     3! = 3 * 2 * 1 = 6
     4! = 4 * 3 * 2 * 1 = 24
     5! = 5 * 4 * 3 * 2 * 1 = 120
+    ```
+
+    Ejemplo de ejecución del programa:
+
+    ```
+    Dime el número para calcular su factorial: 5
+    El factorial de 5 es 120
     ```
 
 18. Pedir 10 números. Mostrar la media de los números positivos, la media de los números negativos y la cantidad de ceros.
