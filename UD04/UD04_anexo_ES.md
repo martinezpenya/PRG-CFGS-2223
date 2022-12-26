@@ -197,16 +197,16 @@ String palabra2 = palabra1.trim(); // retorna "Java desde Cero"
 - `String replace(char oldChar, char newChar)`: Devuelve una nueva cadena al reemplazar todas las ocurrencias de oldChar con newChar.
 
 ```java
-String palabra1 = "javadesdecero";
+String palabra1 = "yavadesdecero";
 String palabra2 = palabra1.replace('y' ,'j'); //retorna javadesdecero
 ```
 
-> **Nota**: s1 sigue siendo yavadesdecero y s2, javadesdecero 
+> **Nota**: palabra1 sigue siendo yavadesdecero y palabra2, javadesdecero 
 
 - `String replaceAll(String regex, String replacement)`: devuelve una cadena que reemplaza toda la secuencia de caracteres que coinciden con la expresión regular `regex` por la cadena de reemplazo `replacement`.
 
 ```java
-String str = "Ejemplo con espaciones en blanco y tabs";
+String str = "Ejemplo con espacios en blanco y tabs";
 String str2 = str.replaceAll("\\s", ""); //retorna Ejemploconespaciosenblancoytabs
 ```
 
@@ -299,7 +299,7 @@ class DemoMetodosString
         System.out.println("Reemplazando Y por J -> " + str2);
         
         // Reemplazar todos los carácteres
-        String strAll = "Guru99 is a site providing free tutorials";
+        String strAll = "Ejemplo con espacios en blanco y tabs";
         System.out.println("String Original: " + strAll);
 		String strAll2 = strAll.replaceAll("\\s", "");
 		System.out.println("Eliminando todos los espacios en blanco -> " + strAll2);
@@ -326,8 +326,8 @@ Cambiando a MAYÚSCULAS: JAVADESDECERO
 Recortando la palabra: JavadesdeCero
 String Original: YavadesdeCero
 Reemplazando Y por J -> JavadesdeCero
-String Original: Guru99 is a site providing free tutorials
-Eliminando todos los espacios en blanco -> Guru99issueproporcionarTutorialesfreet
+String Original: Ejemplo con espacios en blanco y tabs
+Eliminando todos los espacios en blanco -> Ejemploconespaciosenblancoytabs
 ```
 
 ## Arrays de `String`

@@ -241,7 +241,7 @@ Se clasifican como problemas de recorrido aquellos que para su resolución exige
 En el siguiente ejemplo se muestra un método en java para devolver, a partir de un array que contiene la pluviosidad de cada uno de los días de un mes, la pluviosidad media de dicho mes. Para ello se recorren ascendente los componentes del array para ir sumándolos:
 
 ```java
-public static double pluviosidadMediaAscendente(double lluvia[]){
+public static double pluviosidadMediaAscendente(double[] lluvia){
     double suma = 0;
     //Recorremos el array ascendentemente
     for (int i = 0; i<lluvia.length; i++){
@@ -257,11 +257,12 @@ La forma de recorrer el array ascendentemente es, como vemos, utilizar una varia
 El mismo problema resuelto con un recorrido descendente sería como sigue:
 
 ```java
-public static double pluviosidadMediaDescendente(double lluvia[]){
+public static double pluviosidadMediaDescendente(double[] lluvia){
     double suma = 0;
     //Recorremos el array descendentemente
-    for (int i = lluvia.length-1; i>=0; i--)
+    for (int i = lluvia.length-1; i>=0; i--){
     	suma += lluvia[i];
+    }
     double media = suma / lluvia.length;
     return media;
 }
@@ -275,21 +276,60 @@ public static double pluviosidadMaxima(double[] lluvia){
     double max = lluvia[0];
     //Recorremos el array desde la posición 1, comprobando si hay una pluviosidad mayor
     for (int i = 1; i<lluvia.length; i++)
-        if(lluvia[i] > max) max = lluvia[i];
+        if(lluvia[i] > max){
+        	max = lluvia[i];    
+        } 
     return max;
 }
 ```
 
+### Bucle for each (for-loop)
+
+En el tema anterior vimos algún tipo de bucles que explicariamos cuandos los pudiesemos utilizar, en este grupo estan los bucles for each o for-loops. Aquí tenemos un ejemplo de recorrido de un array con la sintaxis que ya conocemos:
+
+```java
+int[] array = { 1, 2, 3, 4, 5, 6, 7, 8 };
+for (int i = 0; i < array.length; i++) {
+    System.out.print(array[i] + " ");
+}
+```
+
+el anterior fragmento genera la siguiente salida:
+
+```
+1 2 3 4 5 6 7 8
+```
+
+Este mismo código se puede escribir de la siguiente manera:
+
+```java
+int[] array = { 1, 2, 3, 4, 5, 6, 7, 8 };
+for (int i : array) { //mentalmente podemos traducir por:
+    //"para cada entero "i" que encontremos en el array"
+    System.out.print(i + " ");
+}
+```
+
+la salida seguirá siendo la misma:
+
+```
+1 2 3 4 5 6 7 8
+```
+
+> **NOTA**: Ojo! con el segundo método no tenemos acceso a la posición o índice del array, este método no serviría para métodos en los que necesitamos conocer la posición o utilizarla de alguna manera.
+
 ## Problemas de búsqueda
 
 Se denominan problemas de búsqueda a aquellos que, de alguna manera, implican determinar si existe algún elemento del array que cumpla una propiedad dada. Con respecto a los problemas de recorrido presentan la diferencia de que no es siempre necesario tratar todos los elementos del array: el elemento buscado puede encontrarse inmediatamente, encontrarse tras haber recorrido todo el array, o incluso no encontrarse.
+
+### Búsqueda ascendente
 
 Consideremos, por ejemplo, el problema de encontrar cual fue el primer día del mes en que no llovió nada, es decir, el primer elemento del array con valor cero:
 
 ```java
 //Devolveremos el subíndice del primer componente del array cuyo valor es cero.
 // Si no hay ningún día sin lluvias devolveremos -1
-public static int primerDiaSinLluvia1(double lluvia[]){
+public static int primerDiaSinLluvia1(double[] lluvia){
     int i=0 ;
     boolean encontrado = false ;
     while (i<lluvia.length && !encontrado){
@@ -307,7 +347,7 @@ Hemos utilizado el esquema de búsqueda: Definimos una variable `boolean` que in
 También es posible una solución sin utilizar la variable `boolean`:
 
 ```java
-public static int primerDiaSinLluvia2(double lluvia[]){
+public static int primerDiaSinLluvia2(double[] lluvia){
     int i=0 ;
     while (i<lluvia.length && lluvia[i] != 0)
         i++;
@@ -328,7 +368,7 @@ ya que, si se ha finalizado el bucle sin encontrar ningún día sin lluvia, `i` 
 Por otra parte, el mismo problema se puede resolver utilizando la sentencia `for`, como hemos hecho otras veces. Sin embargo la solución parece menos intuitiva porque el cuerpo del `for` quedaría vacío:
 
 ```java
-public static int primerDiaSinLluvia3(double lluvia[]){
+public static int primerDiaSinLluvia3(double[] lluvia){
     int i;
     for (i=0; i<lluvia.length && lluvia[i] != 0; i++) /*Nada*/ ;
     if (i == lluvia.length) return -1 ;
@@ -343,7 +383,7 @@ En los ejemplos de búsqueda anteriores hemos iniciado la búsqueda en el elemen
 Si queremos encontrar el último día del mes en que no llovió podemos realizar una búsqueda descendente, es decir, partiendo del último componente del array y decrementando progresivamente el subíndice hasta llegar a la posición cero o hasta encontrar lo buscado:
 
 ```java
-public static int ultimoDiaSinLluvia(double lluvia[]){
+public static int ultimoDiaSinLluvia(double[] lluvia){
     int i=lluvia.length-1;
     boolean encontrado = false ;
     while (i>=0 && !encontrado){
@@ -382,7 +422,7 @@ Supongamos por ejemplo que, dado un array que contiene edades de personas, orden
 El siguiente método soluciona este problema realizando una búsqueda binaria:
 
 ```java
-public static boolean hayAlguienDe36(int edad[]) {
+public static boolean hayAlguienDe36(int[] edad) {
     // Las variables izq y der marcarán el fragmento del array en el que
     // realizamos la búsqueda. Inicialmente buscamos en todo el array.
     int izq = 0;
@@ -410,11 +450,11 @@ public static boolean hayAlguienDe36(int edad[]) {
 }
 ```
 
-La búsqueda finaliza cuando encontramos una persona con 36 años (`encontrado==true`) o cuando ya no es posible encontrarla, circunstancia que se produce cuando `izq` y `der` se cruzan (izq>der).
+La búsqueda finaliza cuando encontramos una persona con 36 años (`encontrado==true`) o cuando ya no es posible encontrarla, circunstancia que se produce cuando `izq` y `der` se cruzan (`izq>der`).
 
 ## Problemas de ordenación
 
-Con frecuencia necesitamos que los elementos de un array estén ordenados.
+Con frecuencia necesitamos que los elementos de un array estén ordenados (por ejemplo para usar la búsqueda binaria).
 
 Existen multitud de algoritmos que permiten ordenar los elementos de un array, entre los que hay soluciones **iterativas** y soluciones **recursivas**.
 
@@ -425,7 +465,7 @@ Entre los **recursivos**, son conocidos el algoritmo **mergesort** y el **quickS
 Como ejemplo vamos a ver como se realiza la ordenación de un array de enteros utilizando el método de **selección directa**:
 
 ```java
-public static void seleccionDirecta(int v[]) {
+public static void seleccionDirecta(int[] v) {
     for (int i = 0; i < v.length-1; i++) {
         //Localizamos elemento que tiene que ir en la posición i
         int posMin = i;
@@ -452,41 +492,6 @@ En cada posición (`i`) localizamos el elemento que tiene que ocupar dicha posic
 Cuando se ha determinado el menor se coloca en su posición realizando un intercambio con el elemento de la posición `i`. Con ello, el array queda ordenado hasta la posición `i`.
 
 > **NOTA**: Ejemplos visuales de distintos métodos de ordenación, con distintos tipos de entradas: https://www.toptal.com/developers/sorting-algorithms
-
-## Bucle for each (for-loop)
-
-En el tema anterior vimos algún tipo de bucles que explicariamos cuandos los pudiesemos utilizar, en este grupo estan los bucles for each o for-loops. Aquí tenemos un ejemplo de recorrido de un array con la sintaxis que ya conocemos:
-
-```java
-int array[] = { 1, 2, 3, 4, 5, 6, 7, 8 };
-for (int i = 0; i < array.length; i++) {
-    System.out.print(array[i] + " ");
-}
-```
-
-el anterior fragmento genera la siguiente salida:
-
-```sh
-1 2 3 4 5 6 7 8
-```
-
-Este mismo código se puede escribir de la siguiente manera:
-
-```java
-int array[] = { 1, 2, 3, 4, 5, 6, 7, 8 };
-for (int i : array) { //mentalmente podemos traducir por:
-    //"para cada entero "i" que encontremos en el array"
-    System.out.print(i + " ");
-}
-```
-
-la salida seguirá siendo la misma:
-
-```sh
-1 2 3 4 5 6 7 8
-```
-
-> **NOTA**: Ojo! con el segundo método no tenemos acceso a la posición o índice del array, este método no serviría para métodos en los que necesitamos conocer la posición o utilizarla de alguna manera.
 
 # Arrays bidimensionales: matrices
 
@@ -530,13 +535,13 @@ Esto, que no es igual en otros lenguajes de programación, tiene ciertas consecu
 El código siguiente declara una matriz (array bidimensional) de elementos de tipo `double`, y la crea para que tenga `5` filas y `4` columnas (matriz de 5x4):
 
 ```java
-double m1[][] = new double[5][4];
+double[][] m1 = new double[5][4];
 ```
 
 La siguiente declaración es equivalente a la anterior aunque en la práctica es menos utilizada a no ser que queramos que cada fila tenga un número distinto de elementos:
 
 ```java
-double m2[][] = new double [5][];
+double[][] m2 = new double [5][];
 m2[0] = new double[4];
 m2[1] = new double[4];
 m2[2] = new double[4];
@@ -547,7 +552,7 @@ m2[4] = new double[4];
 Es posible inicializar cada uno de los subarrays con un tamaño diferente (aunque el tipo base elemental debe ser siempre el mismo para todos los componentes). Por ejemplo:
 
 ```java
-double m3[][] = new double [5][];
+double[][] m3 = new double [5][];
 m3[0] = new double[3];
 m3[1] = new double[4];
 m3[2] = new double[14];
@@ -560,12 +565,12 @@ m3[4] = new double[9];
 La forma de inicializar una matriz de enteros de por ejemplo \[4][3] seria:
 
 ```java
-int m4 [][] = {
-                {7,2,4},
-                {8,2,5},
-                {9,4,3},
-                {1,2,4}
-              };
+int[][] m4 = {
+               {7,2,4},
+               {8,2,5},
+               {9,4,3},
+               {1,2,4}
+             };
 ```
 
 ![Screenshot_20210821_090653](assets/matrizInt4x3.png)
@@ -626,7 +631,7 @@ for (int c = 0; c < m4[0].length; c++) {
 //4 5 3 4
 ```
 
-En este caso, para un funcionamiento correcto del recorrido sería necesario que todas las columnas tuvieran igual número de elementos, pues en el bucle externo, se toma como referencia para el número de columnas la longitud de m[0], es decir el número de elementos de la primera fila.
+En este caso, para un funcionamiento correcto del recorrido sería necesario que todas las columnas tuvieran igual número de elementos, pues en el bucle externo, se toma como referencia para el número de columnas la longitud de `m[0]`, es decir el número de elementos de la primera fila.
 
 # Arrays multidimensionales
 
@@ -635,9 +640,9 @@ En el punto anterior hemos visto que podemos definir arrays cuyos elementos son 
 Este *anidamiento* de estructuras se puede generalizar, de forma que podríamos construir arrays de más de dos dimensiones. En realidad Java no pone límite al número de subíndices de un array. Podríamos hacer declaraciones como las siguientes:
 
 ```java
-int notas[][][] = new int[10][5][3]; //Notas de 10 alum. en 5 asign. en 3 eval.
+int[][][] notas = new int[10][5][3]; //Notas de 10 alum. en 5 asign. en 3 eval.
 notas[2][3][1]=5;//El alumno 2, para la asignatura 3 de la primera evaluación ha sacado un 5
-double w[][][][][] = new double [2][7][10][4][10];
+double[][][][][] w = new double [2][7][10][4][10];
 ```
 
 > Sin embargo, encontrar ejemplos en los que sean necesarios arrays de más de tres dimensiones es bastante raro, y aún cuando los encontramos solemos utilizar arrays de uno o dos subíndices porque nos resulta menos complejo manejarlos.
@@ -684,13 +689,16 @@ Como ejemplo del funcionamiento de un método recursivo, se empezará con un cas
 - `n! = N * (n - 1)!` **:arrow_left: caso recursivo**
 
 Así pues, tened en cuenta que el caso recursivo realiza un cálculo que depende de usar la propia definición de la operación, pero cuando lo hace es con un nuevo valor inferior al original, por lo que se garantiza que, en algún momento, se hará una llamada recursiva que desembocará en el caso base. Cuando esto ocurra, la cadena de llamadas recursivas acabará. Una manera de ver esto es desarrollando paso a paso esta definición:
-1. `4! = 4 * (4 - 1)! = 4 * (3)! `
-2. `4! * 3! = 4 * (3 * (3-1))! = 4 * 3 * (2)! `
-3. `4 * 3 * 2! = 4 * 3 * (2 * (2-1))! = 4 * 3 * 2 * (1)! `
-4. `4 * 3 * 2 * 1! = 4 * 3 * 2 * (1 * (1 - 1))! = 4 * 3 * 2 * 1 * (0)! `
-5. `4 * 3 * 2 * 1 * 0! = 4 * 3 * 2 * 1 * (1) = 24`
 
-Su implementación en Java sería la siguiente. Ahora bien, en este código se han añadido algunas sentencias para escribir información por pantalla, de forma que se vea con más detalle cómo funciona un método recursivo. Veréis que, inicialmente, se llevan a cabo una serie de invocaciones del caso recursivo, uno tras otro, hasta que se llega a una llamada que ejecuta el caso base. Es a partir de entonces cuando, a medida que se van ejecutando las sentencias `return` del caso recursivo, realmente se va acumulando el cálculo. Otra forma de verlo es depurando el programa.
+```
+4! = 4 * (4 - 1)! = 4 * (3)!
+4 * 3! = 4 * (3 * (3-1)!) = 4 * 3 * (2)!
+4 * 3 * 2! = 4 * 3 * (2 * (2-1)!) = 4 * 3 * 2 * (1)!
+4 * 3 * 2 * 1! = 4 * 3 * 2 * (1 * (1 - 1)!) = 4 * 3 * 2 * 1 * (0)!
+4 * 3 * 2 * 1 * 0! = 4 * 3 * 2 * 1 * (1) = 24
+```
+
+Su implementación en Java sería la que ves más abajo. Ahora bien, en este código se han añadido algunas sentencias para escribir información por pantalla, de forma que se vea con más detalle cómo funciona un método recursivo. Veréis que, inicialmente, se llevan a cabo una serie de invocaciones del caso recursivo, uno tras otro, hasta que se llega a una llamada que ejecuta el caso base. Es a partir de entonces cuando, a medida que se van ejecutando las sentencias `return` del caso recursivo, realmente se va acumulando el cálculo. Otra forma de verlo es depurando el programa.
 
 ``` java
 package UD04;
@@ -728,7 +736,7 @@ public class Recursividad {
 
 La ejecución resultante es:
 
-```java
+```
 Caso recursivo 3: Se invoca al factorial(3)
 Caso recursivo 2: Se invoca al factorial(2)
 Caso recursivo 1: Se invoca al factorial(1)
@@ -790,7 +798,7 @@ public class Recursividad {
 
 El resultado de la ejecución es:
 
-```java
+```
 Busqueda del 18: 8
 Busqueda del 5: -1
 ```

@@ -20,7 +20,7 @@ imgcover:/media/DADES/NextCloud/DOCENCIA/PRG_2223/PRG-CFGS-2223/UD01/assets/cove
 
 1. (Estaturas*)* Escribir un programa que lea de teclado la estatura de 10 personas y las almacene en un array. Al finalizar la introducción de datos, se mostrarán al usuario los datos introducidos con el siguiente formato:
 
-   ```sh
+   ```
    Persona 1: 1.85 m.
    Persona 2: 1.53 m.
    ...
@@ -43,7 +43,7 @@ imgcover:/media/DADES/NextCloud/DOCENCIA/PRG_2223/PRG-CFGS-2223/UD01/assets/cove
    Para resolver el problema se desarrollarán los siguientes métodos:
 
    1. `public static void leerArray (double v[], String nombreFichero)`, que rellena el array v con datos que se encuentran en el fichero especificado. El número de datos a leer vendrá determinado por el tamaño del array y no por la cantidad de datos que hay en el fichero.
-   2. `public static double suma(double v[])`, que devuelve la suma de los elementos del array v
+   2. `public static double suma(double[] v)`, que devuelve la suma de los elementos del array v
    3. `public static double media(double v[])`, que devuelve la media de los elementos del array v. Se puede hacer uso del método del apartado anterior.
    3. `public static int contarMayorQueMedia(double v[])`, que devuelve la cantidad de elementos del array v que son mayores que la media. Se puede hacer uso del método del apartado anterior.
    5. `public static double maximo(double v[])`, que devuelve el valor más grande almacenado en el array v.
@@ -62,7 +62,7 @@ imgcover:/media/DADES/NextCloud/DOCENCIA/PRG_2223/PRG-CFGS-2223/UD01/assets/cove
 
    - Cada, por ejemplo, 1.000 lanzamientos mostraremos por pantalla las estadísticas que indican que porcentaje de veces ha aparecido cada número en los lanzamientos hechos hasta ese momento. Por ejemplo:
 
-     ```sh
+     ```
      Número de lanzamientos: 1000
      1: 18 %
      2: 14 %
@@ -81,7 +81,7 @@ imgcover:/media/DADES/NextCloud/DOCENCIA/PRG_2223/PRG-CFGS-2223/UD01/assets/cove
 
    Desde el método `main` crearemos e inicializaremos un array, llamaremos a `invertirArray` y mostraremos el array invertido.
 
-   NOTA: Puede ser útil un método que imprima por pantalla un Array `public static void imprimirArray(int[] v)`, y así poder imprimir el Array i
+   NOTA: Puede ser útil un método que imprima por pantalla un Array `public static void imprimirArray(int[] v)`, y así poder imprimir el Array v
 
 5. (SumasParciales) Se quiere diseñar un método `public static int[] sumaParcial(int[] v)`, que dado un array de enteros `v`, devuelva otro array de enteros t de forma que `t[i] = v[0] + v[1] + ...+ v[i]`. Es decir:
 
@@ -94,6 +94,13 @@ imgcover:/media/DADES/NextCloud/DOCENCIA/PRG_2223/PRG-CFGS-2223/UD01/assets/cove
    ```
 
    Desde el método main crearemos e inicializaremos un array, llamaremos a `sumaParcial` y mostraremos el array resultante.
+
+   Ejemplo de salida, suponiendo que `v = {2,4,1,0,6}`:
+
+   ```
+   El valor del array con sumas parciales es:
+   2 6 7 7 13
+   ```
 
 6. (Rotaciones) Rotar una posición a la derecha los elementos de un array consiste en mover cada elemento del array una posición a la derecha. El último elemento pasa a la posición 0 del array. Por ejemplo si rotamos a la derecha el array `{1,2,3,4}` obtendríamos `{4,1,2,3}`. 
 
