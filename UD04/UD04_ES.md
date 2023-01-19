@@ -565,6 +565,9 @@ m3[4] = new double[9];
 La forma de inicializar una matriz de enteros de por ejemplo \[4][3] seria:
 
 ```java
+int[][] m4 = {{7,2,4},{8,2,5},{9,4,3},{1,2,4}};
+
+//aunque se entiende mejor de este modo:
 int[][] m4 = {
                {7,2,4},
                {8,2,5},
@@ -686,7 +689,7 @@ Dentro de la estructura de selección siempre debe haber al menos un caso base y
 Como ejemplo del funcionamiento de un método recursivo, se empezará con un caso sencillo. Se trata del cálculo de la llamada operación **factorial** de un valor entero positivo. Esta es unaria y se expresa con el operador exclamación (por ejemplo, 4!, 20!, 3!). El resultado de esta operación es la multiplicación de todos los valores desde el 1 hasta el indicado (7! = 1 * 2 * 3 * 4 * 5 * 6 * 7). Normalmente, la definición matemática de esta operación se hace de manera recursiva:
 
 - `0! = 1` **:arrow_left:  caso base**
-- `n! = N * (n - 1)!` **:arrow_left: caso recursivo**
+- `n! = n * (n - 1)!` **:arrow_left: caso recursivo**
 
 Así pues, tened en cuenta que el caso recursivo realiza un cálculo que depende de usar la propia definición de la operación, pero cuando lo hace es con un nuevo valor inferior al original, por lo que se garantiza que, en algún momento, se hará una llamada recursiva que desembocará en el caso base. Cuando esto ocurra, la cadena de llamadas recursivas acabará. Una manera de ver esto es desarrollando paso a paso esta definición:
 
@@ -717,7 +720,7 @@ public class Recursividad {
      */
     public static int factorial(int n) {
         if (n == 0) {
-            //Caso base: Se sabe el resultat directamente
+            //Caso base: Se sabe el resultado directamente
             System.out.println("Caso base: n es igual a 0");
             return 1;
         } else {

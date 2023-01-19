@@ -135,7 +135,7 @@ imgcover:/media/DADES/NextCloud/DOCENCIA/PRG_2223/PRG-CFGS-2223/UD01/assets/cove
 
 2. (Tocayos) Disponemos de los nombres de dos grupos de personas (dos arrays de `String`). Dentro de cada grupo todas las personas tienen nombres distintos, pero queremos saber cuántas personas del primer grupo tienen algún tocayo en el segundo grupo, es decir, el mismo nombre que alguna persona del segundo grupo. Escribir un programa que resuelva el problema (inicializa los dos arrays con los valores que quieras y diseña los métodos que consideres necesarios).
 
-   Por ejemplo, si los nombres son {"miguel","**josé**","**ana**","maría"} y {"**ana**", "luján", "juan", "**josé**", "pepa", "ángela", "sofía", "andrés", "bartolo"} , el programa mostraría:
+   Por ejemplo, si los nombres son {"miguel","**josé**","**ana**","maría"} y {"**Ana**", "luján", "juan", "**josé**", "pepa", "ángela", "sofía", "andrés", "bartolo"} , el programa mostraría:
 
    ```sh
    josé tiene tocayo en el segundo grupo.
@@ -143,14 +143,14 @@ imgcover:/media/DADES/NextCloud/DOCENCIA/PRG_2223/PRG-CFGS-2223/UD01/assets/cove
    TOTAL: 2 personas del primer grupo tienen tocayo.
    ```
 
-   Optimiza el algoritmo para que no tenga en cuenta si se escribe el nombre en mayúsculas, minúsculas o cualquier combinación.
+   Optimiza el algoritmo para que no tenga en cuenta si se escribe el nombre en mayúsculas, minúsculas o cualquier combinación de mayúsculas y minúsculas.
 
 3. (SumaDespuesImpar) Escribir un método que, dado un array de enteros, devuelva la suma de los elementos que aparecen tras el primer valor impar. Usar `main` para probar el método.
 
 3. (HayPares) Para determinar si existe algún valor par en un array se proponen varias soluciones. Indica cual/cuales son válidas para resolver el problema.
 
    ```java
-   public static boolean haypares1(int v[]) {
+   public static boolean haypares1(int[] v) {
    
        int i = 0;
    
@@ -281,21 +281,21 @@ imgcover:/media/DADES/NextCloud/DOCENCIA/PRG_2223/PRG-CFGS-2223/UD01/assets/cove
 6. (MismosValores) Se desea comprobar si dos arrays de `double` contienen los mismos valores, aunque sea en orden distinto. Para ello se ha escrito el siguiente método, que aparece incompleto:
 
    ```java
-   public static boolean mismosValores(double v1[], double v2[]) {
+   public static boolean mismosValores(double[] v1, double[] v2) {
        boolean encontrado = false;
        int i = 0;
        while (i < v1.length && !encontrado) {
            boolean encontrado2 = false;
            int j = 0;
            while (j < v2.length && !encontrado2) {
-               if (v1[?] == v2[?]) {
+               if (v1[i] == v2[j]) {
                    encontrado2 = true;
                    i++;
                } else {
-                   ?
+                   j++;
                }
            }
-           if (encontrado2 == ?) {
+           if (encontrado2 == false) {
                encontrado = true;
            }
        }
@@ -314,8 +314,8 @@ imgcover:/media/DADES/NextCloud/DOCENCIA/PRG_2223/PRG-CFGS-2223/UD01/assets/cove
    3. Imprimir la media de cada alumno.
    4. Imprimir la media de cada asignatura.
    5. Indicar cual es la asignatura más fácil, es decir la de mayor nota media.
-   6. ¿Hay algún alumno que suspenda todas las asignaturas?
-   7. ¿Hay alguna asignatura en la que suspendan todos los alumnos?
+   6. ¿Hay algún alumno que suspenda todas las asignaturas? ¿Quién?
+   7. ¿Hay alguna asignatura en la que suspendan todos los alumnos? ¿Cual es?
 
    Generar la matriz (al menos 5x5) en el método main, rellenarla, y comprobar los métodos anteriores.
 
