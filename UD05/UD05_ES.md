@@ -963,6 +963,279 @@ Si necesitas implementar un destructor (normalmente no será necesario), debes t
 - Sólo puede haber un destructor en una clase. No es posible la sobrecarga dado que no tiene parámetros.
 - No puede devolver ningún valor. Debe ser de tipo `void`.
 
+# Conversión entre objetos (Casting)
+
+La esencia de Casting permite convertir un dato de tipo primitivo en otro generalmente de más precisión.
+
+Entre objetos es posible realizar el casting. Tenemos una clase persona con una subclase empleado y este a su vez una subclase encargado.
+
+```mermaid
+classDiagram
+Persona <|-- Empleado
+Empleado <|-- Encargado
+```
+
+Si creamos una instancia de tipo persona y le asignamos un objeto de tipo empleado o encargado, al ser una subclase no existe ningún tipo de problema, ya que todo encargado o empleado es persona.
+
+Por otro lado, si intentamos asignar valores a los atributos específicos de empleado o encargado nos encontramos con una pérdida de precisión puesto que no se pueden ejecutar todos los métodos de los que dispone un objeto de tipo empleado o encargado, ya que persona contiene menos métodos que la clase empleado o encargado. En este caso es necesario hacer un casting, sino el compilador dará error.
+
+Ejemplo:
+
+```java
+package UD05;
+
+// Clase Persona que solo dispone de nombre
+public class Persona {
+
+    String nombre;
+
+    public Persona(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setNombre(String nom) {
+        nombre = nom;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    @Override
+    public String toString() {
+        return "Nombre: " + nombre;
+    }
+}
+```
+
+```java
+package UD05;
+
+// Clase Empleado que hereda de Persona y añade atributo sueldoBase
+public class Empleado extends Persona {
+
+    double sueldoBase;
+
+    public Empleado(String nombre, double sueldoBase) {
+        super(nombre);
+        this.sueldoBase = sueldoBase;
+    }
+
+    public double getSueldo() {
+        return sueldoBase;
+    }
+
+    public void setSueldoBase(double sueldoBase) {
+        this.sueldoBase = sueldoBase;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nSueldo Base: " + sueldoBase;
+    }
+}
+```
+
+```java
+package UD05;
+
+// Clase Encargado que hereda de Empleado y añade atributo seccion
+public class Encargado extends Empleado {
+
+    String seccion;
+
+    public Encargado(String nombre, double sueldoBase, String seccion) {
+        super(nombre, sueldoBase);
+        this.seccion = seccion;
+    }
+
+    public String getSeccion() {
+        return seccion;
+    }
+
+    public void setSeccion(String seccion) {
+        this.seccion = seccion;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nSección:" + seccion ;
+    }
+}
+```
+
+```java
+package UD05;
+
+public class Anexo3Casting {
+
+    public static void main(String[] args) {     
+        // Casting Implicito
+        Persona encargadoCarniceria = new Encargado("Rosa Ramos", 1200,
+                "Carniceria");
+
+        // No tenemos disponibles los métodos de la clase Encargado:
+        //EncargadaCarniceria.setSueldoBase(1200);
+        //EncargadaCarniceria.setSeccion("Carniceria");
+        //Pero al imprimir se imprime con el método más específico (luego lo vemos)
+        System.out.println(encargadoCarniceria);
+
+        // Casting Explicito
+        Encargado miEncargado = (Encargado) encargadoCarniceria;
+        //Tenemos disponibles los métodos de la clase Encargado:       
+        miEncargado.setSueldoBase(1200);
+        miEncargado.setSeccion("Carniceria");
+        //Al imprimir se imprime con el método más específico de nuevo.
+        System.out.println(miEncargado);
+    }
+}
+```
+
+Las reglas a la hora de realizar casting es que:
+
+- cuando se utiliza una clase más específicas (más abajo en la jerarquía) no hace falta casting. Es lo que llamamos **casting implícito**.
+- cuando se utiliza una clase menos específica (más arriba en la jerarquía) hay que hacer un **casting explícito**.
+
+> **¿Porqué a la hora de imprimir el casting implicito la clase más genérica se imprime con el método más especializado?**
+>
+> Debes entender que en realidad `encargadoCarniceria` es un `Encargado` que se *disfraza* de `Persona`, pero en realidad sus métodos son los especializados (el `toString()` más moderno sobrescribe al de sus padres. Recuerda que la anotación `@override` es opcional, y aunque no se indique el método sigue sobrescribiendo al de su padre)
+>
+> Si por ejemplo usamos este fragmento:
+>
+> ```java
+> //Persona
+> Persona David = new Persona ("David");
+> System.out.println(David);
+> ```
+>
+> Se imprimirá con el método `toString()` de la clase `Persona` (sólo el nombre).
+>
+> Y si hacemos un casting del objeto David a uno más genérico (Object) seguirá usando el método más especializado:
+>
+> ```java
+> //Object
+> Object oDavid = David;
+> System.out.println(oDavid);
+> ```
+
+# Acceso a métodos de la superclase
+
+Para acceder a los métodos de la superclase se utiliza la sentencia **`super`**. La sentencia **`this`** permite acceder a los campos y métodos de la clase. La sentencia `super` permite acceder a los campos y métodos de la superclase. El uso de `super` lo hemos visto en las clases `Empleado` y `Encargado` anteriores:
+
+```java
+[...]    
+	public Empleado(String nombre, double sueldoBase) {
+        super(nombre);
+        this.sueldoBase = sueldoBase;
+    }
+[...]
+```
+
+```java
+[...]    
+	public Encargado(String nombre, double sueldoBase, String seccion) {
+        super(nombre, sueldoBase);
+        this.seccion = seccion;
+    }
+[...]
+```
+
+Podemos mostrar el nombre de la clase y el nombre de la clase de la que hereda con `getClass()` y `getSuperclass()`. Ejemplo:
+
+```java
+package UD05;
+
+public class Anexo4SuperClase {
+
+    public static void main(String[] args) {
+        Empleado empleadoCarniceria = new Empleado("Rosa Ramos", 1200);
+        // Muestra los datos del Empleado
+        System.out.println(empleadoCarniceria instanceof Encargado); //false
+        System.out.println(empleadoCarniceria.getClass()); //class Empleado
+        System.out.println(empleadoCarniceria.getClass().getSuperclass()); //class Persona
+    }
+}
+```
+
+# Clases Anidadas, Clases Internas (*Inner Class*)
+
+Una clase anidada es una clase que es miembro de otra clase. La clase anidada al ser miembro de la clase externa tienen acceso a todos sus métodos y atributos.
+
+Permiten:
+
+- acceder a los campos privados de la otra clase.
+- ocultar la clase interna de las otras clases del paquete.
+- ...
+
+```java
+class Externa{
+    private String a;
+    ...
+    class Interna{
+        //a es accesible
+        ...
+    }
+    ...
+}
+class Otra{
+    //a no es accesible
+}
+```
+
+Para instanciar una clase interna se utilizará la sentencia:
+
+```java
+Externa.Interna objetoInterno = objetoExterno.new Interna();
+```
+
+Ejemplo:
+
+```java
+class Pc {
+
+    double precio;
+
+    public String toString() {
+        return "El precio del PC es " + this.precio;
+    }
+
+    class Monitor {
+
+        String marca;
+
+        public String toString() {
+            return "El monitor es de la marca " + this.marca;
+        }
+    }
+
+    class Cpu {
+
+        String marca;
+
+        public String toString() {
+            return "La CPU es de la marca " + this.marca;
+        }
+    }
+}
+
+public class ClaseInternaHardware {
+
+    public static void main(String[] args) {
+        Pc miPc = new Pc();
+        Pc.Monitor miMonitor = miPc.new Monitor();
+        Pc.Cpu miCpu = miPc.new Cpu();
+        miPc.precio = 1250.75;
+        miMonitor.marca = "Asus";
+        miCpu.marca = "Acer";
+        System.out.println(miPc); //El precio del PC es 1250.75
+        System.out.println(miMonitor); //El monitor es de la marca Asus
+        System.out.println(miCpu); //La CPU es de la marca Acer
+    }
+}
+```
+
+> Observa que estas clases se definen unas dentro de otras (anidadas o internas), mientras que por ejemplo cuando hemos añadido excepciones a nuestros ejercicios lo hemos hecho como otra clase en el mismo fichero.
+
 # Introducción a la herencia.
 
 La herencia es uno de los conceptos fundamentales que introduce la programación orientada a objetos. La idea fundamental es permitir crear nuevas clases aprovechando las características (atributos y métodos) de otras clases ya creadas evitando así tener que volver a definir esas características (reutilización).
@@ -1798,6 +2071,172 @@ public class DNI {
             }
         }
         return valido;
+    }
+}
+```
+
+## `Casting`
+
+```java
+package UD05;
+
+public class Casting {
+
+    public static void main(String[] args) {
+        // Casting Implicito
+        Persona encargadoCarniceria = new Encargado("Rosa Ramos", 1200,
+                "Carniceria");
+
+        // No tenemos disponibles los métodos de la clase Encargado:
+        //EncargadaCarniceria.setSueldoBase(1200);
+        //EncargadaCarniceria.setSeccion("Carniceria");
+        //Pero al imprimir se imprime con el método más específico (luego lo vemos)
+        System.out.println(encargadoCarniceria);
+
+        // Casting Explicito
+        Encargado miEncargado = (Encargado) encargadoCarniceria;
+        //Tenemos disponibles los métodos de la clase Encargado:       
+        miEncargado.setSueldoBase(1200);
+        miEncargado.setSeccion("Carniceria");
+        //Al imprimir se imprime con el método más específico de nuevo.
+        System.out.println(miEncargado);
+    }
+}
+```
+
+### `Persona`
+
+```java
+package UD05;
+
+// Clase Persona que solo dispone de nombre
+public class Persona {
+
+    String nombre;
+
+    public Persona(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setNombre(String nom) {
+        nombre = nom;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    @Override
+    public String toString() {
+        return "Nombre: " + nombre;
+    }
+}
+```
+
+### `Empleado`
+
+```java
+package UD05;
+
+// Clase Empleado que hereda de Persona y añade atributo sueldoBase
+public class Empleado extends Persona {
+
+    double sueldoBase;
+
+    public Empleado(String nombre, double sueldoBase) {
+        super(nombre);
+        this.sueldoBase = sueldoBase;
+    }
+
+    public double getSueldo() {
+        return sueldoBase;
+    }
+
+    public void setSueldoBase(double sueldoBase) {
+        this.sueldoBase = sueldoBase;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nSueldo Base: " + sueldoBase;
+    }
+}
+```
+
+### `Encargado`
+
+```java
+package UD05;
+
+// Clase Encargado que hereda de Empleado y añade atributo seccion
+public class Encargado extends Empleado {
+
+    String seccion;
+
+    public Encargado(String nombre, double sueldoBase, String seccion) {
+        super(nombre, sueldoBase);
+        this.seccion = seccion;
+    }
+
+    public String getSeccion() {
+        return seccion;
+    }
+
+    public void setSeccion(String seccion) {
+        this.seccion = seccion;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nSección:" + seccion ;
+    }
+}
+```
+
+## `ClasesAnidadas`
+
+```java
+package UD05;
+
+class Pc {
+
+    double precio;
+
+    public String toString() {
+        return "El precio del PC es " + this.precio;
+    }
+
+    class Monitor {
+
+        String marca;
+
+        public String toString() {
+            return "El monitor es de la marca " + this.marca;
+        }
+    }
+
+    class Cpu {
+
+        String marca;
+
+        public String toString() {
+            return "La CPU es de la marca " + this.marca;
+        }
+    }
+}
+
+public class Anexo5ClasesAnidadas {
+
+    public static void main(String[] args) {
+        Pc miPc = new Pc();
+        Pc.Monitor miMonitor = miPc.new Monitor();
+        Pc.Cpu miCpu = miPc.new Cpu();
+        miPc.precio = 1250.75;
+        miMonitor.marca = "Asus";
+        miCpu.marca = "Acer";
+        System.out.println(miPc); //El precio del PC es 1250.75
+        System.out.println(miMonitor); //El monitor es de la marca Asus
+        System.out.println(miCpu); //La CPU es de la marca Acer
     }
 }
 ```
