@@ -24,7 +24,7 @@ De esta forma los programas que escribas estarán formados por un conjunto de cl
 
 Desde el comienzo del módulo llevas utilizando el concepto de objeto para desarrollar tus programas de ejemplo. En las unidades anteriores se ha descrito un objeto como una entidad que contiene información y que es capaz de realizar ciertas operaciones con esa información. Según los valores que tenga esa información el objeto tendrá un estado determinado y según las operaciones que pueda llevar a cabo con esos datos serán responsables de un comportamiento concreto.
 
-> Recuerda que entre las características fundamentales de un objeto se encontraban la identidad (los objetos son únicos y por tanto distinguibles entre sí, aunque pueda haber objetos exactamente iguales), un estado (los atributos que describen al objeto y los valores que tienen en cada momento ) y un determinado comportamiento (acciones que se pueden realizar sobre el objeto).
+> Recuerda que entre las características fundamentales de un objeto se encontraban la **identidad** (los objetos son únicos y por tanto distinguibles entre sí, aunque pueda haber objetos exactamente iguales), un **estado** (los atributos que describen al objeto y los valores que tienen en cada momento ) y un determinado **comportamiento** (acciones que se pueden realizar sobre el objeto).
 
 Algunos ejemplos de objetos que podríamos imaginar podrían ser:
 
@@ -107,7 +107,7 @@ La declaración de una clase en Java tiene la siguiente estructura general:
 Un ejemplo básico pero completo podría ser:
 
 ```java
-class Punto {
+class Punto{
     // Atributos
     private int x,y;
     
@@ -575,7 +575,7 @@ También debes tener en cuenta que el tipo devuelto por el método no es conside
 
 ## Sobrecarga de operadores.
 
-Del mismo modo que hemos visto la posibilidad de sobrecargar métodos (disponer de varias versiones de un método con el mismo nombre cambiando su lista de parámetros), podría plantearse también la opción de sobrecargar operadores del lenguaje tales como `+`, `‐`, \`*`, `( )`, `<`, `>`, etc. para darles otro significado dependiendo del tipo de objetos con los que vaya a operar.
+Del mismo modo que hemos visto la posibilidad de sobrecargar métodos (disponer de varias versiones de un método con el mismo nombre cambiando su lista de parámetros), podría plantearse también la opción de sobrecargar operadores del lenguaje tales como `+`, `‐`, `*`, `( )`, `<`, `>`, etc. para darles otro significado dependiendo del tipo de objetos con los que vaya a operar.
 
 En algunos casos puede resultar útil para ayudar a mejorar la legibilidad del código, pues esos operadores resultan muy intuitivos y pueden dar una idea rápida de cuál es su funcionamiento.
 
@@ -681,7 +681,7 @@ En el caso de la clase, ya estudiaste que los niveles de visibilidad podían ser
 
 - Público (modificador `public`), en cuyo caso la clase era visible a cualquier otra clase (cualquier otro fragmento de código del programa).
 - Privada al paquete (`package`)(sin modificador o modificador "por omisión"). En este caso, la clase sólo será visible a las demás clases del mismo paquete, pero no al resto del código del programa (otros paquetes).
-- (protected), lo podrán ver las clases del mismo paquete y también las clases herederas.
+- Protegido (`protected`), lo podrán ver las clases del mismo paquete y también las clases herederas.
 
 En el caso de los miembros, disponías de otras dos posibilidades más de niveles de accesibilidad, teniendo un total de cuatro opciones a la hora de definir el control de acceso al miembro:
 
@@ -963,161 +963,6 @@ Si necesitas implementar un destructor (normalmente no será necesario), debes t
 - Sólo puede haber un destructor en una clase. No es posible la sobrecarga dado que no tiene parámetros.
 - No puede devolver ningún valor. Debe ser de tipo `void`.
 
-# Conversión entre objetos (Casting)
-
-La esencia de Casting permite convertir un dato de tipo primitivo en otro generalmente de más precisión.
-
-Entre objetos es posible realizar el casting. Tenemos una clase persona con una subclase empleado y este a su vez una subclase encargado.
-
-```mermaid
-classDiagram
-Persona <|-- Empleado
-Empleado <|-- Encargado
-```
-
-Si creamos una instancia de tipo persona y le asignamos un objeto de tipo empleado o encargado, al ser una subclase no existe ningún tipo de problema, ya que todo encargado o empleado es persona.
-
-Por otro lado, si intentamos asignar valores a los atributos específicos de empleado o encargado nos encontramos con una pérdida de precisión puesto que no se pueden ejecutar todos los métodos de los que dispone un objeto de tipo empleado o encargado, ya que persona contiene menos métodos que la clase empleado o encargado. En este caso es necesario hacer un casting, sino el compilador dará error.
-
-Ejemplo:
-
-```java
-package UD05;
-
-// Clase Persona que solo dispone de nombre
-public class Persona {
-
-    String nombre;
-
-    public Persona(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setNombre(String nom) {
-        nombre = nom;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    @Override
-    public String toString() {
-        return "Nombre: " + nombre;
-    }
-}
-```
-
-```java
-package UD05;
-
-// Clase Empleado que hereda de Persona y añade atributo sueldoBase
-public class Empleado extends Persona {
-
-    double sueldoBase;
-
-    public Empleado(String nombre, double sueldoBase) {
-        super(nombre);
-        this.sueldoBase = sueldoBase;
-    }
-
-    public double getSueldo() {
-        return sueldoBase;
-    }
-
-    public void setSueldoBase(double sueldoBase) {
-        this.sueldoBase = sueldoBase;
-    }
-
-    @Override
-    public String toString() {
-        return super.toString() + "\nSueldo Base: " + sueldoBase;
-    }
-}
-```
-
-```java
-package UD05;
-
-// Clase Encargado que hereda de Empleado y añade atributo seccion
-public class Encargado extends Empleado {
-
-    String seccion;
-
-    public Encargado(String nombre, double sueldoBase, String seccion) {
-        super(nombre, sueldoBase);
-        this.seccion = seccion;
-    }
-
-    public String getSeccion() {
-        return seccion;
-    }
-
-    public void setSeccion(String seccion) {
-        this.seccion = seccion;
-    }
-
-    @Override
-    public String toString() {
-        return super.toString() + "\nSección:" + seccion ;
-    }
-}
-```
-
-```java
-package UD05;
-
-public class Anexo3Casting {
-
-    public static void main(String[] args) {     
-        // Casting Implicito
-        Persona encargadoCarniceria = new Encargado("Rosa Ramos", 1200,
-                "Carniceria");
-
-        // No tenemos disponibles los métodos de la clase Encargado:
-        //EncargadaCarniceria.setSueldoBase(1200);
-        //EncargadaCarniceria.setSeccion("Carniceria");
-        //Pero al imprimir se imprime con el método más específico (luego lo vemos)
-        System.out.println(encargadoCarniceria);
-
-        // Casting Explicito
-        Encargado miEncargado = (Encargado) encargadoCarniceria;
-        //Tenemos disponibles los métodos de la clase Encargado:       
-        miEncargado.setSueldoBase(1200);
-        miEncargado.setSeccion("Carniceria");
-        //Al imprimir se imprime con el método más específico de nuevo.
-        System.out.println(miEncargado);
-    }
-}
-```
-
-Las reglas a la hora de realizar casting es que:
-
-- cuando se utiliza una clase más específicas (más abajo en la jerarquía) no hace falta casting. Es lo que llamamos **casting implícito**.
-- cuando se utiliza una clase menos específica (más arriba en la jerarquía) hay que hacer un **casting explícito**.
-
-> **¿Porqué a la hora de imprimir el casting implicito la clase más genérica se imprime con el método más especializado?**
->
-> Debes entender que en realidad `encargadoCarniceria` es un `Encargado` que se *disfraza* de `Persona`, pero en realidad sus métodos son los especializados (el `toString()` más moderno sobrescribe al de sus padres. Recuerda que la anotación `@override` es opcional, y aunque no se indique el método sigue sobrescribiendo al de su padre)
->
-> Si por ejemplo usamos este fragmento:
->
-> ```java
-> //Persona
-> Persona David = new Persona ("David");
-> System.out.println(David);
-> ```
->
-> Se imprimirá con el método `toString()` de la clase `Persona` (sólo el nombre).
->
-> Y si hacemos un casting del objeto David a uno más genérico (Object) seguirá usando el método más especializado:
->
-> ```java
-> //Object
-> Object oDavid = David;
-> System.out.println(oDavid);
-> ```
-
 # Acceso a métodos de la superclase
 
 Para acceder a los métodos de la superclase se utiliza la sentencia **`super`**. La sentencia **`this`** permite acceder a los campos y métodos de la clase. La sentencia `super` permite acceder a los campos y métodos de la superclase. El uso de `super` lo hemos visto en las clases `Empleado` y `Encargado` anteriores:
@@ -1287,6 +1132,161 @@ En el caso de Java, cualquier clase con la que trabajes tendrá un ascendiente. 
 También irás viendo al estudiar distintos componentes de las bibliotecas de Java (por ejemplo en el caso de las interfaces gráficas) que para poder crear objetos basados en las clases proporcionadas por esas bibliotecas tendrás que crear tus propias clases que hereden de algunas de esas clases. Para ellos tendrás que hacer uso de la palabra reservada `extends`.
 
 > En Java todas las clases son descendientes (de manera explícita o implícita) de la clase `Object`.
+
+# Conversión entre objetos (Casting)
+
+La esencia de Casting permite convertir un dato de tipo primitivo en otro generalmente de más precisión.
+
+Entre objetos es posible realizar el casting. Tenemos una clase persona con una subclase empleado y este a su vez una subclase encargado.
+
+```mermaid
+classDiagram
+Persona <|-- Empleado
+Empleado <|-- Encargado
+```
+
+Si creamos una instancia de tipo persona y le asignamos un objeto de tipo empleado o encargado, al ser una subclase no existe ningún tipo de problema, ya que todo encargado o empleado es persona.
+
+Por otro lado, si intentamos asignar valores a los atributos específicos de empleado o encargado nos encontramos con una pérdida de precisión puesto que no se pueden ejecutar todos los métodos de los que dispone un objeto de tipo empleado o encargado, ya que persona contiene menos métodos que la clase empleado o encargado. En este caso es necesario hacer un casting, sino el compilador dará error.
+
+Ejemplo:
+
+```java
+package UD05;
+
+// Clase Persona que solo dispone de nombre
+public class Persona {
+
+    String nombre;
+
+    public Persona(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setNombre(String nom) {
+        nombre = nom;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    @Override
+    public String toString() {
+        return "Nombre: " + nombre;
+    }
+}
+```
+
+```java
+package UD05;
+
+// Clase Empleado que hereda de Persona y añade atributo sueldoBase
+public class Empleado extends Persona {
+
+    double sueldoBase;
+
+    public Empleado(String nombre, double sueldoBase) {
+        super(nombre);
+        this.sueldoBase = sueldoBase;
+    }
+
+    public double getSueldo() {
+        return sueldoBase;
+    }
+
+    public void setSueldoBase(double sueldoBase) {
+        this.sueldoBase = sueldoBase;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nSueldo Base: " + sueldoBase;
+    }
+}
+```
+
+```java
+package UD05;
+
+// Clase Encargado que hereda de Empleado y añade atributo seccion
+public class Encargado extends Empleado {
+
+    String seccion;
+
+    public Encargado(String nombre, double sueldoBase, String seccion) {
+        super(nombre, sueldoBase);
+        this.seccion = seccion;
+    }
+
+    public String getSeccion() {
+        return seccion;
+    }
+
+    public void setSeccion(String seccion) {
+        this.seccion = seccion;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nSección:" + seccion ;
+    }
+}
+```
+
+```java
+package UD05;
+
+public class Anexo3Casting {
+
+    public static void main(String[] args) {     
+        // Casting Implicito
+        Persona encargadoCarniceria = new Encargado("Rosa Ramos", 1200,
+                "Carniceria");
+
+        // No tenemos disponibles los métodos de la clase Encargado:
+        //EncargadaCarniceria.setSueldoBase(1200);
+        //EncargadaCarniceria.setSeccion("Carniceria");
+        //Pero al imprimir se imprime con el método más específico (luego lo vemos)
+        System.out.println(encargadoCarniceria);
+
+        // Casting Explicito
+        Encargado miEncargado = (Encargado) encargadoCarniceria;
+        //Tenemos disponibles los métodos de la clase Encargado:       
+        miEncargado.setSueldoBase(1200);
+        miEncargado.setSeccion("Carniceria");
+        //Al imprimir se imprime con el método más específico de nuevo.
+        System.out.println(miEncargado);
+    }
+}
+```
+
+Las reglas a la hora de realizar casting es que:
+
+- cuando se utiliza una clase más específicas (más abajo en la jerarquía) no hace falta casting. Es lo que llamamos **casting implícito**.
+- cuando se utiliza una clase menos específica (más arriba en la jerarquía) hay que hacer un **casting explícito**.
+
+> **¿Porqué a la hora de imprimir el casting implicito la clase más genérica se imprime con el método más especializado?**
+>
+> Debes entender que en realidad `encargadoCarniceria` es un `Encargado` que se *disfraza* de `Persona`, pero en realidad sus métodos son los especializados (el `toString()` más moderno sobrescribe al de sus padres. Recuerda que la anotación `@override` es opcional, y aunque no se indique el método sigue sobrescribiendo al de su padre)
+>
+> Si por ejemplo usamos este fragmento:
+>
+> ```java
+> //Persona
+> Persona David = new Persona ("David");
+> System.out.println(David);
+> ```
+>
+> Se imprimirá con el método `toString()` de la clase `Persona` (sólo el nombre).
+>
+> Y si hacemos un casting del objeto David a uno más genérico (Object) seguirá usando el método más especializado:
+>
+> ```java
+> //Object
+> Object oDavid = David;
+> System.out.println(oDavid);
+> ```
 
 # Empaquetado de clases.
 
