@@ -31,7 +31,7 @@ Una empresa quiere hacer una gestión informatizada básica de sus empleados. Pa
    - `public int antiguedad()`. Devuelve el número de años transcurridos desde el ingreso del empleado en la empresa. Si el año de ingreso fuera posterior al de la fecha actual, devolverá 0. Para obtener el año actual puedes usar:
 
      - ```java
-       int añoActual = Calendar.getInstance().get(Calendar.YEAR);
+       int anyoActual = Calendar.getInstance().get(Calendar.YEAR);
        ```
 
    - `public void incrementarSueldo(double porcentaje)`. Incrementa el sueldo del empleado en un porcentaje dado (expresado como una cantidad real entre 0 y 100).
@@ -80,7 +80,7 @@ Una empresa quiere hacer una gestión informatizada básica de sus empleados. Pa
 
 4. Diseñar una clase Java `TestEmpresa` que permita probar la clase `Empresa` y sus métodos. Para ello, desarrolla el método `main` y en él …:
 
-   - Crea una empresa, de nombre "CataDaw".
+   - Crea una empresa, de nombre "DAMCarlet".
    - Contrata a varios empleados (con el nombre, DNI, etc. que quieras).
    - Usa el método `subirTrienio` para subir un 10% el salario de los empleados que cumplen un trienio en el año actual.
    - Despide a alguno de los empleados.

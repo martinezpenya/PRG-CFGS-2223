@@ -968,6 +968,17 @@ Si necesitas implementar un destructor (normalmente no será necesario), debes t
 Para acceder a los métodos de la superclase se utiliza la sentencia **`super`**. La sentencia **`this`** permite acceder a los campos y métodos de la clase. La sentencia `super` permite acceder a los campos y métodos de la superclase. El uso de `super` lo hemos visto en las clases `Empleado` y `Encargado` anteriores:
 
 ```java
+public class Persona {
+    private String nombre;
+    
+    public Persona(String nombre){
+        this.nombre=nombre;
+    }
+}
+```
+
+```java
+public class Empleado extends Persona {
 [...]    
 	public Empleado(String nombre, double sueldoBase) {
         super(nombre);
@@ -977,6 +988,7 @@ Para acceder a los métodos de la superclase se utiliza la sentencia **`super`**
 ```
 
 ```java
+public class Encargado extends Empleado {
 [...]    
 	public Encargado(String nombre, double sueldoBase, String seccion) {
         super(nombre, sueldoBase);
@@ -1078,8 +1090,6 @@ public class ClaseInternaHardware {
     }
 }
 ```
-
-> Observa que estas clases se definen unas dentro de otras (anidadas o internas), mientras que por ejemplo cuando hemos añadido excepciones a nuestros ejercicios lo hemos hecho como otra clase en el mismo fichero.
 
 # Introducción a la herencia.
 
