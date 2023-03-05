@@ -4,7 +4,7 @@ import java.io.*;
 
 public class P2_3_LecturaSecuencialTexto {
 
-    final static String VOCALES = "AEIOUaeiou";
+    final static String VOCALES = "AEIOUaeiouáéíóúàèìòù";
 
     public static void main(String[] args) {
         try (FileReader f = new FileReader(new File("texto.txt"));) {

@@ -1,6 +1,6 @@
 package UD05;
 
-public class Anexo3Casting {
+public class Casting {
 
     public static void main(String[] args) {
         // Casting Implicito
@@ -15,7 +15,7 @@ public class Anexo3Casting {
 
         // Casting Explicito
         Encargado miEncargado = (Encargado) encargadoCarniceria;
-        
+
         System.out.println("sueldo: " + miEncargado.getSueldo());
         //Tenemos disponibles los métodos de la clase Encargado:       
         miEncargado.setSueldoBase(1200);

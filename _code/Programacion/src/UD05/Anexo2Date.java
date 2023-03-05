@@ -83,8 +83,11 @@ public class Anexo2Date {
         LocalDate localDate1 = LocalDate.of(2016, 7, 18);
         LocalDate localDate2 = LocalDate.of(2016, 7, 20);
         Period periodo1 = Period.between(localDate1, localDate2);
-        System.out.println(periodo1); //P2D
+        System.out.println("ORDEN NORMAL: " + periodo1); //P2D
+        Period periodo22 = Period.between(localDate2, localDate1);
+        System.out.println("ORDEN INVERS: " + periodo22); //P2D
 
+        
         Period periodo2 = Period.of(1, 2, 3);
         System.out.println(periodo2); //P1Y2M3D
 

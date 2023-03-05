@@ -12,8 +12,7 @@ public class P1_2_FlujoEstandarSalida {
         // Por si ocurre una excepción ponemos el bloque try-cath
         try {
             PrintWriter salida = new PrintWriter(new FileWriter("test/salida.txt", true));
-            BufferedReader br = new BufferedReader(
-                    new InputStreamReader(System.in));
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             String s;
             while (!(s = br.readLine()).toLowerCase().equals("salir")) {
                 salida.println(s);

@@ -1,6 +1,6 @@
 package UD05;
 
-public class Anexo4SuperClase {
+public class SuperClase {
 
     public static void main(String[] args) {
         Empleado empleadoCarniceria = new Empleado("Rosa Ramos", 1200);

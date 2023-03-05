@@ -17,9 +17,9 @@ public class Leer {
             p3 = p2.getTutor();
             p4 = p3.getTutor();
 
-            System.out.println(p1.getNombre());
-            System.out.println(p1.getEdad());
-            System.out.println(p1.getSalario());
+            System.out.println(p4.getNombre());
+            System.out.println(p4.getEdad());
+            System.out.println(p4.getSalario());
 
         } catch (ClassNotFoundException e) {
             System.out.println("Algun problema con las clases definidas.");

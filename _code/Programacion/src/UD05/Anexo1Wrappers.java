@@ -19,7 +19,7 @@ public class Anexo1Wrappers {
         Integer i3 = Integer.valueOf("101011", 2);
         System.out.println(i3);
 
-        // Asigna 3.14 al objeto Float f2 
+        // Asigna 3.14 al objeto Float f3 
         Float f3 = Float.valueOf("3.14f");
         System.out.println(f3);
 

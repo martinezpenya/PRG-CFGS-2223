@@ -5,7 +5,7 @@ import java.io.*;
 public class Persona implements Serializable {
 
     private String nombre;
-    private int edad; //No se guardará al serializar
+    transient private int edad; //No se guardará al serializar
     private double salario;
     private Persona tutor;
 
@@ -37,7 +37,7 @@ public class Persona implements Serializable {
     }
 
     public void asignaTutor(Persona p) {
-        tutor = p;
+        this.tutor = p;
     }
 
     public void setEdad(int edad) {

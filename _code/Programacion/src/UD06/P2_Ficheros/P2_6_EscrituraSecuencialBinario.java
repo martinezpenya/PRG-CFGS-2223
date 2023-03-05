@@ -10,7 +10,7 @@ public class P2_6_EscrituraSecuencialBinario {
         try (
                 DataOutputStream fs = new DataOutputStream(
                         new BufferedOutputStream(
-                                new FileOutputStream("src/jugadores.dat")));) {
+                                new FileOutputStream("jugadores.dat")));) {
             for (int i = 1; i <= 5; i++) {
                 //Pedimos datos al usuario
                 System.out.println(" ---- Jugador " + i + " -----");

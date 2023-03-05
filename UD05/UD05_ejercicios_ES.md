@@ -166,7 +166,7 @@ Se desea realizar una aplicación para gestionar el ingreso y el alta de pacient
 
 Se quiere realizar una aplicación para registrar las posiciones y tiempos de llegada en una carrera ciclista contrarreloj. 
 
-1. La clase `Corredor` representa a un participante en la carrera. Sus atributos son el dorsal (entero), el nombre (string) y el tiempo en segundos (double) que le ha costado completar el recorrido. Los métodos con los que cuenta son:
+1. La clase `Corredor` representa a un participante en la carrera. Sus atributos son el dorsal (entero), el nombre (String) y el tiempo en segundos (double) que le ha costado completar el recorrido. Los métodos con los que cuenta son:
 
    - `public Corredor(int d, String n)`. Constructor a partir del dorsal y el nombre. Por defecto el tiempo tardado es 0
 
@@ -204,7 +204,7 @@ Se quiere realizar una aplicación para registrar las posiciones y tiempos de ll
 
 3. La clase `ListaCorredores` permite representar a un conjunto de corredores. En la lista, como máximo habrá 200 corredores, aunque puede haber menos de ese número. Se utilizará un array, llamado lista, de 200 elementos junto con una propiedad `numCorredores` que permita saber cuentos corredores hay realmente. Métodos:
 
-   - `public ListaCorredores()`. Construtor. Crea la lista de corredores, incicialmente vacía.
+   - `public ListaCorredores()`. Constructor. Crea la lista de corredores, incicialmente vacía.
 
    - `public void añadir(Corredor c) throws ElementoDuplicadoException`. Añade un corredor al final de la lista de corredores, siempre y cuando el corredor no esté ya en la lista, en cuyo caso se lanzará `ElementoDuplicadoException`
 
@@ -266,11 +266,11 @@ De cada reserva se almacena:
    - Se incremente en uno el número de ejemplares de ambas reservas.
    - Se muestre la menor y a continuación la mayor.
 3. Diseñar una clase `ListaReservas` que implemente una lista de reservas. Como máximo puede haber 100 reservas en la lista. Se utilizará un array de Reservas que ocuparemos a partir de la posición 0 y un atributo que indique el número de reservas. Las reservas existentes ocuparán las primeras posiciones del array (sin espacios en blanco). Implementar los siguientes métodos:
-   - `public void reservar(String nif, String nombre, String telefono, int libro, int ejemplares) throws ListaLlenaException, ElementoDuplicadoException`: Crea una reserva y la añade a la lista. Lanza `ElementoDuplicadoException` si la reserva ya estaba en la lista. Lanza `ListaLlenaException` si la lista de reservas está llena.
-   - `public void cancelar(String nif, int libro) throws ElementoNoEncontradoException`. Dado un nif de cliente y un código de libro, anular la reserva correspondiente. Lanzar `ElementoNoEncontradoException` si la reserva no existe.
+   - `public void reservar (String nif, String nombre, String telefono, int libro, int ejemplares) throws ListaLlenaException, ElementoDuplicadoException`: Crea una reserva y la añade a la lista. Lanza `ElementoDuplicadoException` si la reserva ya estaba en la lista. Lanza `ListaLlenaException` si la lista de reservas está llena.
+   - `public void cancelar (String nif, int libro) throws ElementoNoEncontradoException`. Dado un nif de cliente y un código de libro, anular la reserva correspondiente. Lanzar `ElementoNoEncontradoException` si la reserva no existe.
    - `public String toString()`: Devuelve un `String` con los datos de todas las reservas de la lista.
-   - `public int numEjemplaresReservadosLibro(int codigo)`: Devuelve el número de ejemplares que hay reservados en total de un libro determinado.
-   - `public void reservasLibro(int codigo)`: Dado un código de libro, muestra el nombre y el teléfono de todos los clientes que han reservado el libro.
+   - `public int numEjemplaresReservadosLibro (int codigo)`: Devuelve el número de ejemplares que hay reservados en total de un libro determinado.
+   - `public void reservasLibro (int codigo)`: Dado un código de libro, muestra el nombre y el teléfono de todos los clientes que han reservado el libro.
 4. Realizar un programa `GestionReservas` que, utilizando un menú, permita:
    - Realizar reserva. Permite al usuario realizar una reserva.
    - Anular reserva: Se anula la reserva que indique el usuario (Nif de cliente y código de libro).
@@ -309,7 +309,7 @@ Queremos realizar la parte de un programa de correo electrónico que gestiona la
 3. La clase `Carpeta`, cada carpeta tiene un nombre y una lista de Mensajes. Para ello usaremos un array con capacidad para 100 mensajes y un atributo que indique el número de mensajes que contiene la carpeta. Además se implementarán los siguientes métodos:
 
    - `public Carpeta(String nombre)`: Constructor. Dado un nombre, crea la carpeta sin mensajes.
-   - `public void añadir(Mensaje m)`: Añade a la carpeta el mensaje indicado.
+   - `public void anyadir(Mensaje m)`: Añade a la carpeta el mensaje indicado.
    - `public void borrar(Mensaje m) throws ElementoNoEncotradoException`: Borra de la carpeta el mensaje indicado. Lanza la excepción si el mensaje no existe.
    - `public Mensaje buscar(int codigo) throws ElementoNoEncontradoException`: Busca el mensaje cuyo código se indica. Si lo encuentra devuelve el mensaje, en caso contrario lanza la excepción.
    - `public String toString()` que devuelva un `String` con el nombre de la carpeta y sus mensajes
@@ -379,12 +379,12 @@ Se está desarrollando una aplicación que usa una baraja de cartas. Para ello, 
    EL RESULTADO:
     en binario: 1010
     en octal: 12
-    en binario: a
+    en hexadecimal: a
    ```
 
 5. Mostrar los segundos transcurridos desde el `1 de Enero de 1970 a las 0:00:00` hasta `hoy`.
 
-6. Mostrar la `fecha` y `hora` de hoy con los siguientes formatos (para todos los ejemplos se supone que hoy es 26 de agosto de 2021 a las 17 horas 16 minutos y 8 segundos, tu deberas mostrar la fecha y hora de tu sistema en el momento de ejecuc):
+6. Mostrar la `fecha` y `hora` de hoy con los siguientes formatos (para todos los ejemplos se supone que hoy es 26 de agosto de 2021 a las 17 horas 16 minutos y 8 segundos, tu deberas mostrar la fecha y hora de tu sistema en el momento de ejecución):
 
    a) `August 26, 2021, 5:16 pm`
    b) `08.26.21`

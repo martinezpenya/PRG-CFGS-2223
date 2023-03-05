@@ -146,6 +146,13 @@ Fichero:
   C/ Poeta …
   ```
 
+```
+65255;José Mateo Ruiz;C/ Paz, …
+56488;Ángela Lopez Villa;Av. Blas..
+24645;Armando García Ledesma;C/ Tuej …
+54654;Tomás Ferrando Tamarit;C/ Poeta …
+```
+
  Registro:
 
   ```txt
@@ -222,7 +229,7 @@ Cualquier operación que implique acceder a memoria externa es muy costosa, por 
 
 En el libro Head First Java, describe los buffers de la siguiente forma: "*Si no hubiera buffers, sería como comprar sin un carrito: debería llevar los productos uno a uno hasta la caja. Los buffers te dan un lugar en el que dejar temporalmente las cosas hasta que está lleno. Por ello has de hacer menos viajes cuando usas el carrito.*"
 
-Las clases `BufferedReader`, `BufferedWritter`, `BufferedInputStream` y `BufferedOutputStream` permiten realizar buffering. Situadas "por delante" de un stream de fichero acumulan las operaciones de lectura y escritura y cuando hay suficiente información se llevan finalmente al fichero.
+Las clases `BufferedReader`, `BufferedWriter`, `BufferedInputStream` y `BufferedOutputStream` permiten realizar buffering. Situadas "por delante" de un stream de fichero acumulan las operaciones de lectura y escritura y cuando hay suficiente información se llevan finalmente al fichero.
 
 > Recuerda la importancia de cerrar los flujos para asegurarte que se vacia el buffer.
 

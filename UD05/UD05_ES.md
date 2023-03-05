@@ -1083,10 +1083,10 @@ public class ClaseInternaHardware {
         Pc.Cpu miCpu = miPc.new Cpu();
         miPc.precio = 1250.75;
         miMonitor.marca = "Asus";
-        miCpu.marca = "Acer";
+        miCpu.marca = "AMD";
         System.out.println(miPc); //El precio del PC es 1250.75
         System.out.println(miMonitor); //El monitor es de la marca Asus
-        System.out.println(miCpu); //La CPU es de la marca Acer
+        System.out.println(miCpu); //La CPU es de la marca AMD
     }
 }
 ```
@@ -1247,7 +1247,7 @@ public class Encargado extends Empleado {
 ```java
 package UD05;
 
-public class Anexo3Casting {
+public class Casting {
 
     public static void main(String[] args) {     
         // Casting Implicito
@@ -2235,7 +2235,7 @@ class Pc {
     }
 }
 
-public class Anexo5ClasesAnidadas {
+public class ClasesAnidadas {
 
     public static void main(String[] args) {
         Pc miPc = new Pc();

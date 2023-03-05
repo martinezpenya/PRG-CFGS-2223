@@ -78,11 +78,11 @@ El método `valueOf()` permite crear objetos wrapper y se le pasa un parámetro 
 Ejemplo:
 
 ```java
-// Convierte el 101011 (base 2) a 43 y le asigna el valor al objeto Integer i1 
+// Convierte el 101011 (base 2) a 43 y le asigna el valor al objeto Integer i3 
 Integer i3 = Integer.valueOf("101011", 2);
 System.out.println(i3);
 
-// Asigna 3.14 al objeto Float f2 
+// Asigna 3.14 al objeto Float f3 
 Float f3 = Float.valueOf("3.14f");
 System.out.println(f3);
 ```
@@ -95,13 +95,13 @@ Ejemplo:
 
 ```java
 Integer i4 = 120; // Crea un nuevo objeto wrapper
-byte b = i4.byteValue(); // Convierte el valor de i2 a un primitivo byte 
+byte b = i4.byteValue(); // Convierte el valor de i4 a un primitivo byte 
 short s1 = i4.shortValue(); // Otro de los métodos de Integer
 double d = i4.doubleValue(); // Otro de los métodos xxxValue de Integer 
 System.out.println(s1); // Muestra 120 como resultado
 
 Float f4 = 3.14f; // Crea un nuevo objeto wrapper
-short s2 = f4.shortValue(); // Convierte el valor de f2 en un primitivo short
+short s2 = f4.shortValue(); // Convierte el valor de f4 en un primitivo short
 System.out.println(s2); // El resultado es 3 (truncado, no redondeado)
 ```
 
@@ -115,7 +115,7 @@ Ejemplo:
 double d4 = Double.parseDouble("3.14"); // Convierte un String a primitivo 
 System.out.println("d4 = " + d4);	// El resultado será d4 = 3.14 
 long l2 = Long.parseLong("101010", 2);	// un String binario a primitivo
-System.out.println("l2 = " + l2);	// El resultado es L2 42
+System.out.println("l2 = " + l2);	// El resultado es l2 = 42
 ```
 
 ## Métodos `toString()`
@@ -129,8 +129,8 @@ Double d1 = new Double("3.14");
 System.out.println("d1 = " + d1.toString() ); // El resultado es d = 3.14 
 String d2 = Double.toString(3.14); // d2 = "3.14"
 System.out.println("d2 = " + d2); // El resultado es d = 3.14 
-String s3 = "hex = " + Long.toString(254, 16); // s = "hex = fe" 
-System.out.println("s3 = " + s3); // El resultado es d = 3.14
+String s3 = "hex = " + Long.toString(254, 16); // s3 = "hex = fe" 
+System.out.println("s3 = " + s3); // El resultado es s3 = 3.14
 ```
 
 ## Métodos `toXxxxxString()` (Binario, Hexadecimal y Octal)
@@ -146,12 +146,11 @@ String s5 = Long.toOctalString(254); // Convierte 254 a octal
 System.out.println("254(oct) = " + s5); // Resultado: "254(oct) = 376"
 ```
 
-Para resumir, los métodos esenciales para las conversiones son:
-
-- **`primitive xxxValue()`** – Para convertir de Wrapper a primitive
-
-- **`primitive parseXxx(String)`** – Para convertir un String en primitive
-- **Wrapper `valueOf(String)`** – Para convertir String en Wrapper
+> Para resumir, los métodos esenciales para las conversiones son:
+>
+> - **`primitive xxxValue()`** – Para convertir de `Wrapper` a `primitive`
+> - **`primitive parseXxx(String)`** – Para convertir un `String` en `primitive`
+> - **`Wrapper valueOf(String)`** – Para convertir `String` en `Wrapper`
 
 # Clase `Date`
 
@@ -160,7 +159,7 @@ La clase Date es una utilidad contenida en el paquete `java.util` y permiten tra
 Ejemplo:
 
 ```java
-Date fecha = new Date(2021, 8, 19);
+Date fecha = new Date(2021, 9, 19);
 System.out.println(fecha);           //Mon Sep 19 00:00:00 CEST 3921
 System.out.println(fecha.getTime()); //61590146400000
 ```
@@ -172,7 +171,7 @@ Para utilizar fechas y horas se utiliza la clase `GregorianCalendar` que dispone
 Ejemplo 1:
 
 ```java
-Calendar calendar = new GregorianCalendar(2021, 8, 19);
+Calendar calendar = new GregorianCalendar(2021, 9, 19);
 System.out.println(calendar.getTime()); //Sun Sep 19 00:00:00 CEST 2021
 ```
 
@@ -200,7 +199,7 @@ System.out.print(c.get(Calendar.DAY_OF_MONTH));
 System.out.print("/"); 
 System.out.print(c.get(Calendar.MONTH)+1); 
 System.out.print("/"); 
-System.out.println(c.get(Calendar.YEAR)+1); //19/8/2022
+System.out.println(c.get(Calendar.YEAR)+1); //19/9/2022
 ```
 
 ## Paquete `java.time`
@@ -253,7 +252,7 @@ System.out.println(time); //20:13:53.118044
 Ejemplo:
 
 ```java
-LocalDateTime dateTime = LocalDateTime.of (1989, 11, 11, 5, 30, 45, 35);
+LocalDateTime dateTime = LocalDateTime.of(1989, 11, 11, 5, 30, 45, 35);
 ```
 
 También, se puede crear un objeto `LocalDateTime` basado en los tipos `LocalDate` y `LocalTime`, haciendo uso del método `of()` (`LocalDate` `date`, `LocalTime` `time`):
@@ -423,138 +422,138 @@ Más detalles sobre los formatos: https://docs.oracle.com/javase/8/docs/api/java
 
 ## Operaciones
 
-1. Operaciones con `LocalDate`
+### Operaciones con `LocalDate`
 
-   Realizar operaciones como suma o resta de días, meses, años, etc es muy fácil con la nueva `Date` API. Los siguientes métodos `plus(long amountToAdd, TemporalUnit unit)`, `minus(long amountToSubtract, TemporalUnit unit)` proveen una manera general de realizar estas operaciones. (Debemos importar la clase `java.time.temporal.ChronoUnit` para poder utilizar las unidades: `ChronoUnit.YEARS`, `ChronoUnit.MONTHS`, `ChronoUnit.DAYS`).
+Realizar operaciones como suma o resta de días, meses, años, etc es muy fácil con la nueva `Date` API. Los siguientes métodos `plus(long amountToAdd, TemporalUnit unit)`, `minus(long amountToSubtract, TemporalUnit unit)` proveen una manera general de realizar estas operaciones. (Debemos importar la clase `java.time.temporal.ChronoUnit` para poder utilizar las unidades: `ChronoUnit.YEARS`, `ChronoUnit.MONTHS`, `ChronoUnit.DAYS`).
 
-   Ejemplo:
+Ejemplo:
 
-   ```java
-   LocalDate date = LocalDate.of(2016, 7, 18);
-   LocalDate datePlusOneDay = date.plus(1, ChronoUnit.DAYS); 
-   LocalDate dateMinusOneDay = date.minus(1, ChronoUnit.DAYS); 
-   System.out.println(date); 			 // 2016-07-18
-   System.out.println(datePlusOneDay);  // 2016-07-19
-   System.out.println(dateMinusOneDay); // 2016-07-17
-   ```
+```java
+LocalDate date = LocalDate.of(2016, 7, 18);
+LocalDate datePlusOneDay = date.plus(1, ChronoUnit.DAYS); 
+LocalDate dateMinusOneDay = date.minus(1, ChronoUnit.DAYS); 
+System.out.println(date); 			 // 2016-07-18
+System.out.println(datePlusOneDay);  // 2016-07-19
+System.out.println(dateMinusOneDay); // 2016-07-17
+```
 
-   También se puede hacer cálculos basados en un `Period`. En el siguiente ejemplo, se crea un `Period` de 1 día para poder realizar los cálculos.
+También se puede hacer cálculos basados en un `Period`. En el siguiente ejemplo, se crea un `Period` de 1 día para poder realizar los cálculos.
 
-   Ejemplo:
+Ejemplo:
 
-   ```java
-   LocalDate date = LocalDate.of(2016, 7, 18);
-   LocalDate datePlusOneDay = date.plus(Period.ofDays(1)); 
-   LocalDate dateMinusOneDay = date.minus(Period.ofDays(1)); 
-   System.out.println(date); 			 // 2016-07-18
-   System.out.println(datePlusOneDay);  // 2016-07-19
-   System.out.println(dateMinusOneDay); // 2016-07-17
-   ```
+```java
+LocalDate date = LocalDate.of(2016, 7, 18);
+LocalDate datePlusOneDay = date.plus(Period.ofDays(1)); 
+LocalDate dateMinusOneDay = date.minus(Period.ofDays(1)); 
+System.out.println(date); 			 // 2016-07-18
+System.out.println(datePlusOneDay);  // 2016-07-19
+System.out.println(dateMinusOneDay); // 2016-07-17
+```
 
-   Finalmente, haciendo uso de métodos explícitos como `plusDays(long daysToAdd)` y `minusDays(long daysToSubtract)` se puede indicar el valor a incrementar o reducir.
+Finalmente, haciendo uso de métodos explícitos como `plusDays(long daysToAdd)` y `minusDays(long daysToSubtract)` se puede indicar el valor a incrementar o reducir.
 
-   Ejemplo:
+Ejemplo:
 
-   ```java
-   LocalDate date = LocalDate.of(2016, 7, 18); 
-   LocalDate datePlusOneDay = date.plusDays(1); 
-   LocalDate dateMinusOneDay = date.minusDays(1);
-   System.out.println(date); 			 // 2016-07-18
-   System.out.println(datePlusOneDay);  // 2016-07-19
-   System.out.println(dateMinusOneDay); // 2016-07-17
-   ```
+```java
+LocalDate date = LocalDate.of(2016, 7, 18); 
+LocalDate datePlusOneDay = date.plusDays(1); 
+LocalDate dateMinusOneDay = date.minusDays(1);
+System.out.println(date); 			 // 2016-07-18
+System.out.println(datePlusOneDay);  // 2016-07-19
+System.out.println(dateMinusOneDay); // 2016-07-17
+```
 
-2. Operaciones con `LocalTime`
+### Operaciones con `LocalTime`
 
-   La nueva `Date` API perimite realizar operaciones como suma y resta de horas, minutos, segundos, etc. Al igual que `LocalDate`, los siguientes métodos `plus(long amountToAdd, TemporalUnit unit)`, `minus(long amountToSubtract, TemporalUnit unit)` proveen una manera general de realizar estas operaciones.
+La nueva `Date` API perimite realizar operaciones como suma y resta de horas, minutos, segundos, etc. Al igual que `LocalDate`, los siguientes métodos `plus(long amountToAdd, TemporalUnit unit)`, `minus(long amountToSubtract, TemporalUnit unit)` proveen una manera general de realizar estas operaciones.
 
-   (Debemos importar la clase `java.time.temporal.ChronoUnit` para poder utilizar las unidades: `ChronoUnit.HOURS`, `ChronoUnit.MINUTES`, `ChronoUnit.SECONDS`, `ChronoUnit.NANOS`).
+(Debemos importar la clase `java.time.temporal.ChronoUnit` para poder utilizar las unidades: `ChronoUnit.HOURS`, `ChronoUnit.MINUTES`, `ChronoUnit.SECONDS`, `ChronoUnit.NANOS`).
 
-   Ejemplo:
+Ejemplo:
 
-   ```java
-   LocalTime time = LocalTime.of(15, 30);
-   LocalTime timePlusOneHour = time.plus(1, ChronoUnit.HOURS); 
-   LocalTime timeMinusOneHour = time.minus(1, ChronoUnit.HOURS); 
-   System.out.println(time); 				// 15:30
-   System.out.println(timePlusOneHour);	// 16:30
-   System.out.println(timeMinusOneHour);	// 14:30
-   ```
+```java
+LocalTime time = LocalTime.of(15, 30);
+LocalTime timePlusOneHour = time.plus(1, ChronoUnit.HOURS); 
+LocalTime timeMinusOneHour = time.minus(1, ChronoUnit.HOURS); 
+System.out.println(time); 				// 15:30
+System.out.println(timePlusOneHour);	// 16:30
+System.out.println(timeMinusOneHour);	// 14:30
+```
 
-   También se puede hacer cálculos basados en un `Duration`. En el siguiente ejemplo, se crea un `Duration` de 1 hora para poder realizar los cálculos.
+También se puede hacer cálculos basados en un `Duration`. En el siguiente ejemplo, se crea un `Duration` de 1 hora para poder realizar los cálculos.
 
-   ```java
-   LocalTime time = LocalTime.of(15, 30);
-   LocalTime timePlusOneHour = time.plus(Duration.ofHours(1)); 
-   LocalTime timeMinusOneHour = time.minus(Duration.ofHours(1));
-   System.out.println(time); 				// 15:30
-   System.out.println(timePlusOneHour);	// 16:30
-   System.out.println(timeMinusOneHour);	// 14:30
-   ```
+```java
+LocalTime time = LocalTime.of(15, 30);
+LocalTime timePlusOneHour = time.plus(Duration.ofHours(1)); 
+LocalTime timeMinusOneHour = time.minus(Duration.ofHours(1));
+System.out.println(time); 				// 15:30
+System.out.println(timePlusOneHour);	// 16:30
+System.out.println(timeMinusOneHour);	// 14:30
+```
 
-   Finalmente, haciendo uso de métodos explícitos como `plusHours(long hoursToAdd)` y `minusHours(long hoursToSubtract)` se puede indicar el valor a incrementar o reducir.
+Finalmente, haciendo uso de métodos explícitos como `plusHours(long hoursToAdd)` y `minusHours(long hoursToSubtract)` se puede indicar el valor a incrementar o reducir.
 
-   Ejemplo:
+Ejemplo:
 
-   ```java
-   LocalTime time = LocalTime.of(15, 30); 
-   LocalTime timePlusOneHour = time.plusHours(1);
-   LocalTime timeMinusOneHour = time.minusHours(1);
-   System.out.println(time); 				// 15:30
-   System.out.println(timePlusOneHour);	// 16:30
-   System.out.println(timeMinusOneHour);	// 14:30
-   ```
+```java
+LocalTime time = LocalTime.of(15, 30); 
+LocalTime timePlusOneHour = time.plusHours(1);
+LocalTime timeMinusOneHour = time.minusHours(1);
+System.out.println(time); 				// 15:30
+System.out.println(timePlusOneHour);	// 16:30
+System.out.println(timeMinusOneHour);	// 14:30
+```
 
-3. Operaciones con `LocalDateTime`
+### Operaciones con `LocalDateTime`
 
-   `LocalDateTime`, al ser una clase compuesta por `LocalDate` y `LocalTime` ofrece los mismos métodos para realizar operaciones.
+`LocalDateTime`, al ser una clase compuesta por `LocalDate` y `LocalTime` ofrece los mismos métodos para realizar operaciones.
 
-   (Debemos importar la clase `java.time.temporal.ChronoUnit` para poder utilizar las unidades: `ChronoUnit.YEARS`, `ChronoUnit.MONTHS`, `ChronoUnit.DAYS`, `ChronoUnit.HOURS`, `ChronoUnit.MINUTES`, `ChronoUnit.SECONDS`, `ChronoUnit.NANOS`).
+(Debemos importar la clase `java.time.temporal.ChronoUnit` para poder utilizar las unidades: `ChronoUnit.YEARS`, `ChronoUnit.MONTHS`, `ChronoUnit.DAYS`, `ChronoUnit.HOURS`, `ChronoUnit.MINUTES`, `ChronoUnit.SECONDS`, `ChronoUnit.NANOS`).
 
-   Ejemplo:
+Ejemplo:
 
-   ```java
-   LocalDateTime dateTime = LocalDateTime.of(2016, 7, 28, 14, 30); 
-   LocalDateTime dateTime1 = dateTime.plus(1, ChronoUnit.DAYS).plus(1, ChronoUnit.HOURS); LocalDateTime dateTime2 = dateTime.minus(1, ChronoUnit.DAYS).minus(1, ChronoUnit.HOURS);
-   System.out.println(dateTime);  // 2016-07-28T14:30
-   System.out.println(dateTime1); // 2016-07-29T15:30
-   System.out.println(dateTime2); // 2016-07-27T13:30
-   ```
+```java
+LocalDateTime dateTime = LocalDateTime.of(2016, 7, 28, 14, 30); 
+LocalDateTime dateTime1 = dateTime.plus(1, ChronoUnit.DAYS).plus(1, ChronoUnit.HOURS); LocalDateTime dateTime2 = dateTime.minus(1, ChronoUnit.DAYS).minus(1, ChronoUnit.HOURS);
+System.out.println(dateTime);  // 2016-07-28T14:30
+System.out.println(dateTime1); // 2016-07-29T15:30
+System.out.println(dateTime2); // 2016-07-27T13:30
+```
 
-   En el siguiente ejemplo, se hace uso de `Period` y `Duration`:
+En el siguiente ejemplo, se hace uso de `Period` y `Duration`:
 
-   ```java
-   LocalDateTime dateTime = LocalDateTime.of(2016, 7, 28, 14, 30); 
-   LocalDateTime dateTime1 = dateTime.plus(Period.ofDays(1)).plus(Duration.ofHours(1));
-   LocalDateTime dateTime2 = dateTime.minus(Period.ofDays(1)).minus(Duration.ofHours(1));
-   System.out.println(dateTime);  // 2016-07-28T14:30
-   System.out.println(dateTime1); // 2016-07-29T15:30
-   System.out.println(dateTime2); // 2016-07-27T13:30
-   ```
+```java
+LocalDateTime dateTime = LocalDateTime.of(2016, 7, 28, 14, 30); 
+LocalDateTime dateTime1 = dateTime.plus(Period.ofDays(1)).plus(Duration.ofHours(1));
+LocalDateTime dateTime2 = dateTime.minus(Period.ofDays(1)).minus(Duration.ofHours(1));
+System.out.println(dateTime);  // 2016-07-28T14:30
+System.out.println(dateTime1); // 2016-07-29T15:30
+System.out.println(dateTime2); // 2016-07-27T13:30
+```
 
-   Finalmente, haciendo uso de los métodos `plusX(long xToAdd)` o `minusX(long xToSubtract)`:
+Finalmente, haciendo uso de los métodos `plusX(long xToAdd)` o `minusX(long xToSubtract)`:
 
-   ```java
-   LocalDateTime dateTime = LocalDateTime.of(2016, 7, 28, 14, 30); 
-   LocalDateTime dateTime1 = dateTime.plusDays(1).plusHours(1); 
-   LocalDateTime dateTime2 = dateTime.minusDays(1).minusHours(1);
-   System.out.println(dateTime);  // 2016-07-28T14:30
-   System.out.println(dateTime1); // 2016-07-29T15:30
-   System.out.println(dateTime2); // 2016-07-27T13:30
-   ```
-   
-   Además, métodos como `isBefore`, `isAfter`, `isEequal` están disponibles para comparar las siguientes clases `LocalDate`, `LocalTime` y `LocalDateTime`.
-   
-   Ejemplo:
-   
+```java
+LocalDateTime dateTime = LocalDateTime.of(2016, 7, 28, 14, 30); 
+LocalDateTime dateTime1 = dateTime.plusDays(1).plusHours(1); 
+LocalDateTime dateTime2 = dateTime.minusDays(1).minusHours(1);
+System.out.println(dateTime);  // 2016-07-28T14:30
+System.out.println(dateTime1); // 2016-07-29T15:30
+System.out.println(dateTime2); // 2016-07-27T13:30
+```
 
-   ```java
-   LocalDate date1 = LocalDate.of(2016, 7, 28);
-   LocalDate date2 = LocalDate.of(2016, 7, 29);
-   boolean isBefore = date1.isBefore(date2); //true 
-   boolean isAfter = date2.isAfter(date1); //true 
-   boolean isEqual = date1.isEqual(date2); //false 
-   ```
+Además, métodos como `isBefore`, `isAfter`, `isEqual` están disponibles para comparar las siguientes clases `LocalDate`, `LocalTime` y `LocalDateTime`.
+
+Ejemplo:
+
+
+```java
+LocalDate date1 = LocalDate.of(2016, 7, 28);
+LocalDate date2 = LocalDate.of(2016, 7, 29);
+boolean isBefore = date1.isBefore(date2); //true 
+boolean isAfter = date2.isAfter(date1); //true 
+boolean isEqual = date1.isEqual(date2); //false 
+```
 
 ## Formatos
 
@@ -566,7 +565,7 @@ Ejemplo:
 
 ```java
 LocalDate mifecha = LocalDate.of(2016, 7, 25);
-String fechaTexto=mifecha.format(DateTimeFormatter.ofPattern("eeee',' dd 'de' MMMM 'del' yyyy"));
+String fechaTexto=mifecha.format(DateTimeFormatter.ofPattern("eeee',' dd 'de' MMMM 'del' uuuu"));
 System.out.println("La fecha es: "+fechaTexto); // La fecha es: lunes, 25 de julio del 2016
 ```
 
@@ -633,34 +632,34 @@ public class Anexo1Wrappers {
         Integer i3 = Integer.valueOf("101011", 2);
         System.out.println(i3);
 
-        // Asigna 3.14 al objeto Float f2 
+        // Asigna 3.14 al objeto Float f3 
         Float f3 = Float.valueOf("3.14f");
         System.out.println(f3);
 
         // XXXVALUE
         Integer i4 = 120; // Crea un nuevo objeto wrapper
-        byte b = i4.byteValue(); // Convierte el valor de i2 a un primitivo byte 
+        byte b = i4.byteValue(); // Convierte el valor de i4 a un primitivo byte 
         short s1 = i4.shortValue(); // Otro de los métodos de Integer
         double d = i4.doubleValue(); // Otro de los métodos xxxValue de Integer 
         System.out.println(s1); // Muestra 120 como resultado
 
         Float f4 = 3.14f; // Crea un nuevo objeto wrapper
-        short s2 = f4.shortValue(); // Convierte el valor de f2 en un primitivo short
+        short s2 = f4.shortValue(); // Convierte el valor de f4 en un primitivo short
         System.out.println(s2); // El resultado es 3 (truncado, no redondeado)
 
         // PARSEXXXX
         double d4 = Double.parseDouble("3.14"); // Convierte un String a primitivo 
         System.out.println("d4 = " + d4);	// El resultado será d4 = 3.14 
         long l2 = Long.parseLong("101010", 2);	// un String binario a primitivo
-        System.out.println("l2 = " + l2);	// El resultado es L2 42
+        System.out.println("l2 = " + l2);	// El resultado es l2 = 42
 
         // TOSTRING
         Double d1 = new Double("3.14");
-        System.out.println("d1 = " + d1.toString()); // El resultado es d = 3.14 
+        System.out.println("d1 = " + d1.toString()); // El resultado es d1 = 3.14 
         String d2 = Double.toString(3.14); // d2 = "3.14"
-        System.out.println("d2 = " + d2); // El resultado es d = 3.14 
-        String s3 = "hex = " + Long.toString(254, 16); // s = "hex = fe" 
-        System.out.println("s3 = " + s3); // El resultado es d = 3.14
+        System.out.println("d2 = " + d2); // El resultado es d2 = 3.14 
+        String s3 = "hex = " + Long.toString(254, 16); // s3 = "hex = fe" 
+        System.out.println("s3 = " + s3); // El resultado es s3 = 3.14
 
         // TOXXXSTRING
         String s4 = Integer.toHexString(254); // Convierte 254 a hex 

@@ -7,10 +7,9 @@ public class P2_7_LecturaSecuencialBinario {
 
     public static void main(String[] args) {
 
-        try (
-                DataInputStream fe = new DataInputStream(
-                        new BufferedInputStream(
-                                new FileInputStream("src/jugadores.dat")));) {
+        try (DataInputStream fe = new DataInputStream(
+                new BufferedInputStream(
+                    new FileInputStream("jugadores.dat")));) {
             while (true) {
                 //Leemos nombre
                 System.out.println(fe.readUTF());
