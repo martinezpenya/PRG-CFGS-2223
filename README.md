@@ -2,7 +2,7 @@
 
 # Programación
 
-## 1^r^ curso CFGS DAW (2021-2022)
+## 1^r^ curso CFGS DAM (2022-2023)
 
 [README_ES.md (contenido en Español)](README_ES.md) :es:
 
