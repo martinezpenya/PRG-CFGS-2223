@@ -21,7 +21,7 @@ La intención de este documento es la de dar una perspectiva más realista del u
 
 Para realizar esta práctica guiada necesitamos:
 
-- Acceso al Learner Lab proporcionado por el profesor. (https://www.awsacademy.com)
+- Acceso al Learner Lab proporcionado por el profesor. (https://awsacademy.instructure.com)
 - Conocimientos sobre los sockets, IP's y puertos.
 - Un dispositivo local con capacidad de ejecutar un cliente de socket, con acceso a los puertos e Ip's de AWS (Ojo con la red de conselleria)
 
@@ -41,9 +41,9 @@ Elegimos la opción `Start Lab` y esperamos a que aparezca el laboratorio en ver
 
 ![Laboratorio iniciado correctamente](/assets/LAB02.png)
 
-Por defecto el Learner Lab nos proporciona 100 dolares de saldo, y un tiempo de 4 horas, tras el cual se detendrán todos la mayoría de servicios que tengamos en marcha. Pero mientras quede saldo podemos volver a iniciar el Laboratorio y dispondremos de 4 horas más.
+Por defecto el Learner Lab nos proporciona 100 dolares de saldo, y un tiempo de 4 horas, tras el cual se detendrán la mayoría de servicios que tengamos en marcha. Pero mientras quede saldo podemos volver a iniciar el Laboratorio y dispondremos de 4 horas más.
 
-Una vez aparece en verde podemos hacer click sobre las letras AWS y aparecerá el Dashboard de AWS (debemos permitir las ventanas emergentes:
+Una vez aparece en verde podemos hacer click sobre las letras AWS y aparecerá el Dashboard de AWS (debemos permitir las ventanas emergentes):
 
 ![Dashboard AWS](/assets/LAB03.png)
 
@@ -219,4 +219,4 @@ Server esperando una nueva conexión...
 
 # Fuentes de información
 
-- www.awsacademy.com/
+- https://awsacademyinstructure.com
