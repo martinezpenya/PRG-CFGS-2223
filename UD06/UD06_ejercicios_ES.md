@@ -278,14 +278,17 @@ Los  buffers hacen que las operaciones de lectura-escritura  se realicen inicial
 
 # **Streams de objetos. Serialización.**
 
-18. (GuardaLibros)
+18. Paquete `GuardaLeeLibros`
 
-    - (Autor) Crea la clase autor, con los atributos nombre, año de nacimiento y nacionalidad. Incorpora un constructor que reciba todos los datos y el método `toString()`.
-    - (Libro) Crea la clase Libro, con los atributos titulo, año de edición y autor (Objeto de la clase autor). Incorpora un constructor que reciba todos los datos y el método `toString()`.
-    - Escribe un programa (GuardaLibros) que cree tres libros y los almacene en el fichero `biblioteca.obj`.
+    - (`Autor`) Crea la clase `Autor`, con los atributos **nombre**, **año de nacimiento** y **nacionalidad**. Incorpora un **constructor** que reciba todos los datos y el método `toString()`.
+    - (`Libro`) Crea la clase `Libro`, con los atributos **titulo**, **año de edición** y **autor** (Objeto de la clase `Autor`). Incorpora un **constructor** que reciba todos los datos y el método `toString()`.
+    - Escribe un programa `GuardaLibros` que cree tres libros y los almacene en el fichero `biblioteca.obj`.
     - Las clases deberán implementar el interfaz `Serializable`.
-    
-19. (LeeLibros) Escribe un programa que lea los objetos del fichero `biblioteca.obj` y los muestre por pantalla.
+
+19. Paquete `GuardaLeeLibros`
+    - Escribe un programa (`LeeLibros`) que lea los objetos del fichero `biblioteca.obj` y los muestre por pantalla (Libros y Autores).
+
+
 
 # Sockets
 
