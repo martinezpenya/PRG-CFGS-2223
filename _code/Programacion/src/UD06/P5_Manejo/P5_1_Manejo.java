@@ -37,7 +37,7 @@ public class P5_1_Manejo {
                 System.out.println("---- Contenido de la carpeta ----");
                 File[] contenido = car.listFiles();
                 for (File f : contenido) {
-                    System.out.println(f.getName());
+                    System.out.println(f.getName() +" "+f.isDirectory());
                 }
             } else {
                 System.out.println(car.getAbsolutePath() + " No es una carpeta");

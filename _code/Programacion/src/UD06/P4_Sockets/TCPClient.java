@@ -12,7 +12,7 @@ public class TCPClient {
         ObjectOutputStream eixida;
         String frase;
 
-        socket = new Socket(InetAddress.getLocalHost(), 11000);
+        socket = new Socket(InetAddress.getLocalHost(), 6000);
         eixida = new ObjectOutputStream(socket.getOutputStream());
 
         System.out.println("Introduce la frase a enviar en minúsculas");

@@ -4,6 +4,8 @@ import java.io.*;
 import java.net.*;
 
 public class TCPServidor {
+    
+    private static final int PORT=6000;
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         String FraseClient;
@@ -12,8 +14,8 @@ public class TCPServidor {
         Socket clientSocket;
         ObjectInputStream entrada;
         ObjectOutputStream eixida;
-        serverSocket = new ServerSocket(11000);
-        System.out.println("Server iniciado y escuchando en el puerto 11000");
+        serverSocket = new ServerSocket(PORT);
+        System.out.println("Server iniciado y escuchando en el puerto "+ PORT);
         while (true) {
             clientSocket = serverSocket.accept();
             entrada = new ObjectInputStream(clientSocket.getInputStream());
