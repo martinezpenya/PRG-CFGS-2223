@@ -850,14 +850,14 @@ public class Leer {
 
 ## Ejemplo de Sockets
 
-Para nuestro ejemplo de sockets implementaremos ambos (cliente y servidor) usando Java y se comunicarán usando el puerto 10000 (es bueno elegir los puertos en el rango de 1024 hasta 65535).
+Para nuestro ejemplo de sockets implementaremos ambos (cliente y servidor) usando Java y se comunicarán usando el puerto 6000 (es bueno elegir los puertos en el rango de 1024 hasta 65535).
 
 La secuencia de eventos en nuestro ejemplo será:
 
 - El servidor creará el socket y esperará a que el cliente se conecte o lo detengamos.
 - Por otro lado, el cliente abrirá la conexión con el servidor y le enviará una frase en minúsculas que escribirá el usuario y la enviará al servidor.
-- Una vez recibida la frase en minúsculas, el servidor la convertirá en mayúsculas y la devolverá al cliente.
-- El cliente mostrará la frase en mayúsculas recibida desde el sevidor y cerrará la conexión.
+- Una vez recibida la frase en minúsculas, el servidor la convertirá en mayúsculas, la devolverá al cliente y cerrará su conexión.
+- El cliente mostrará la frase en mayúsculas recibida desde el servidor.
 - El servidor quedará a la espera de una nueva conexión de otro cliente.
 
 ### Servidor
@@ -867,32 +867,54 @@ package UD06.P4_Sockets;
 
 import java.io.*;
 import java.net.*;
+import java.util.Enumeration;
 
-public class TCPServidor {
+public class AWSServerSocket {
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
-        String FraseClient;
-        String FraseMajuscules;
-        ServerSocket serverSocket;
-        Socket clientSocket;
-        ObjectInputStream entrada;
-        ObjectOutputStream eixida;
-        serverSocket = new ServerSocket(10000);
-        System.out.println("Server iniciado y escuchando en el puerto 10000");
-        while (true) {
-            clientSocket = serverSocket.accept();
-            entrada = new ObjectInputStream(clientSocket.getInputStream());
-            FraseClient = (String) entrada.readObject();
+    private final static int PUERTO = 6000;
 
-            System.out.println("La frase recibida es: " + FraseClient);
+    private static void mostrarIPs(StringBuilder sb) {
+        try {
+            Enumeration Interfaces = NetworkInterface.getNetworkInterfaces();
+            while (Interfaces.hasMoreElements()) {
+                NetworkInterface Interface = (NetworkInterface) Interfaces.nextElement();
+                Enumeration Addresses = Interface.getInetAddresses();
+                while (Addresses.hasMoreElements()) {
+                    InetAddress Address = (InetAddress) Addresses.nextElement();
+                    sb.append("\n\t").append(Address.getHostAddress()).append(":").append(PUERTO);
+                }
+            }
+        } catch (SocketException ex) {
+            System.err.println("Error. Al intentar obtener las interfaces de red.");
+        }
+    }
 
-            eixida = new ObjectOutputStream(clientSocket.getOutputStream());
-            FraseMajuscules = FraseClient.toUpperCase();
-            System.out.println("El server devuelve la frase: " + FraseMajuscules);
-            eixida.writeObject(FraseMajuscules);
+    public static void main(String[] args) {
+        try (ServerSocket serverSocket = new ServerSocket(PUERTO);) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("Server iniciado y escuchando en la ip y puerto: ");
+            mostrarIPs(sb);
+            System.out.println(sb.toString());
+            while (true) {
+                Socket clientSocket = serverSocket.accept();
 
-            clientSocket.close();
-            System.out.println("Server esperando una nueva conexión...");
+                ObjectInputStream entrada = new ObjectInputStream(new BufferedInputStream(clientSocket.getInputStream()));
+                String fraseRecibida = (String) entrada.readObject();
+                System.out.println("La frase recibida es: " + fraseRecibida);
+
+                ObjectOutputStream salida = new ObjectOutputStream(new BufferedOutputStream(clientSocket.getOutputStream()));
+                String fraseDevuelta = fraseRecibida.toUpperCase();
+                System.out.println("El server devuelve la frase: " + fraseDevuelta);
+                salida.writeObject(fraseDevuelta);
+                salida.flush();//vaciamos el buffer
+
+                clientSocket.close(); //cerramos el socket cliente
+                System.out.println("Server esperando una nueva conexión...");
+            }
+        } catch (ClassNotFoundException ex) {
+            System.err.println("Error. Clase no encontrada");
+        } catch (IOException ex) {
+            System.err.println("Error. De entrada salida." + ex.toString());
         }
     }
 }
@@ -907,28 +929,27 @@ import java.io.*;
 import java.net.*;
 import java.util.Scanner;
 
-public class TCPClient {
+public class AWSClienteSocket {
+
+    //private static final String DNSAWS = "ec2-44-212-40-102.compute-1.amazonaws.com";
+    private static final String DNSAWS = "127.0.0.1";
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        Socket socket;
-        ObjectInputStream entrada;
-        ObjectOutputStream eixida;
-        String frase;
-
-        socket = new Socket(InetAddress.getLocalHost(), 10000);
-        eixida = new ObjectOutputStream(socket.getOutputStream());
-
-        System.out.println("Introduce la frase a enviar en minúsculas");
         Scanner in = new Scanner(System.in);
-        frase = in.nextLine();
-        System.out.println("Se envia la frase " + frase);
-        eixida.writeObject(frase);
+        System.out.print("Introduce la frase a enviar en minúsculas: ");
+        String frase = in.nextLine();
 
-        entrada = new ObjectInputStream(socket.getInputStream());
-        System.out.println(
-                "La frase recibida es: " + (String) entrada.readObject());
+        try (Socket socket = new Socket(DNSAWS, 6000)) {
+            ObjectOutputStream salida = new ObjectOutputStream(new BufferedOutputStream(socket.getOutputStream()));
+            System.out.println("Se envia la frase: " + frase);
+            salida.writeObject(frase);
+            salida.flush(); //vaciamos el buffer
 
-        socket.close();
+            ObjectInputStream entrada = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
+            System.out.println("La frase recibida es: " + (String) entrada.readObject());
+        } catch (IOException ex) {
+            System.err.println("Error. De entrada salida.");
+        }
     }
 }
 ```
