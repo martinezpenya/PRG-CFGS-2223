@@ -17,14 +17,16 @@
 package UD09;
 
 import javafx.application.Application;
-import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -32,7 +34,7 @@ import javafx.stage.Stage;
  *
  * @author David Martínez (wwww.martinezpenya.es|ieseduardoprimo.es)
  */
-public class E08_CheckBox extends Application {
+public class E09_TextBox extends Application {
 
     private Parent createContent() {
         GridPane grid = new GridPane();
@@ -41,49 +43,48 @@ public class E08_CheckBox extends Application {
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
-        //Creamos el CheckBox vacio
-        CheckBox check1 = new CheckBox();
-        //Añadimos texto una vez creado
-        check1.setText("Coche");
-        //Añadimos el CheckBox a la columna 0 fila 0
-        grid.add(check1, 0, 0);
+        //Creamos el TextkField vacio
+        TextField tFNombre = new TextField();
+        //Establecemos el número de caracteres que mostrará por defecto
+        tFNombre.setPrefColumnCount(10);
+        //definimos setPromptText para que indique la información que espera el campo
+        tFNombre.setPromptText("Nombre");
+        grid.add(tFNombre, 0, 0);
 
-        //Creamos los CheckBox con texto
-        CheckBox check2 = new CheckBox("Moto");
-        grid.add(check2, 0, 1);
-        //Hademos aparezca marcado por defecto
-        CheckBox check3 = new CheckBox("A pie");
-        check3.setSelected(true);
-        grid.add(check3, 0, 2);
+        //Creamos el campo PasswordField que no mostrará por pantalla la información
+        PasswordField tFApellidos = new PasswordField();
+        tFApellidos.setPrefColumnCount(10);
+        tFApellidos.setPromptText("Apellidos");
+        grid.add(tFApellidos, 0, 1);
 
-        //Podemos añadir imágenes a los CheckBox
-        //ImageView imageCoche = new ImageView("UD09/coche.png");
-        //check1.setGraphic(imageCoche);
-        final String[] nombres = new String[]{"coche", "moto", "pie"};
-        final Image[] imagenes = new Image[nombres.length];
-        final ImageView[] iconos = new ImageView[nombres.length];
-        final CheckBox[] checkBox = new CheckBox[nombres.length];
+        TextField tFComentario = new TextField();
+        //Establecemos el contenido por defecto del campo de texto
+        tFComentario.setText("Comentario por defecto");
+        //Seria lo mismo que haber creado el TextField de esta manera:
+        //TextField tFComentario = new TextField("Comentario por defecto");
+        tFComentario.setPrefColumnCount(10);
+        tFComentario.setPromptText("Comentario");
+        grid.add(tFComentario, 0, 2);
 
-        for (int i = 0; i < nombres.length; i++) {
-            final Image image = imagenes[i] = new Image("UD09/" + nombres[i] + ".png");
-            final ImageView icon = iconos[i] = new ImageView();
-            final CheckBox cb = checkBox[i] = new CheckBox(nombres[i]);
-            cb.selectedProperty().addListener(
-                    (ObservableValue<? extends Boolean> ov,
-                            Boolean old_val, Boolean new_val) -> {
-                        icon.setImage(new_val ? image : null);
-                    });
-        }
+        Button btnMostraTexto = new Button("Mostrar apellidos");
+        Label label = new Label();
+        btnMostraTexto.setOnAction((ActionEvent e) -> {
+            label.setText(tFApellidos.getText());
+        });
+
+        grid.add(label, 1, 0);
+        grid.add(btnMostraTexto, 1, 1);
 
         return grid;
+
     }
 
     @Override
     public void start(Stage stage) throws Exception {
-        Scene scene = new Scene(createContent(), 300, 200);
+        Scene scene = new Scene(createContent(), 500, 200);
         stage.setScene(scene);
 
-        stage.setTitle("Ejemplo CheckBox");
+        stage.setTitle("Ejemplo TextField y PasswordField");
         stage.show();
     }
 

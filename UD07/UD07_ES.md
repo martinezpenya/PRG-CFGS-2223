@@ -53,7 +53,7 @@ Todavía no conoces mucho de las estructuras, y probablemente todo te suena raro
 
 ¿Cree es qué el código es más legible al utilizar genéricos o qué se complica? La verdad es que al principio cuesta, pero después, el código se entiende mejor que si  se empieza a a insertar conversiones de tipo.
 
-Las clases genéricas son equivalentes a los  métodos genéricos pero a nivel de clase, permiten definir un parámetro de tipo o genérico que se podrá usar a lo largo de toda la clase, facilitando así crear clases genéricas que  son capaces de trabajar con diferentes tipos de datos base. Para crear una clase genérica se especifican los parámetros de e tipo al lado del nombre e de la clase:
+Las clases genéricas son equivalentes a los métodos genéricos pero a nivel de clase, permiten definir un parámetro de tipo o genérico que se podrá usar a lo largo de toda la clase, facilitando así crear clases genéricas que  son capaces de trabajar con diferentes tipos de datos base. Para crear una clase genérica se especifican los parámetros de e tipo al lado del nombre e de la clase:
 
 ```java
  public class Util<T> {
@@ -107,7 +107,8 @@ Todavía hay un montón de cosas más sobre los métodos y las clases genéricas
   ```java
   Integer[] a1={0,1,2,3,4};
   Double[] a2={0d,1d,2d,3d,4d};
-  Util.<Integer,Double>sumaDeLongitudes(a1,a2);
+  int resultado=Util.<Integer,Double>sumaDeLongitudes(a1,a2);
+  System.out.println(resultado);
   ```
 
   > Usar un método o una clase con dos o más parámetros genéricos es sencillo, a la hora de invocar al método o crear la clase, se indican los tipos base separados por coma.
@@ -247,8 +248,8 @@ Las colecciones en Java parten de una serie de interfaces básicas. Cada interfa
 - **Método `boolean remove(Object element)`** : permitirá eliminar elementos de la colección.
 - **Método `Iterator<E> iterator()`**: permitirá crear un iterador para recorrer los elementos de la colección. Esto se ve más adelante, no te preocupes.
 - **Método `Object[] toArray()`**: permite pasar la colección a un array de objetos tipo Object.
-- **Método `containsAll(Collection<?> c)`**: permite comprobar si una colección contiene los elementos existentes en otra colección, si es así, retorna verdadero.
-- **Método `addAll(Collection<?> extends E> c)`**: permite añadir todos los elementos de una colección a otra colección, siempre que sean del mismo tipo (o deriven del mismo tipo base).
+- **Método `boolean containsAll(Collection<?> c)`**: permite comprobar si una colección contiene los elementos existentes en otra colección, si es así, retorna verdadero.
+- **Método `boolean addAll(Collection<?> extends E> c)`**: permite añadir todos los elementos de una colección a otra colección, siempre que sean del mismo tipo (o deriven del mismo tipo base).
 - **Método `boolean removeAll(Collection<?> c)`**: si los elementos de la colección pasada como parámetro están en nuestra colección, se eliminan, el resto se quedan.
 - **Método `boolean retainAll(Collection<?> c)`**: si los elementos de la colección pasada como parámetro están en nuestra colección, se dejan, el resto se eliminan.
 - **Método `void clear()`**: vaciar la colección.
@@ -305,7 +306,7 @@ Como ves la estructura `for-each` es muy sencilla: la palabra `for` seguida de "
 
 ### `LinkedHashSet` y `TreeSet`
 
-¿En qué se diferencian las estructuras `LinkedHashSet` y `TreeSet` de la estructura `HashSet` ? Ya se comento antes, y es básicamente en su funcionamiento interno.
+¿En qué se diferencian las estructuras `LinkedHashSet` y `TreeSet` de la estructura `HashSet`? Ya se comento antes, y es básicamente en su funcionamiento interno.
 
 ![image-20220415120805066](/assets/nodo.png)
 
@@ -327,16 +328,17 @@ Los árboles son estructuras complejas de manejar y que permiten operaciones muy
 
 Nuevamente, no se va a profundizar en las operaciones que se pueden realizar en un árbol a nivel interno (inserción de nodos, eliminación de nodos, búsqueda de un valor, etc.). Nos aprovecharemos de las colecciones para hacer uso de su potencial. En la siguiente tabla tienes un uso comparado de `TreeSet` y `LinkedHashSet` . Su creación es similar a como se hace con `HashSet` , simplemente sustituyendo el nombre de la clase `HashSet` por una de las otras. Ni `TreeSet` , ni `LinkedHashSet` admiten duplicados, y se usan los mismos métodos ya vistos antes, los existentes en la interfaz `Set` (que es la interfaz que implementan).
 
-- Conjunto `TreeSet`:
+- Conjunto `TreeSet` ([Ejemplo01](#Ejemplo01)):
 
   ```java
-  TreeSet <Integer> t;
-  t=new TreeSet<Integer>();
-  t.add(new Integer(4));
-  t.add(new Integer(3));
-  t.add(new Integer(1));
-  t.add(new Integer(99));
-  for (Integer i:t) System.out.println(i);
+  TreeSet<Integer> t = new TreeSet<>();
+  t.add(4);
+  t.add(3);
+  t.add(1);
+  t.add(99);
+  for (Integer i : t) {
+      System.out.print(i + " ");
+  }
   ```
 
   Resultado mostrado por pantalla (el resultado sale ordenado por valor):
@@ -345,20 +347,21 @@ Nuevamente, no se va a profundizar en las operaciones que se pueden realizar en 
   1 3 4 99
   ```
 
-- Conjunto `LinkedHashSet`:
+- Conjunto `LinkedHashSet` ([Ejemplo02](#Ejemplo02)):
 
   ```java
-   LinkedHashSet <Integer> t;
-   t=new LinkedHashSet<Integer>();
-   t.add(new Integer(4));
-   t.add(new Integer(3));
-   t.add(new Integer(1));
-   t.add(new Integer(99));
-   for (Integer i:t) System.out.println(i);
+  LinkedHashSet<Integer> t = new LinkedHashSet<>();
+  t.add(4);
+  t.add(3);
+  t.add(1);
+  t.add(99);
+  for (Integer i : t) {
+      System.out.print(i + " ");
+  }
   ```
-
+  
   Resultado mostrado por pantalla (los valores salen ordenados según el momento de inserción en el conjunto):
-
+  
   ```java
   4 3 1 99
   ```
@@ -372,7 +375,7 @@ Partimos del siguiente ejemplo, en el que hay dos colecciones de diferente tipo,
 ![image-20220415121135397](/assets/conjunto.png)
 
 ```java
-TreeSet<Integer> A= new TreeSet<Integer>();
+TreeSet<Integer> conjuntoA= new TreeSet<Integer>();
 A.add(9); A.add(19); A.add(5); A.add(7); // Elementos del conjunto A: 9, 19, 5 y 7
 LinkedHashSet<Integer> B= new LinkedHashSet<Integer>();
 B.add(10); B.add(20); B.add(5); B.add(7); // Elementos del conjunto B: 10, 20, 5 y 7
@@ -424,6 +427,8 @@ En el ejemplo anterior, el literal de número se convierte automáticamente a la
 
 > Recuerda, estas operaciones son comunes a todas las colecciones.
 
+Consulta el [Ejemplo03](#Ejemplo03)
+
 ### Ordenación
 
 Por defecto, los `TreeSet` ordenan sus elementos de forma ascendente, pero, ¿se podría cambiar el orden de ordenación? Los `TreeSet` tienen un conjunto de operaciones adicionales, además de las que incluye por el hecho de ser un conjunto, que permite entre otras cosas, cambiar la forma de ordenar los elementos. Esto es especialmente útil cuando el tipo de objeto que se almacena no es un simple número, sino algo más complejo (un artículo por ejemplo). `TreeSet` es capaz de ordenar tipos básicos (números, cadenas y fechas) pero otro tipo de objetos no puede ordenarlos con tanta facilidad.
@@ -456,6 +461,8 @@ Una vez creado el comparador simplemente tenemos que pasarlo como parámetro en 
 TreeSet<Objeto> ts=new TreeSet<Objeto>(new ComparadorDeObjetos());
 ```
 
+Hay otra manera de definir esta ordenación, pero lo estudiaremos más a fondo en el punto [Comparadores](#Comparadores)
+
 ## Listas
 
 ¿En qué se diferencia una lista de un conjunto? Las listas son elementos de programación un poco más avanzados que los conjuntos. Su ventaja es que amplían el conjunto de operaciones de las colecciones añadiendo operaciones extra, veamos algunas de ellas:
@@ -467,14 +474,14 @@ TreeSet<Objeto> ts=new TreeSet<Objeto>(new ComparadorDeObjetos());
 
 En Java, para las listas se dispone de una interfaz llamada `java.util.List`, y dos implementaciones (`java.util.LinkedList` y `java.util.ArrayList`), con diferencias significativas entre ellas. Los métodos de la interfaz `List`, que obviamente estarán en todas las implementaciones, y que permiten las operaciones anteriores son:
 
-- `E get(int index)`. El método `get` permite obtener un elemento partiendo de su posición (index).
-- `E set(int index, E element)`. El método `set` permite cambiar el elemento almacenado en una posición de la lista (index), por otro (element).
-- `void add(int index, E element)` . Se añade otra versión del método `add`, en la cual se puede insertar un elemento (element) en la lista en una posición concreta (index), desplazando los existentes.
-- `E remove(int index)`. Se añade otra versión del método `remove`, esta versión permite eliminar un elemento indicando su posición en la lista.
-- `boolean addAll(int index, Collection<? extends E> c)`. Se añade otra versión del método `addAll` , que permite insertar una colección pasada por parámetro en una posición de la lista, desplazando el resto de elementos.
-- `int indexOf(Object o)`. El método `indexOf` permite conocer la posición (índice) de un elemento, si dicho elemento no está en la lista retornará `‐1`.
-- `int lastIndexOf(Object o)`. El método `lastIndexOf` nos permite obtener la última ocurrencia del objeto en la lista (dado que la lista si puede almacenar duplicados).
-- `List<E> subList(int from, int to)`. El método `subList` genera una sublista (una vista parcial de la lista) con los elementos comprendidos entre la posición inicial (incluida) y la posición final (no incluida).
+- **`E get(int index)`**. El método `get` permite obtener un elemento partiendo de su posición (index).
+- **`E set(int index, E element)`**. El método `set` permite cambiar el elemento almacenado en una posición de la lista (index), por otro (element).
+- **`void add(int index, E element)`** . Se añade otra versión del método `add`, en la cual se puede insertar un elemento (element) en la lista en una posición concreta (index), desplazando los existentes.
+- **`E remove(int index)`**. Se añade otra versión del método `remove`, esta versión permite eliminar un elemento indicando su posición en la lista.
+- **`boolean addAll(int index, Collection<? extends E> c)`**. Se añade otra versión del método `addAll` , que permite insertar una colección pasada por parámetro en una posición de la lista, desplazando el resto de elementos.
+- **`int indexOf(Object o)`**. El método `indexOf` permite conocer la posición (índice) de un elemento, si dicho elemento no está en la lista retornará `‐1`.
+- **`int lastIndexOf(Object o)`**. El método `lastIndexOf` nos permite obtener la última ocurrencia del objeto en la lista (dado que la lista si puede almacenar duplicados).
+- **`List<E> subList(int from, int to)`**. El método `subList` genera una sublista (una vista parcial de la lista) con los elementos comprendidos entre la posición inicial (incluida) y la posición final (no incluida).
 
 Ten en cuenta que los elementos de una lista empiezan a numerarse por 0. Es decir, que el primer elemento de la lista es el 0. Ten en cuenta también que `List` es una interfaz genérica, por lo que `<E>` corresponde con el tipo base usado como parámetro genérico al crear la lista.
 
@@ -487,15 +494,12 @@ Y, ¿cómo se usan las listas? Pues para usar una lista haremos uso de sus imple
 Supongo que intuirás como se usan, pero nunca viene mal un ejemplo sencillo, que nos aclare las ideas. El siguiente ejemplo muestra como usar un `LinkedList` pero valdría también para `ArrayList` (no olvides importar las clases `java.util.LinkedList` y `java.util.ArrayList` según sea necesario). En este ejemplo se usan los métodos de acceso posicional a la lista:
 
 ```java
-LinkedList<Integer> t=new LinkedList<Integer>(); // Declaración y creación del LinkedList de enteros.
+LinkedList<Integer> t=new LinkedList<>(); // Declaración y creación del LinkedList de enteros.
 t.add(1); // Añade un elemento al final de la lista.
 t.add(3); // Añade otro elemento al final de la lista.
 t.add(1,2); // Añade en la posición 1 el elemento 2.
 t.add(t.get(1)+t.get(2)); // Suma los valores contenidos en la posición 1 y 2, y lo agrega al final.
 t.remove(0); // Elimina el primer elementos de la lista.
-for (Integer i: t){
-    System.out.println("Elemento:" + i); // Muestra la lista.
-}
 ```
 
 En el ejemplo anterior, se realizan muchas operaciones, ¿cuál será el contenido de la lista al final? Pues será 2, 3 y 5. En el ejemplo cabe destacar el uso del bucle `for-each` , recuerda que se puede usar en cualquier colección.
@@ -503,7 +507,7 @@ En el ejemplo anterior, se realizan muchas operaciones, ¿cuál será el conteni
 Veamos otro ejemplo, esta vez con `ArrayList`, de cómo obtener la posición de un elemento en la lista:
 
 ```java
-ArrayList<Integer> al=new ArrayList<Integer>(); // Declaración y creación del ArrayList de enteros.
+ArrayList<Integer> al=new ArrayList<>(); // Declaración y creación del ArrayList de enteros.
 al.add(10); al.add(11); // Añadimos dos elementos a la lista.
 al.set(al.indexOf(11), 12); // Sustituimos el 11 por el 12, primero lo buscamos y luego lo reemplazamos.
 ```
@@ -512,8 +516,10 @@ En el ejemplo anterior, se emplea tanto el método `indexOf` para obtener la pos
 ejemplo algo más difícil: 
 
 ```java
-al.addAll(0, t.subList(1, t.size()));
+al.addAll(0, t.subList(1, t.size()-1));
 ```
+
+> OJO: `subList` ==> Returns a view of the portion of this list between the specified `fromIndex`, inclusive, and `toIndex`, exclusive. ([API de Java](https://docs.oracle.com/javase/8/docs/api/java/util/List.html#subList-int-int-))
 
 Este ejemplo es especial porque usa sublistas. Se usa el método `size` para obtener el tamaño de la lista. Después el método `subList` para extraer una sublista de la lista (que incluía en origen los números 2, 3 y 5), desde la posición 1 hasta el final de la lista (lo cual dejaría fuera al primer elemento). Y por último, se usa el método `addAll` para añadir todos los elementos de la sublista al `ArrayList` anterior. Y quedaria:
 
@@ -528,6 +534,8 @@ al.subList(0, 2).clear();
 ```
 
 Lo mismo ocurre al añadir un elemento, se añade en la sublista y en la lista original.
+
+Puedes consultar el código en el [Ejemplo05](#Ejemplo05)
 
 ### `LinkedList` y `ArrayList`
 
@@ -547,9 +555,9 @@ Las colas, también conocidas como colas de prioridad, son una lista pero que ap
 
 Pues igual. Se trata de que el que primero que llega es el primero en ser atendido (`FIFO` en inglés). Simplemente se aportan tres métodos nuevos: meter en el final de la lista (`add` y `offer`), sacar y eliminar el elemento más antiguo (`poll`), y examinar el elemento al principio de la lista sin eliminarlo (`peek`). Dichos métodos están disponibles en las listas enlazadas `LinkedList` :
 
-- `boolean add(E e)` y `boolean offer(E e)`, retornarán true si se ha podido insertar el elemento al final de la `LinkedList`.
-- `E poll()` retornará el primer elemento de la `LinkedList` y lo eliminará de la misma. Al insertar al final, los elementos más antiguos siempre están al principio. Retornará null si la lista está vacía.
-- `E peek()` retornará el primer elemento de la `LinkedList` pero no lo eliminará, permite examinarlo. Retornará null si la lista está vacía.
+- **`boolean add(E e)`** y **`boolean offer(E e)`**, retornarán true si se ha podido insertar el elemento al final de la `LinkedList`.
+- **`E poll()`** retornará el primer elemento de la `LinkedList` y lo eliminará de la misma. Al insertar al final, los elementos más antiguos siempre están al principio. Retornará null si la lista está vacía.
+- **`E peek()`** retornará el primer elemento de la `LinkedList` pero no lo eliminará, permite examinarlo. Retornará null si la lista está vacía.
 
 Las pilas, mucho menos usadas, son todo lo contrario a las listas. Una pila es igual que una montaña de hojas en blanco, para añadir hojas nuevas se ponen encima del resto, y para retirar una se coge la primera que hay, encima de todas. En las pilas el último en llegar es el primero en ser atendido. Para ello se proveen de tres métodos: meter al principio de la pila (`push`), sacar y eliminar del principio de la pila (`pop`), y examinar el primer elemento de la pila (`peek`, igual que si usara la lista como una cola). Las pilas se usan menos y haremos menos hincapié en ellas. Simplemente ten en mente que, tanto las colas como las pilas, son una lista enlazada sobre la que se hacen operaciones especiales.
 
@@ -594,6 +602,8 @@ El resultado de ejecutar el código anterior es que se muestran los números 44 
 
 > "*Controlar la complejidad es la esencia de la programación*." **[Brian Kernighan](https://es.wikipedia.org/wiki/Brian_Kernighan)**
 
+Consulta el [Ejemplo06](#Ejemplo06)
+
 ## Conjuntos de pares [clave/valor]
 
 ¿Cómo almacenarías los datos de un diccionario? Tenemos por un lado cada palabra y por otro su significado. Para resolver este problema existen precisamente los arrays asociativos . Un tipo de array asociativo son los mapas o diccionarios, que permiten almacenar pares de valores conocidos como clave y valor. La clave se utiliza para acceder al valor, como una entrada de un diccionario permite acceder a su definición.
@@ -621,7 +631,7 @@ El mapa anterior permite usar cadenas como llaves y almacenar de forma asociada 
 
 # Iteradores
 
-¿Qué son los iteradores realmente? Son un mecanismo que nos permite recorrer todos los elementos de una colección de forma sencilla, de forma secuencial, y de forma segura. Los mapas, como no derivan de la interfaz Collection realmente, no tienen iteradores, pero como veremos, existe un truco interesante.
+¿Qué son los iteradores realmente? Son un mecanismo que nos permite recorrer todos los elementos de una colección de forma sencilla, de forma secuencial, y de forma segura. Los mapas, como no derivan de la interfaz `Collection` realmente, no tienen iteradores, pero como veremos, existe un truco interesante.
 
 Los iteradores permiten recorrer las colecciones de dos formas: bucles `for‐each` (existentes en Java a partir de la versión 1.5) y a través de un bucle normal creando un iterador. Como los bucles `for-each` ya los hemos visto antes (y ha quedado patente su simplicidad), nos vamos a centrar en el otro método, especialmente útil en versiones antiguas de Java. Ahora la pregunta es, ¿cómo se crea un iterador? Pues invocando el método "`iterator()`" de cualquier colección.
 
@@ -713,6 +723,8 @@ Lo único que tienes que tener en cuenta es que el conjunto generado por `keySet
 >
 > Los problemas son debidos a que el método `remove` del iterador elimina el elemento de dos sitios: de la colección y del iterador en sí (que mantiene interiormente información del orden de los elementos). Si usas el método `remove` de la colección, la información solo se elimina de un lugar, de la colección.
 
+Consulta el [Ejemplo08](#Ejemplo08) y el [Ejemplo09](#Ejemplo09) (que es la versión del [Ejemplo06](#Ejemplo06) con iteradores).
+
 # Comparadores
 
 En Java hay dos mecanismos para cambiar la forma en la que los elementos se ordenan. Que los artículos del pedido aparecieran ordenados por código de artículo. Imagina que tienes los artículos almacenados en una lista llamada `articulos`, y que cada artículo se almacena en la siguiente clase (fíjate que el código de artículo es una cadena y no un número):
@@ -763,6 +775,8 @@ El funcionamiento del método `compareTo` es el mismo que el método `compare` d
 
 Ordenar ahora la lista de artículos es sencillo, fíjate que fácil: `Collections.sort(articulos);`
 
+Consulta el código de [Ejemplo10](#Ejemplo10) y [Ejemplo11](#Ejemplo11)
+
 # Extras
 
 ¿Qué más ofrece las clases `java.util.Collections` y `java.util.Arrays` de Java? Una vez vista la ordenación, quizás lo más complicado, veamos algunas operaciones adicionales. En los ejemplos, la variable `array` es un array y la variable `lista` es una lista de cualquier tipo de elemento:
@@ -793,73 +807,187 @@ En el ejemplo anterior la cadena texto contiene una serie de letras separadas po
 
 # Ejemplos UD07
 
-## Ejemplos `ArrayList`
-
-### Recorrido
-
-Ejemplo que crea, rellena y recorre un `ArrayList` de dos formas diferentes. Cabe destacar que, por defecto, el método `System.out.println()` invoca al método `toString()` de los elementos que se le pasen como argumento, por lo que realmente no es necesario utilizar `toString()` dentro de `println()`.
+## Ejemplo01
 
 ```java
-package UD07.P1_1_ArrayList1;
+package UD07.P2_2_Sets;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.TreeSet;
 
-public class ArrayList1 {
+public class Ejemplo01 {
 
     public static void main(String[] args) {
-        //creamos la lista
-        ArrayList l = new ArrayList();
-
-        //Añadimos elementos al final de la lista
-        l.add("uno");
-        l.add("dos");
-        l.add("tres");
-        l.add("cuatro");
-
-        //Añadimos el elemento en la posición 2
-        l.add(2, "dos2");
-
-        System.out.println(l.size()); //devuelve 5
-        System.out.println(l.get(0)); //devuelve uno
-        System.out.println(l.get(1)); //devuelve dos
-        System.out.println(l.get(2)); //devuelve dos2
-        System.out.println(l.get(3)); //devuelve tres
-        System.out.println(l.get(4)); //devuelve cuatro
-
-        //Recorremos la lista con un for y mostramos su contenido
-        for (int i = 0; i < l.size(); i++) {
-            System.out.print(l.get(i));
-        }//imprime: unodosdos2trescuatro
-
-        System.out.println();
-
-        //Recorremos la lista con un Iterador
-        //creamos el iterador
-        Iterator it = l.iterator();
-
-        //mientras haya elementos
-        while (it.hasNext()) {
-            System.out.print(it.next()); //obtengo el siguiente elemento
-        }//imprime; unodosdos2trescuatro
+        TreeSet<Integer> t = new TreeSet<>();
+        t.add(4);
+        t.add(3);
+        t.add(1);
+        t.add(99);
+        for (Integer i : t) {
+            System.out.print(i + " ");
+        }
     }
 }
 ```
 
-Salida:
+## Ejemplo02
 
-```sh
-5
-uno
-dos
-dos2
-tres
-cuatro
-unodosdos2trescuatro
-unodosdos2trescuatro
+```java
+package UD07.P2_2_Sets;
+
+import java.util.LinkedHashSet;
+
+public class Ejemplo02 {
+
+    public static void main(String[] args) {
+        LinkedHashSet<Integer> t = new LinkedHashSet<>();
+        t.add(4);
+        t.add(3);
+        t.add(1);
+        t.add(99);
+        for (Integer i : t) {
+            System.out.print(i + " ");
+        }
+    }
+}
 ```
 
-### Operaciones
+## Ejemplo03
+
+```java
+package UD07.P2_2_Sets;
+
+import java.util.Collection;
+import java.util.LinkedHashSet;
+import java.util.TreeSet;
+
+/**
+ *
+ * @author David Martínez (wwww.martinezpenya.es|ieseduardoprimo.es)
+ */
+public class Ejemplo03 {
+
+    private static void imprimirColeccion(Collection<?> c) {
+        for (Object i : c) {
+            System.out.print(i.toString() + " ");
+        }
+        System.out.println("");
+    }
+
+    public static void main(String[] args) {
+        TreeSet<Integer> conjuntoA = new TreeSet<>();
+        conjuntoA.add(9);
+        conjuntoA.add(19);
+        conjuntoA.add(5);
+        conjuntoA.add(7); // Elementos del conjunto A: 9, 19, 5 y 7
+        LinkedHashSet<Integer> conjuntoB = new LinkedHashSet<>();
+        conjuntoB.add(10);
+        conjuntoB.add(20);
+        conjuntoB.add(5);
+        conjuntoB.add(7); // Elementos del conjunto B: 10, 20, 5 y 7
+
+        conjuntoA.addAll(conjuntoB);
+        imprimirColeccion(conjuntoA); //5 7 9 10 19 20
+
+        conjuntoA.removeAll(conjuntoB);
+        imprimirColeccion(conjuntoA); //9 19
+
+        //recolocamos todo como al principio
+        conjuntoA.add(5);
+        conjuntoA.add(7);
+        conjuntoB.add(10);
+        conjuntoB.add(20);
+        conjuntoB.add(5);
+        conjuntoB.add(7);
+
+        conjuntoA.retainAll(conjuntoB);
+        imprimirColeccion(conjuntoA); //5 7
+        
+    }
+}
+```
+
+## Ejemplo04
+
+Realiza un pequeño programa que pregunte al usuario 5 números diferentes (almacenándolos en un `HashSet`), y que después calcule la suma de los mismos (usando un bucle `for‐each`).
+
+**Respuesta:**
+
+Una solución posible podría ser la siguiente. Fíjate en la solución y verás que el uso de conjuntos ha simplificado enormemente el ejercicio, permitiendo al programador o la programadora centrarse en otros aspectos:
+
+```java
+package UD07.P2_HashSet;
+
+import java.util.HashSet;
+import java.util.Scanner;
+
+public class EjemploHashSet {
+
+    public static void main(String[] args) {
+        HashSet<Integer> conjunto = new HashSet<Integer>();
+        Scanner teclado = new Scanner(System.in);
+        int numero;
+        do {
+            try {
+                System.out.print("Introduce un número " + (conjunto.size() + 1) + ": ");
+                numero = teclado.nextInt();
+                if (!conjunto.add(numero)) {
+                    System.out.println("Número ya en la lista. Debes introducir otro.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Número erróneo.");
+            }
+        } while (conjunto.size() < 5);
+        // Calcular la suma
+        Integer suma = 0;
+        for (Integer i : conjunto) {
+            suma = suma + i;
+        }
+        System.out.println("La suma es: " + suma);
+    }
+}
+```
+
+## Ejemplo05
+
+```java
+package UD07.P2_3_Listas;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedList;
+
+public class Ejemplo05 {
+    
+    private static void imprimirColeccion(Collection<?> c) {
+        for (Object i : c) {
+            System.out.print(i.toString() + " ");
+        }
+        System.out.println("");
+    }
+    public static void main(String[] args) {
+        LinkedList<Integer> t = new LinkedList<>(); // Declaración y creación del LinkedList de enteros.
+        t.add(1); // Añade un elemento al final de la lista.
+        t.add(3); // Añade otro elemento al final de la lista.
+        t.add(1, 2); // Añade en la posición 1 el elemento 2.
+        t.add(t.get(1) + t.get(2)); // Suma los valores contenidos en la posición 1 y 2, y lo agrega al final.
+        t.remove(0); // Elimina el primer elementos de la lista.
+        imprimirColeccion(t); //2 3 5 
+
+        ArrayList<Integer> al = new ArrayList<>(); // Declaración y creación del ArrayList de enteros.
+        al.add(10);
+        al.add(11); // Añadimos dos elementos a la lista.
+        al.set(al.indexOf(11), 12); // Sustituimos el 11 por el 12, primero lo buscamos y luego lo reemplazamos.
+
+        al.addAll(0, t.subList(1, t.size()));
+        imprimirColeccion(al); //3 5 10 12 
+        
+        al.subList(0, 2).clear();
+        imprimirColeccion(al); //10 12 
+    }
+}
+```
+
+## Ejemplo06
 
 Tenemos la clase `Producto` con:
 
@@ -868,8 +996,10 @@ Tenemos la clase `Producto` con:
 - Un constructor sin parámetros.
 - Métodos `get` y `set` asociados a los atributos.
 
+`Producto.java`
+
 ```java
-package UD07.P1_2_ArrayList2;
+package UD07.P2_3_Listas;
 
 public class Producto {
 
@@ -914,13 +1044,14 @@ public class Producto {
 
 En el programa principal creamos una lista de productos y realizamos operaciones sobre ella:
 
+`Ejemplo06.java`
+
 ```java
-package UD07.P1_2_ArrayList2;
+package UD07.P2_3_Listas;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
-public class Principal {
+public class Ejemplo06 {
 
     public static void main(String[] args) {
 
@@ -932,7 +1063,170 @@ public class Principal {
         Producto p5 = new Producto("Carne", 2);
 
         //Definir un ArrayList
-        ArrayList lista = new ArrayList();
+        ArrayList<Producto> lista = new ArrayList<>();
+
+        //Colocar instancias de producto en ArrayList
+        lista.add(p1);
+        lista.add(p2);
+        lista.add(p3);
+        lista.add(p4);
+
+        //Añadimos "Carne" en la posición 1 de la lista
+        lista.add(1, p5);
+
+        //Añadimos "Carne" en la última posición
+        lista.add(p5);
+        
+        //Imprimir el contenido del ArrayList
+        System.out.println(" - Lista con " + lista.size() + " elementos");
+       
+        for (Producto p : lista) {
+            System.out.println(p.getNombre() + " : " + p.getCantidad());
+        }
+
+        p5.setCantidad(99); //cambiamos la cantidad al producto, cambiará la lista?
+
+        ((Producto)lista.get(1)).setCantidad(66); //
+        
+        System.out.println(p5.getCantidad());
+        
+        //Imprimir el contenido del ArrayList
+        System.out.println(" - Lista con " + lista.size() + " elementos");
+
+        for (Producto p : lista) {
+            System.out.println(p.getNombre() + " : " + p.getCantidad());
+        }
+        
+        //Eliminar todos los valores del ArrayList
+        lista.clear();
+        System.out.println(" - Lista final con " + lista.size() + " elementos");
+    }
+}
+
+```
+
+## Ejemplo07
+
+```java
+package UD07.P2_4_Maps;
+
+import java.util.HashMap;
+
+public class Ejemplo07 {
+
+    public static void main(String[] args) {
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        //Insertamos un solo elemento A con valor 1
+        hashMap.put("A", 1);
+        
+        //Busqueda por clave
+        if (hashMap.containsKey("A")) {
+            System.out.printf("Contiene la clave A. Su valor es: %d\n", hashMap.get("A"));
+        }
+
+        //Busqueda por valor
+        if (hashMap.containsValue(0)) {
+            System.out.println("Contiene el valor 0");
+        }
+
+        //Eliminar el elemento con clave A
+        hashMap.remove("A");
+
+        //Ahora añadimos varios elementos para imprimirlos
+        hashMap.put("A", 1);
+        hashMap.put("E", 12);
+        hashMap.put("I", 15);
+        hashMap.put("O", 0);
+        hashMap.put("U", 0);
+        //Recorremos el mapa y lo imprimimos
+        for (HashMap.Entry<String, Integer> entry : hashMap.entrySet()) {
+            System.out.printf("Clave: %s. Valor: %d\n", entry.getKey(), entry.getValue());
+        }
+    }
+}
+```
+
+## Ejemplo08
+
+### Recorrido con `Iterator`
+
+Ejemplo que crea, rellena y recorre un `ArrayList` de dos formas diferentes. Cabe destacar que, por defecto, el método `System.out.println()` invoca al método `toString()` de los elementos que se le pasen como argumento, por lo que realmente no es necesario utilizar `toString()` dentro de `println()`.
+
+```java
+package UD07.P3.Iterators;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class Ejemplo08 {
+
+    public static void main(String[] args) {
+        //creamos la lista
+        ArrayList l = new ArrayList();
+
+        //Añadimos elementos al final de la lista
+        l.add("uno");
+        l.add("dos");
+        l.add("tres");
+        l.add("cuatro");
+
+        //Añadimos el elemento en la posición 2
+        l.add(2, "dos2");
+
+        System.out.println(l.size()); //devuelve 5
+        System.out.println(l.get(0)); //devuelve uno
+        System.out.println(l.get(1)); //devuelve dos
+        System.out.println(l.get(2)); //devuelve dos2
+        System.out.println(l.get(3)); //devuelve tres
+        System.out.println(l.get(4)); //devuelve cuatro
+
+        //Recorremos la lista con un for y mostramos su contenido
+        for (int i = 0; i < l.size(); i++) {
+            System.out.print(l.get(i));
+        }//imprime: unodosdos2trescuatro
+
+        System.out.println();
+
+        //Recorremos la lista con un Iterador
+        //creamos el iterador
+        Iterator it = l.iterator();
+
+        //mientras haya elementos
+        while (it.hasNext()) {
+            System.out.print(it.next()); //obtengo el siguiente elemento
+        }//imprime; unodosdos2trescuatro
+
+        System.out.println();
+
+        for (Object s : l) {
+            System.out.print(s);
+        }//imprime; unodosdos2trescuatro
+    }
+}
+```
+
+## Ejemplo09
+
+```java
+package UD07.P3.Iterators;
+
+import UD07.P2_3_Listas.Producto;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class Ejemplo09 {
+
+    public static void main(String[] args) {
+
+        //Definimos 5 instancias de la clase Producto
+        Producto p1 = new Producto("Pan", 6);
+        Producto p2 = new Producto("Leche", 2);
+        Producto p3 = new Producto("Manzanas", 5);
+        Producto p4 = new Producto("Brocoli", 2);
+        Producto p5 = new Producto("Carne", 2);
+
+        //Definir un ArrayList
+        ArrayList<Producto> lista = new ArrayList<>();
 
         //Colocar instancias de producto en ArrayList
         lista.add(p1);
@@ -948,14 +1242,30 @@ public class Principal {
 
         //Imprimir el contenido del ArrayList
         System.out.println(" - Lista con " + lista.size() + " elementos");
-
+       
         //Definir Iterator  para extraer/imprimir valores
         //si queremos utilizar un for con el iterador no hace falta poner el incremento
-        for (Iterator it = lista.iterator(); it.hasNext();) {
-            Producto p = (Producto) it.next();
+        for (Iterator<Producto> it = lista.iterator(); it.hasNext();) {
+            Producto p = it.next();
             System.out.println(p.getNombre() + " : " + p.getCantidad());
         }
 
+        p5.setCantidad(99); //cambiamos la cantidad al producto, cambiará la lista?
+
+        ((Producto)lista.get(1)).setCantidad(66); //
+        
+        System.out.println(p5.getCantidad());
+        
+        //Imprimir el contenido del ArrayList
+        System.out.println(" - Lista con " + lista.size() + " elementos");
+
+        //Definir Iterator  para extraer/imprimir valores
+        //si queremos utilizar un for con el iterador no hace falta poner el incremento
+        for (Iterator<Producto> it = lista.iterator(); it.hasNext();) {
+            Producto p = it.next();
+            System.out.println(p.getNombre() + " : " + p.getCantidad());
+        }
+        
         //Eliminar todos los valores del ArrayList
         lista.clear();
         System.out.println(" - Lista final con " + lista.size() + " elementos");
@@ -963,66 +1273,12 @@ public class Principal {
 }
 ```
 
-Salida:
+## Ejemplo10
 
-```sh
- - Lista con 6 elementos
-Pan : 6
-Carne : 2
-Leche : 2
-Manzanas : 5
-Brocoli : 2
-Carne : 2
- - Lista final con 0 elementos
-```
-
-## Ejercicio resuelto `HashSet`
-
-Realiza un pequeño programa que pregunte al usuario 5 números diferentes (almacenándolos en un `HashSet`), y que después calcule la suma de los mismos (usando un bucle `for‐each`).
-
-**Respuesta:**
-
-Una solución posible podría ser la siguiente. Fíjate en la solución y verás que el uso de conjuntos ha simplificado enormemente el ejercicio, permitiendo al programador o la programadora centrarse en otros aspectos:
+Ejercicio resuelto `Comparator1`. Imagínate que Objeto es una clase como la siguiente:
 
 ```java
-package UD07.P2_HashSet;
-
-import java.util.HashSet;
-import java.util.Scanner;
-
-public class EjemploHashSet {
-
-    public static void main(String[] args) {
-        HashSet<Integer> conjunto = new HashSet<Integer>();
-        Scanner teclado = new Scanner(System.in);
-        int numero;
-        do {
-            try {
-                System.out.print("Introduce un número " + (conjunto.size() + 1) + ": ");
-                numero = teclado.nextInt();
-                if (!conjunto.add(numero)) {
-                    System.out.println("Número ya en la lista. Debes introducir otro.");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Número erróneo.");
-            }
-        } while (conjunto.size() < 5);
-        // Calcular la suma
-        Integer suma = 0;
-        for (Integer i : conjunto) {
-            suma = suma + i;
-        }
-        System.out.println("La suma es: " + suma);
-    }
-}
-```
-
-## Ejercicio resuelto `Comparator1`
-
-Imagínate que Objeto es una clase como la siguiente:
-
-```java
-package UD07.P3_Comparator1;
+package UD07.P4.Comparator1;
 
 public class Objeto {
 
@@ -1049,7 +1305,7 @@ Imagina que ahora, al añadirlos en un `TreeSet`, estos se tienen que ordenar de
 Una de las posibles soluciones a este problema podría ser la siguiente:
 
 ```java
-package UD07.P3_Comparator1;
+package UD07.P4.Comparator1;
 
 import java.util.Comparator;
 
@@ -1060,9 +1316,9 @@ class ComparadorDeObjetos implements Comparator<Objeto> {
         int sumao1 = o1.a + o1.b;
         int sumao2 = o2.a + o2.b;
         if (sumao1 < sumao2) {
-            return 1;
-        } else if (sumao1 > sumao2) {
             return -1;
+        } else if (sumao1 > sumao2) {
+            return 1;
         } else {
             return 0;
         }
@@ -1073,7 +1329,7 @@ class ComparadorDeObjetos implements Comparator<Objeto> {
 Y para usarlo tendriamos:
 
 ```java
-package UD07.P3_Comparator1;
+package UD07.P4.Comparator1;
 
 import java.util.TreeSet;
 
@@ -1081,8 +1337,10 @@ public class Principal {
 
     public static void main(String[] args) {
         TreeSet<Objeto> ts = new TreeSet<Objeto>(new ComparadorDeObjetos());
-
-        ts.add(new Objeto(0, 1));
+        
+        Objeto o1= new Objeto(0, 1);
+        ts.add(o1);
+        
         ts.add(new Objeto(1, 2));
         ts.add(new Objeto(4, 5));
         ts.add(new Objeto(2, 3));
@@ -1103,14 +1361,14 @@ Objeto{a=1, b=2}
 Objeto{a=0, b=1}
 ```
 
-## Ejercicio resuelto `Comparator2`
+## Ejemplo11
 
-Ahora convertiremos la clase `Objeto` para que directamente implemente la interfaz `Comparable`:
+Ejercicio resuelto `Comparator2`. Ahora convertiremos la clase `Objeto` para que directamente implemente la interfaz `Comparable`:
 
 ```java
-package UD07.P4_Comparator2;
+package UD07.P4.Comparator2;
 
-public class Objeto implements Comparable<Objeto>{
+public class Objeto implements Comparable<Objeto> {
 
     public int a;
     public int b;
@@ -1119,7 +1377,7 @@ public class Objeto implements Comparable<Objeto>{
         this.a = a;
         this.b = b;
     }
-    
+
     @Override
     public String toString() {
         return "Objeto{" + "a=" + a + ", b=" + b + '}';
@@ -1130,20 +1388,21 @@ public class Objeto implements Comparable<Objeto>{
         int sumao1 = this.a + this.b;
         int sumao2 = t.a + t.b;
         if (sumao1 < sumao2) {
-            return 1;
-        } else if (sumao1 > sumao2) {
             return -1;
+        } else if (sumao1 > sumao2) {
+            return 1;
         } else {
             return 0;
         }
     }
+
 }
 ```
 
 Y lo usamos directamente en la clase `Principal`:
 
 ```java
-package UD07.P4_Comparator2;
+package UD07.P4.Comparator2;
 
 import java.util.TreeSet;
 
@@ -1214,3 +1473,4 @@ Objeto{a=0, b=1}
 - [Apuntes IOC Programació bàsica (Joan Arnedo Moreno)](https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m03_/web/fp_asx_m03_htmlindex/index.html)
 - [Apuntes IOC Programació Orientada a Objectes (Joan Arnedo Moreno)](https://ioc.xtec.cat/materials/FP/Recursos/fp_dam_m03_/web/fp_dam_m03_htmlindex/index.html)
 - [Apuntes Lionel](https://github.com/lionel-ict/ApuntesProgramacion)
+- https://www.cs.usfca.edu/~galles/visualization/Algorithms.html

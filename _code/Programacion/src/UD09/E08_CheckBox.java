@@ -17,14 +17,11 @@
 package UD09;
 
 import javafx.application.Application;
-import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -56,23 +53,14 @@ public class E08_CheckBox extends Application {
         check3.setSelected(true);
         grid.add(check3, 0, 2);
 
-        //Podemos añadir imágenes a los CheckBox
-        //ImageView imageCoche = new ImageView("UD09/coche.png");
-        //check1.setGraphic(imageCoche);
-        final String[] nombres = new String[]{"coche", "moto", "pie"};
-        final Image[] imagenes = new Image[nombres.length];
-        final ImageView[] iconos = new ImageView[nombres.length];
+        //Ahora crearemos los 3 checkboxes en un bucle y tendran 3 estados
+        final String[] nombres = new String[]{"Coche3", "Moto3", "Pie3"};
         final CheckBox[] checkBox = new CheckBox[nombres.length];
-
+        
         for (int i = 0; i < nombres.length; i++) {
-            final Image image = imagenes[i] = new Image("UD09/" + nombres[i] + ".png");
-            final ImageView icon = iconos[i] = new ImageView();
             final CheckBox cb = checkBox[i] = new CheckBox(nombres[i]);
-            cb.selectedProperty().addListener(
-                    (ObservableValue<? extends Boolean> ov,
-                            Boolean old_val, Boolean new_val) -> {
-                        icon.setImage(new_val ? image : null);
-                    });
+            cb.setAllowIndeterminate(true);
+            grid.add(cb, 1, i);
         }
 
         return grid;

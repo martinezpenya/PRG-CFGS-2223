@@ -5,7 +5,6 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -30,18 +29,13 @@ public class App extends Application {
 
     private static Parent loadFXML(String fxml) throws IOException {
         Locale.setDefault(Locale.ENGLISH);
-        ResourceBundle resourceBundle = ResourceBundle.getBundle("es.martinezpenya.i18n.calculadora");
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("es.martinezpenya.i18n.calculadora");     
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"), resourceBundle);
-
         return fxmlLoader.load();
     }
 
     public static void main(String[] args) {
         launch();
     }
-
-    // java -jar --module-path
-    // /media/DADES/NextCloud/DOCENCIA/PRG_2223/javafx-sdk-19.0.2.1/lib/
-    // --add-modules=javafx.controls,javafx.fxml demo.jar
 
 }
