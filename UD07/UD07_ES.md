@@ -463,6 +463,8 @@ TreeSet<Objeto> ts=new TreeSet<Objeto>(new ComparadorDeObjetos());
 
 Hay otra manera de definir esta ordenación, pero lo estudiaremos más a fondo en el punto [Comparadores](#Comparadores)
 
+Para entender mejor los Sets revisa el [Ejemplo04](#Ejemplo04)
+
 ## Listas
 
 ¿En qué se diferencia una lista de un conjunto? Las listas son elementos de programación un poco más avanzados que los conjuntos. Su ventaja es que amplían el conjunto de operaciones de las colecciones añadiendo operaciones extra, veamos algunas de ellas:
@@ -516,7 +518,7 @@ En el ejemplo anterior, se emplea tanto el método `indexOf` para obtener la pos
 ejemplo algo más difícil: 
 
 ```java
-al.addAll(0, t.subList(1, t.size()-1));
+al.addAll(0, t.subList(1, t.size()));
 ```
 
 > OJO: `subList` ==> Returns a view of the portion of this list between the specified `fromIndex`, inclusive, and `toIndex`, exclusive. ([API de Java](https://docs.oracle.com/javase/8/docs/api/java/util/List.html#subList-int-int-))
@@ -545,7 +547,7 @@ Los **`LinkedList`** utilizan listas doblemente enlazadas, que son listas enlaza
 
 Los nodos van enlazados unos a otros para no perder el orden y no limitar el tamaño de almacenamiento. Tener un doble enlace significa que en cada nodo se almacena la información de cuál es el siguiente nodo y además, de cuál es el nodo anterior. Si un nodo no tiene nodo siguiente o nodo  anterior, se almacena null o nulo para ambos casos.
 
-No es el caso de los **`ArrayList`**. Estos se implementan utilizando arrays que se van redimensionando conforme se necesita más espacio o menos. La redimensión es transparente a nosotros, no nos enteramos cuando se produce, pero eso redunda en una diferencia de rendimiento notable dependiendo del uso. Los ArrayList son más rápidos en cuanto a acceso a los elementos, acceder a un elemento según su posición es más rápido en un array que en una lista doblemente enlazada (hay que recorrer la lista). En cambio, eliminar un elemento implica muchas más operaciones en un array que en una lista enlazada de cualquier tipo.
+No es el caso de los **`ArrayList`**. Estos se implementan utilizando arrays que se van redimensionando conforme se necesita más espacio o menos. La redimensión es transparente a nosotros, no nos enteramos cuando se produce, pero eso redunda en una diferencia de rendimiento notable dependiendo del uso. Los **ArrayList** son más rápidos en cuanto a acceso a los elementos, acceder a un elemento según su posición es más rápido en un array que en una lista doblemente enlazada (hay que recorrer la lista). En cambio, eliminar un elemento implica muchas más operaciones en un array que en una lista enlazada de cualquier tipo.
 
 ¿Y esto que quiere decir? Que si se van a realizar muchas operaciones de eliminación de elementos sobre la lista, conviene usar una lista enlazada (`LinkedList`), pero si no se van a realizar muchas eliminaciones, sino que solamente se van a insertar y consultar elementos por posición, conviene usar una lista basada en arrays redimensionados (`ArrayList` ).
 
@@ -613,7 +615,7 @@ En Java existe la interfaz `java.util.Map` que define los métodos que deben ten
 Los mapas utilizan clases genéricas para dar extensibilidad y flexibilidad, y permiten definir un tipo base para la clave, y otro tipo diferente para el valor. Veamos un ejemplo de como crear un mapa, que es extensible a los otros dos tipos de mapas:
 
 ```java
-HashMap<String,Integer> t = new HashMap<String,Integer>();
+HashMap<String,Integer> t = new HashMap<>();
 ```
 
 El mapa anterior permite usar cadenas como llaves y almacenar de forma asociada a cada llave, un número entero. Veamos los métodos principales de la interfaz `Map`, disponibles en todas las implementaciones. En los ejemplos, `V` es el tipo base usado para el valor (`Value`) y `K` el tipo base usado para la llave (`Key`):
@@ -628,6 +630,8 @@ El mapa anterior permite usar cadenas como llaves y almacenar de forma asociada 
 | `int size();`                          | Retornará el número de pares llave y valor almacenado en el mapa. |
 | `boolean isEmpty();`                   | Retornará true si el mapa está vacío, false en cualquier otro caso. |
 | `void clear();`                        | Vacía el mapa.                                               |
+
+Revisa el [Ejemplo07](#Ejemplo07)
 
 # Iteradores
 
@@ -721,13 +725,13 @@ Lo único que tienes que tener en cuenta es que el conjunto generado por `keySet
 
 > Si usas iteradores, y piensas eliminar elementos de la colección (e incluso de un mapa), debes usar el método `remove` del iterador y no el de la colección. Si eliminas los elementos utilizando el método `remove` de la colección, mientras estás dentro de un bucle de iteración, o dentro de un bucle `for‐each`, los fallos que pueden producirse en tu programa son impredecibles. ¿Logras adivinar porqué se pueden producir dichos problemas?
 >
-> Los problemas son debidos a que el método `remove` del iterador elimina el elemento de dos sitios: de la colección y del iterador en sí (que mantiene interiormente información del orden de los elementos). Si usas el método `remove` de la colección, la información solo se elimina de un lugar, de la colección.
+> *Los problemas son debidos a que el método `remove` del iterador elimina el elemento de dos sitios: de la colección y del iterador en sí (que mantiene interiormente información del orden de los elementos). Si usas el método `remove` de la colección, la información solo se elimina de un lugar, de la colección.*
 
 Consulta el [Ejemplo08](#Ejemplo08) y el [Ejemplo09](#Ejemplo09) (que es la versión del [Ejemplo06](#Ejemplo06) con iteradores).
 
 # Comparadores
 
-En Java hay dos mecanismos para cambiar la forma en la que los elementos se ordenan. Que los artículos del pedido aparecieran ordenados por código de artículo. Imagina que tienes los artículos almacenados en una lista llamada `articulos`, y que cada artículo se almacena en la siguiente clase (fíjate que el código de artículo es una cadena y no un número):
+En Java hay dos mecanismos para cambiar la forma en la que los elementos se ordenan. Imagina que tienes los artículos almacenados en una lista llamada `articulos`, y que cada artículo se almacena en la siguiente clase `Articulo` (fíjate que el código de artículo es una cadena y no un número):
 
 ```java
 class Articulo {
@@ -737,7 +741,7 @@ class Articulo {
 }
 ```
 
-La primera forma de ordenar consiste en crear una clase que implemente la interfaz `java.util.Comparator` , y por ende, el método compare definido en dicha interfaz. Esto se explicó en el apartado de conjuntos, al explicar el `TreeSet`, así que no vamos a profundizar en ello. No obstante, el comparador para ese caso podría ser así:
+La primera forma de ordenar consiste en crear una clase que implemente la interfaz `java.util.Comparator`, y por ende, el método `compare` definido en dicha interfaz. Esto se explicó en el apartado de conjuntos, al explicar el `TreeSet`, así que no vamos a profundizar en ello. No obstante, el comparador para ese caso podría ser así:
 
 ```java
 class comparadorArticulos implements Comparator<Articulo>{
@@ -748,7 +752,7 @@ class comparadorArticulos implements Comparator<Articulo>{
 }
 ```
 
-Una vez creada esta clase, ordenar los elementos es muy sencillo, simplemente se pasa como segundo parámetro del método sort una instancia del comparador creado:
+Una vez creada esta clase, ordenar los elementos es muy sencillo, simplemente se pasa como segundo parámetro del método `sort` una instancia del comparador creado:
 
 ```java
 Collections.sort(articulos, new comparadorArticulos());
@@ -1147,8 +1151,6 @@ public class Ejemplo07 {
 ```
 
 ## Ejemplo08
-
-### Recorrido con `Iterator`
 
 Ejemplo que crea, rellena y recorre un `ArrayList` de dos formas diferentes. Cabe destacar que, por defecto, el método `System.out.println()` invoca al método `toString()` de los elementos que se le pasen como argumento, por lo que realmente no es necesario utilizar `toString()` dentro de `println()`.
 
