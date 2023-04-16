@@ -38,10 +38,6 @@ public class Ejemplo03 {
         //recolocamos todo como al principio
         conjuntoA.add(5);
         conjuntoA.add(7);
-        conjuntoB.add(10);
-        conjuntoB.add(20);
-        conjuntoB.add(5);
-        conjuntoB.add(7);
 
         conjuntoA.retainAll(conjuntoB);
         imprimirColeccion(conjuntoA); //5 7

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package UD09.buscaminas;
 
 /**
@@ -31,7 +27,7 @@ public class Buscaminas extends Application {
     static int filas = 5;
     static int columnas = 5;
     static int numeroMinas = 2;
-    static Mina casilla[][] = new Mina[columnas][filas];
+    static Mina casilla[][];
     static GridPane root = new GridPane();
     static Stage escenarioGuardado;
 
@@ -88,14 +84,12 @@ public class Buscaminas extends Application {
         for (int i = 0; i < numeroMinas; i++) {
             do {
                 minaFila = (int) (Math.random() * filas);
-                //System.out.println("Fila"+minaFila);
                 minaColumna = (int) (Math.random() * columnas);
-                //System.out.println("Columna: "+minaColumna);
             } while (casilla[minaColumna][minaFila].isEsMina() == true);
 
             casilla[minaColumna][minaFila].setEsMina(true);
         }
-
+        actualizarContadores();
         // Comprobar si es mina
         for (int i = 0; i < columnas; i++) {
             for (int j = 0; j < filas; j++) {
@@ -135,7 +129,7 @@ public class Buscaminas extends Application {
             finPartida("Pisaste una mina, ¡HAS PERDIDO!");
         } else {
             casilla[a][b].setStyle("-fx-background-color: #c7caf3;");
-            contarAlrededor(a, b);
+            /*contarAlrededor(a, b);*/
             casilla[a][b].setText(Integer.toString(casilla[a][b].getContador()));
         }
     }
@@ -165,13 +159,44 @@ public class Buscaminas extends Application {
     }
 
     public static void contarAlrededor(int columna, int fila) {
+        /* ORIGINAL
         casilla[columna][fila].setContador(0);
-        for (int i = 0; i < columnas; i++) {
-            for (int j = 0; j < filas; j++) {
+        for (int i = 0; i < COLUMNAS; i++) {
+            for (int j = 0; j < FILAS; j++) {
                 if ((i == columna || i == (columna - 1) || i == (columna + 1))
                         && (j == fila || j == (fila - 1) || j == (fila + 1))) {
                     if (casilla[i][j].isEsMina()) {
                         casilla[columna][fila].setContador(casilla[columna][fila].getContador() + 1);
+                    }
+                }
+            }
+        }*/
+ /* SOLO ALREDEDOR
+        casilla[columna][fila].setContador(0);
+        for (int i = Math.max(0, columna-1); i <= Math.min(columnas-1, columna+1); i++) {
+            for (int j = Math.max(0,fila-1); j <= Math.min(filas-1, fila +1); j++) {
+                if ((i == columna || i == (columna - 1) || i == (columna + 1))
+                        && (j == fila || j == (fila - 1) || j == (fila + 1))) {
+                    if (casilla[i][j].isEsMina()) {
+                        casilla[columna][fila].setContador(casilla[columna][fila].getContador() + 1);
+                    }
+                }
+            }
+        }*/
+    }
+
+    public static void actualizarContadores() {
+        for (int columna = 0; columna < columnas; columna++) {
+            for (int fila = 0; fila < filas; fila++) {
+                casilla[columna][fila].setContador(0);
+                for (int i = Math.max(0, columna - 1); i <= Math.min(columnas - 1, columna + 1); i++) {
+                    for (int j = Math.max(0, fila - 1); j <= Math.min(filas - 1, fila + 1); j++) {
+                        if ((i == columna || i == (columna - 1) || i == (columna + 1))
+                                && (j == fila || j == (fila - 1) || j == (fila + 1))) {
+                            if (casilla[i][j].isEsMina()) {
+                                casilla[columna][fila].setContador(casilla[columna][fila].getContador() + 1);
+                            }
+                        }
                     }
                 }
             }

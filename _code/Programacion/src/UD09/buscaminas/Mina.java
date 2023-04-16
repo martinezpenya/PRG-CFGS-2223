@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package UD09.buscaminas;
 
 /**
@@ -59,12 +55,17 @@ public class Mina extends Button {
   }
 
   public void cambiarEstado() {
-    if (getEstado() == 0) {
-      setEstado(1);
-    } else if (getEstado() == 1) {
-      setEstado(2);
-    } else {
-      setEstado(0);
-    }
+      setEstado((getEstado()+1)%2);
+/*      switch (getEstado()) {
+          case 0:
+              setEstado(1);
+              break;
+          case 1:
+              setEstado(2);
+              break;
+          default:
+              setEstado(0);
+              break;
+      }*/
   }
 }

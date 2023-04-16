@@ -12,6 +12,7 @@ public class Ejemplo05 {
         }
         System.out.println("");
     }
+    
     public static void main(String[] args) {
         LinkedList<Integer> t = new LinkedList<>(); // Declaración y creación del LinkedList de enteros.
         t.add(1); // Añade un elemento al final de la lista.

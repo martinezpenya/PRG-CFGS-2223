@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package UD09;
+package UD09._01_EjemplosBasicos;
 
 import javafx.application.Application;
 import javafx.beans.binding.Bindings;
@@ -73,13 +73,13 @@ public class E04_StartVsShown extends Application {
 
         primaryStage.setScene( scene );
 
-        // before show()...I just set this to 480x320, right?
+        // antes de show()...Lo establezco a 480x320, correcto?
         startX.set( primaryStage.getWidth() );
         startY.set( primaryStage.getHeight() );
 
         primaryStage.setOnShown( (evt) -> {
             shownX.set( primaryStage.getWidth() );
-            shownY.set( primaryStage.getHeight() );  // all available now
+            shownY.set( primaryStage.getHeight() );  // Ahora todo está disponible
         });
 
         primaryStage.setTitle("Start Vs. Shown");

@@ -5,7 +5,7 @@ import java.util.TreeSet;
 public class Principal {
 
     public static void main(String[] args) {
-        TreeSet<Objeto> ts = new TreeSet<Objeto>(new ComparadorDeObjetos());
+        TreeSet<Objeto> ts = new TreeSet<>(new ComparadorDeObjetos());
         
         Objeto o1= new Objeto(0, 1);
         ts.add(o1);

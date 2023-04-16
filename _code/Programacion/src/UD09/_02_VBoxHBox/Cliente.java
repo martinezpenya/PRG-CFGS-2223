@@ -14,26 +14,34 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package UD09._01_EjemplosBasicos;
-
-import javafx.event.Event;
-import javafx.event.EventType;
+package UD09._02_VBoxHBox;
 
 /**
  *
  * @author David Martínez (wwww.martinezpenya.es|ieseduardoprimo.es)
  */
-public class E03_EventoUsuario extends Event {
+public class Cliente {
+    private String nombre;
+    private String apellidos;
 
-    public static final EventType<E03_EventoUsuario> ANY = new EventType<>(Event.ANY, "ANY");
-
-    public static final EventType<E03_EventoUsuario> LOGIN_SUCCEEDED = new EventType<>(ANY, "LOGIN_SUCCEEDED");
-
-    public static final EventType<E03_EventoUsuario> LOGIN_FAILED = new EventType<>(ANY, "LOGIN_FAILED");
-
-    public E03_EventoUsuario(EventType<? extends Event> eventType) {
-        super(eventType);
+    public Cliente(String nombre, String apellidos) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
     }
 
-    // cualquier otro atributo importante como la fecha, la hora...
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
 }

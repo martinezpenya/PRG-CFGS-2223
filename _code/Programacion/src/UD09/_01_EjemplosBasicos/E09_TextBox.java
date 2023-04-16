@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package UD09;
+package UD09._01_EjemplosBasicos;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;

@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package UD09;
+package UD09._01_EjemplosBasicos;
 
 import javafx.application.Application;
 import javafx.scene.Parent;
@@ -39,18 +39,18 @@ public class E02_TransformApp extends Application {
     }
 
     private void transform(Rectangle box) {
-        // we will apply transformations here:
+        //Aplicaremos las transformaciones aquí
 
-        //Uncomment for translate
-        box.setTranslateX(100);
-        box.setTranslateY(200);
+        //Descomentar para traslación
+        //box.setTranslateX(100);
+        //box.setTranslateY(200);
 
-        //uncomment for scale
-        box.setScaleX(1.5);
-        box.setScaleY(1.5);
+        //Descomentar para escalado
+        //box.setScaleX(1.5);
+        //box.setScaleY(1.5);
 
-        //uncomment for rotate
-        box.setRotate(30);
+        //Descomentar para rotación
+        //box.setRotate(30);
     }
 
     @Override

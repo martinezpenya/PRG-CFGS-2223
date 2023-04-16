@@ -7,7 +7,7 @@ public class Ejemplo08 {
 
     public static void main(String[] args) {
         //creamos la lista
-        ArrayList l = new ArrayList();
+        ArrayList<String> l = new ArrayList<>();
 
         //Añadimos elementos al final de la lista
         l.add("uno");
@@ -43,7 +43,7 @@ public class Ejemplo08 {
 
         System.out.println();
 
-        for (Object s : l) {
+        for (String s : l) {
             System.out.print(s);
         }//imprime; unodosdos2trescuatro
     }

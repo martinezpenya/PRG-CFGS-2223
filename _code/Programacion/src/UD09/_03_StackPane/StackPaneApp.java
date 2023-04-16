@@ -14,28 +14,34 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package UD09._01_EjemplosBasicos;
+package UD09._03_StackPane;
 
 import javafx.application.Application;
-import javafx.scene.Parent;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
-import javafx.scene.text.Text;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 /**
  *
  * @author David Martínez (wwww.martinezpenya.es|ieseduardoprimo.es)
  */
-public class E01_HolaMundo extends Application {
-
-    private Parent createContent() {
-        return new StackPane(new Text("Hola Mundo"));
-    }
-
+public class StackPaneApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        stage.setScene(new Scene(createContent(), 400, 400));
+        StackPane pane = new StackPane(
+                new Rectangle(200, 100, Color.BLACK),
+                new Circle(40, Color.RED),
+                new Button("Hello StackPane")
+        );
+
+        pane.setAlignment(Pos.CENTER_LEFT);
+        
+        stage.setScene(new Scene(pane, 300, 300));
         stage.show();
     }
 

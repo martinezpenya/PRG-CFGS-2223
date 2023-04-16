@@ -5,7 +5,7 @@ import java.util.TreeSet;
 public class Principal {
 
     public static void main(String[] args) {
-        TreeSet<Objeto> ts = new TreeSet<Objeto>();
+        TreeSet<Objeto> ts = new TreeSet<>();
 
         ts.add(new Objeto(0, 1));
         ts.add(new Objeto(1, 2));

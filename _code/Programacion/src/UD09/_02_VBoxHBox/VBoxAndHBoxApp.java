@@ -14,81 +14,95 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package UD09;
+package UD09._02_VBoxHBox;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Separator;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
  *
  * @author David Martínez (wwww.martinezpenya.es|ieseduardoprimo.es)
  */
-public class E09_TextBox extends Application {
-
-    private Parent createContent() {
-        GridPane grid = new GridPane();
-        grid.setAlignment(Pos.CENTER_LEFT);
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(25, 25, 25, 25));
-
-        //Creamos el TextkField vacio
-        TextField tFNombre = new TextField();
-        //Establecemos el número de caracteres que mostrará por defecto
-        tFNombre.setPrefColumnCount(10);
-        //definimos setPromptText para que indique la información que espera el campo
-        tFNombre.setPromptText("Nombre");
-        grid.add(tFNombre, 0, 0);
-
-        //Creamos el campo PasswordField que no mostrará por pantalla la información
-        PasswordField tFApellidos = new PasswordField();
-        tFApellidos.setPrefColumnCount(10);
-        tFApellidos.setPromptText("Apellidos");
-        grid.add(tFApellidos, 0, 1);
-
-        TextField tFComentario = new TextField();
-        //Establecemos el contenido por defecto del campo de texto
-        tFComentario.setText("Comentario por defecto");
-        //Seria lo mismo que haber creado el TextField de esta manera:
-        //TextField tFComentario = new TextField("Comentario por defecto");
-        tFComentario.setPrefColumnCount(10);
-        tFComentario.setPromptText("Comentario");
-        grid.add(tFComentario, 0, 2);
-
-        Button btnMostraTexto = new Button("Mostrar apellidos");
-        Label label = new Label();
-        btnMostraTexto.setOnAction((ActionEvent e) -> {
-            label.setText(tFApellidos.getText());
-        });
-
-        grid.add(label, 1, 0);
-        grid.add(btnMostraTexto, 1, 1);
-
-        return grid;
-
-    }
+public class VBoxAndHBoxApp extends Application {
 
     @Override
-    public void start(Stage stage) throws Exception {
-        Scene scene = new Scene(createContent(), 500, 200);
-        stage.setScene(scene);
+    public void start(Stage primaryStage) throws Exception {
 
-        stage.setTitle("Ejemplo TextField y PasswordField");
-        stage.show();
+        VBox vbox = new VBox();
+
+        HBox controlesArriba = new HBox();
+        VBox.setMargin( controlesArriba, new Insets(10.0d) );
+        controlesArriba.setAlignment( Pos.BOTTOM_LEFT );
+
+        Button btnActualizar = new Button("Actualizar");
+
+        HBox controlesArribaDerecha = new HBox();
+        HBox.setHgrow(controlesArribaDerecha, Priority.ALWAYS );
+        controlesArribaDerecha.setAlignment( Pos.BOTTOM_RIGHT );
+        Hyperlink lnkCerrarSesion = new Hyperlink("Cerrar sesión");
+        controlesArribaDerecha.getChildren().add( lnkCerrarSesion );
+
+        controlesArriba.getChildren().addAll( btnActualizar, controlesArribaDerecha );
+
+        TableView<Cliente> tblClientes = new TableView<>();
+        tblClientes.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        VBox.setMargin( tblClientes, new Insets(0.0d, 10.0d, 10.0d, 10.0d) );
+        VBox.setVgrow( tblClientes, Priority.ALWAYS );
+
+        TableColumn<Cliente, String> columnaApellidos = new TableColumn<>("Apellidos");
+        columnaApellidos.setCellValueFactory(new PropertyValueFactory<>("apellidos"));
+
+        TableColumn<Cliente, String> columnaNombre = new TableColumn<>("Nombre");
+        columnaNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+
+        tblClientes.getColumns().addAll( columnaApellidos, columnaNombre );
+
+        Separator sep = new Separator();
+
+        HBox controlesAbajo = new HBox();
+        controlesAbajo.setAlignment(Pos.BOTTOM_RIGHT );
+        VBox.setMargin( controlesAbajo, new Insets(10.0d) );
+
+        Button btnCerrar = new Button("Cerrar");
+
+        controlesAbajo.getChildren().add( btnCerrar );
+
+        vbox.getChildren().addAll(
+                controlesArriba,
+                tblClientes,
+                sep,
+                controlesAbajo
+        );
+
+        Scene scene = new Scene(vbox );
+
+        primaryStage.setScene( scene );
+        primaryStage.setWidth( 800 );
+        primaryStage.setHeight( 600 );
+        primaryStage.setTitle("Aplicación con VBox y HBox");
+        primaryStage.setOnShown( (evt) -> loadTable(tblClientes) );
+        primaryStage.show();
     }
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    private void loadTable(TableView<Cliente> tblCustomers) {
+        tblCustomers.getItems().add(new Cliente("David", "Martinez"));
+        tblCustomers.getItems().add(new Cliente("Ada", "Lovelace"));
+        tblCustomers.getItems().add(new Cliente("Alan", "Turing"));
     }
 }
