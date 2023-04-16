@@ -711,7 +711,7 @@ Usar genéricos aporta grandes ventajas, pero usándolos adecuadamente.
 Para recorrer los mapas con iteradores, hay que hacer un pequeño truco. Usamos el método `entrySet` que ofrecen los mapas para generar un conjunto con las entradas (pares de llave‐valor), o bien, el método `keySet` para generar un conjunto con las llaves existentes en el mapa. Veamos como sería para el segundo caso, el más sencillo:
 
 ```java
-HashMap<Integer,Integer> mapa=new HashMap<Integer,Integer>();
+HashMap<Integer,Integer> mapa=new HashMap<>();
 for (int i=0;i<10;i++){
 	mapa.put(i, i); // Insertamos datos de prueba en el mapa.   
 }
