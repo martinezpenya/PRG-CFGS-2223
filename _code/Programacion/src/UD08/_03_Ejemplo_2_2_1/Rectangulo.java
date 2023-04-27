@@ -29,17 +29,13 @@ class Rectangulo {
      * valores iniciales de los atributos del rectángulo con los valores
      * proporcionados a través de los parámetros.
      *
-     * versión 1: no recomendada
-     * public Rectangulo(Punto vertice1, Punto vertice2) {
-     * this.vertice1 = vertice1;
-     * this.vertice2 = vertice2;
-     * }
+     * versión 1: no recomendada public Rectangulo(Punto vertice1, Punto
+     * vertice2) { this.vertice1 = vertice1; this.vertice2 = vertice2; }
      *
-     * versión 2: sin constructor de copia.
-     * public Rectangulo(Punto vertice1, Punto vertice2) {
-     * this.vertice1 = new Punto(vertice1.getX(), vertice1.getY());
-     * this.vertice2 = new Punto(vertice2.getX(), vertice2.getY());
-     * }
+     * versión 2: sin constructor de copia. public Rectangulo(Punto vertice1,
+     * Punto vertice2) { this.vertice1 = new Punto(vertice1.getX(),
+     * vertice1.getY()); this.vertice2 = new Punto(vertice2.getX(),
+     * vertice2.getY()); }
      */
     //versión 3: opción recomendada
     public Rectangulo(Punto vertice1, Punto vertice2) {
@@ -92,5 +88,22 @@ class Rectangulo {
         Punto p;
         p = new Punto(this.vertice2); // Uso del constructor copia
         return p;
+    }
+
+    public static void main(String[] args) {
+        Punto puntoA = new Punto(0, 0);
+        Punto puntoB = new Punto(5, 5);
+
+        Rectangulo rectA = new Rectangulo(puntoA, puntoB);
+        System.out.println("Perímetro del rectanculo A: " + rectA.CalcularPerimetro());
+
+        puntoA.setX(4);
+        puntoA.setY(4);
+
+        Rectangulo rectB = new Rectangulo(puntoA, puntoB);
+        System.out.println("Creo un nuevo rectangulo, pero NO cambia el Perímetro del anterior");
+        System.out.println("Perímetro del rectanculo A: " + rectA.CalcularPerimetro());
+        System.out.println("Perímetro del rectanculo B: " + rectB.CalcularPerimetro());
+
     }
 }

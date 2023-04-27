@@ -59,10 +59,10 @@ Algunos ejemplos de composición podrían ser:
 
 Recuperando algunos de los ejemplos de clases que has utilizado en otras unidades:
 
-- Una clase Rectangulo podría contener en su interior dos objetos de la clase Punto para almacenar los vértices inferior izquierdo y superior derecho.
-- Una clase Empleado podría contener en su interior un objeto de la clase DNI para almacenar su DNI/NIF, y otro objeto de la clase CuentaBancaria para guardar la cuenta en la que se realizan los ingresos en nómina.
+- Una clase `Rectangulo` podría contener en su interior dos objetos de la clase `Punto` para almacenar los vértices inferior izquierdo y superior derecho.
+- Una clase `Empleado` podría contener en su interior un objeto de la clase `DNI` para almacenar su DNI/NIF, y otro objeto de la clase `CuentaBancaria` para guardar la cuenta en la que se realizan los ingresos en nómina.
 
-> ¿Podría decirse que la relación que existe entre la clase `Ave` y la clase `Loro` es una relación de composición?
+> **¿Podría decirse que la relación que existe entre la clase `Ave` y la clase `Loro` es una relación de composición?**
 >
 > No. Aunque claramente existe algún tipo de relación entre ambas, no parece que sea la de composición. No parece que se cumpla la expresión "tiene un": "Un loro tiene un ave". Se cumpliría más bien una expresión del tipo "es un": "Un loro es un ave". Algunos objetos que cumplirían la relación de composición podrían ser `Pico` o `Alas`, pues "un loro tiene un pico y dos alas", del mismo modo que "un ave tiene pico y dos alas". Este tipo de relación parece más de herencia (un loro es un tipo de ave).
 
@@ -157,8 +157,7 @@ Para evitar ese tipo de situaciones (ofrecer al exterior referencias a objetos p
 - Una opción podría ser devolver siempre tipos primitivos.
 - Dado que esto no siempre es posible, o como mínimo poco práctico, otra posibilidad es crear un nuevo objeto que sea una copia del atributo que quieres devolver y utilizar ese objeto como valor de retorno. Es decir, crear una copia del objeto especialmente para devolverlo. De esta manera, el código cliente de ese método podrá manipular a su antojo ese nuevo objeto, pues no será una referencia al atributo original, sino un nuevo objeto con el mismo contenido.
 
-Por último, debes tener en cuenta que es posible que en algunos casos sí se necesite realmente la referencia al atributo original (algo muy habitual en el caso de atributos estáticos). En tales casos, no habrá problema en devolver directamente el atributo para que el código llamante (cliente) haga el
-uso que estime oportuno de él.
+Por último, debes tener en cuenta que es posible que en algunos casos sí se necesite realmente la referencia al atributo original (algo muy habitual en el caso de atributos estáticos). En tales casos, no habrá problema en devolver directamente el atributo para que el código llamante (cliente) haga el uso que estime oportuno de él.
 
 > Debes evitar por todos los medios la devolución de un atributo que sea un objeto (estarías dando directamente una referencia al atributo, visible y manipulable desde fuera), salvo que se trate de un caso en el que deba ser así.
 
@@ -192,12 +191,12 @@ En algunos lenguajes, es posible definir una clase dentro de otra clase (clases 
 
 ```java
 class ClaseContenedora {
- // Cuerpo de la clase
- ...
- class ClaseInterna {
-  // Cuerpo de la clase interna
-  ...
- }
+    // Cuerpo de la clase
+    ...
+    class ClaseInterna {
+    // Cuerpo de la clase interna
+    ...
+    }
 }
 ```
 
@@ -316,7 +315,7 @@ public class Persona {
 }
 ```
 
-Al definir la clase Alumno como heredera de `Persona`, no habrías tenido acceso a esos atributos, pudiendo ocasionar un grave problema de operatividad al intentar manipular esa información. Por tanto, en estos casos lo más recomendable habría sido declarar esos atributos como `protected` o bien sin modificador (para que también tengan acceso a ellos otras clases del mismo paquete, si es que se considera oportuno):
+Al definir la clase `Alumno` como heredera de `Persona`, no habrías tenido acceso a esos atributos, pudiendo ocasionar un grave problema de operatividad al intentar manipular esa información. Por tanto, en estos casos lo más recomendable habría sido declarar esos atributos como `protected` o bien sin modificador (para que también tengan acceso a ellos otras clases del mismo paquete, si es que se considera oportuno):
 
 ```java
 public class Persona {
@@ -1255,54 +1254,80 @@ package UD08._02_Ejemplo_2_2;
 
 class Rectangulo {
 
- private Punto vertice1;
- private Punto vertice2;
+    private Punto vertice1;
+    private Punto vertice2;
 
- public double calcularSuperficie() {
-  double area, base, altura; // Variables locales
-  base = vertice2.getX() - vertice1.getX(); // Antes era x2 - x1
-  altura = vertice2.getY() - vertice1.getY(); // Antes era y2 - y1
-  area = base * altura;
-  return area;
- }
+    public double calcularSuperficie() {
+        double area, base, altura; // Variables locales
+        base = vertice2.getX() - vertice1.getX(); // Antes era x2 - x1
+        altura = vertice2.getY() - vertice1.getY(); // Antes era y2 - y1
+        area = base * altura;
+        return area;
+    }
 
- public double CalcularPerimetro() {
-  double perimetro, base, altura; // Variables locales
-  base = vertice2.getX() - vertice1.getX(); // Antes era x2 - x1
-  altura = vertice2.getY() - vertice1.getY(); // Antes era y2 - y1
-  perimetro = 2 * base + 2 * altura;
-  return perimetro;
- }
+    public double CalcularPerimetro() {
+        double perimetro, base, altura; // Variables locales
+        base = vertice2.getX() - vertice1.getX(); // Antes era x2 - x1
+        altura = vertice2.getY() - vertice1.getY(); // Antes era y2 - y1
+        perimetro = 2 * base + 2 * altura;
+        return perimetro;
+    }
 
- /*
-  * Así no!
-  *
-  * public Punto obtenerVertice1 (){
-  * return vertice1;
-  * }
-  * public Punto obtenerVertice2 (){
-  * return vertice2;
-  * }
-  */
+    /*
+     * Así no!
+     *
+     *public Punto obtenerVertice1mal() {
+     *    return vertice1;
+     *}
+     *
+     *public Punto obtenerVertice2mal() {
+     *    return vertice2;
+     *}  
+     */
+    
+    //Mejor de este modo
+    public Punto obtenerVertice1() {
+        // Creación de un nuevo punto extrayendo sus atributos
+        double x, y;
+        Punto p;
+        x = this.vertice1.getX();
+        y = this.vertice1.getY();
+        p = new Punto(x, y);
+        return p;
+    }
 
- //Mejor de este modo
- public Punto obtenerVertice1() {
-  // Creación de un nuevo punto extrayendo sus atributos
-  double x, y;
-  Punto p;
-  x = this.vertice1.getX();
-  y = this.vertice1.getY();
-  p = new Punto(x, y);
-  return p;
- }
+    //O mejor así:
+    public Punto obtenerVertice2() {
+        // Utilizando el constructor copia de Punto (si es que está definido)
+        //Punto p;
+        //p = new Punto(this.vertice2); // Uso del constructor copia
+        //return p;
 
- //O mejor así:
- public Punto obtenerVertice2() {
-  // Utilizando el constructor copia de Punto (si es que está definido)
-  Punto p;
-  p = new Punto(this.vertice2); // Uso del constructor copia
-  return p;
- }
+        //o más corto:
+        return new Punto(this.vertice2);
+    }
+
+    public Rectangulo(Punto vertice1, Punto vertice2) {
+        this.vertice1 = vertice1;
+        this.vertice2 = vertice2;
+    }
+
+    public static void main(String[] args) {
+        Punto puntoA = new Punto(0, 0);
+        Punto puntoB = new Punto(5, 5);
+
+        Rectangulo rectA = new Rectangulo(puntoA, puntoB);
+        System.out.println("Perímetro del rectanculo A: " + rectA.CalcularPerimetro());//20
+
+        puntoA.setX(4);
+        puntoA.setY(4);
+
+        Rectangulo rectB = new Rectangulo(puntoA, puntoB);
+        System.out.println("Creo un nuevo rectangulo, pero cambia el Perímetro del anterior");
+        System.out.println("Perímetro del rectanculo A: " + rectA.CalcularPerimetro());//20
+        System.out.println("Perímetro del rectanculo B: " + rectB.CalcularPerimetro());//4
+
+    }
 }
 ```
 
@@ -1317,7 +1342,7 @@ Intenta rescribir los constructores de la clase `Rectangulo` teniendo en cuenta 
 4. Un constructor con dos parámetros, `base` y `altura`, que cree un rectángulo donde el vértice inferior derecho esté ubicado en la posición (0,0) y que tenga una base y una altura tal y como indican los dos parámetros proporcionados.
 5. Un constructor copia.
 
-POSIBLE SOLUCIÓN
+**POSIBLE SOLUCIÓN**
 
 Durante el proceso de creación de un objeto (constructor) de la clase contenedora (en este caso `Rectangulo`) hay que tener en cuenta también la creación (llamada a constructores) de aquellos objetos que son contenidos (en este caso objetos de la clase Punto).
 
@@ -1395,8 +1420,26 @@ public Rectangulo (Rectangulo r) {
 }
 ```
 
+En este caso nuevamente volvemos a clonar los atributos `vertice1` y `vertice2` del objeto `r` que se ha pasado como parámetro para evitar tener que compartir esos atributos en los dos rectángulos. Así ahora el método main que comprueba la clase Rectanclo funciona correctamente:
 
-En este caso nuevamente volvemos a clonar los atributos `vertice1` y `vertice2` del objeto `r` que se ha pasado como parámetro para evitar tener que compartir esos atributos en los dos rectángulos.
+```java
+    public static void main(String[] args) {
+        Punto puntoA = new Punto(0, 0);
+        Punto puntoB = new Punto(5, 5);
+
+        Rectangulo rectA = new Rectangulo(puntoA, puntoB);
+        System.out.println("Perímetro del rectanculo A: " + rectA.CalcularPerimetro());//20
+
+        puntoA.setX(4);
+        puntoA.setY(4);
+
+        Rectangulo rectB = new Rectangulo(puntoA, puntoB);
+        System.out.println("Creo un nuevo rectangulo, pero cambia el Perímetro del anterior");
+        System.out.println("Perímetro del rectanculo A: " + rectA.CalcularPerimetro());//20
+        System.out.println("Perímetro del rectanculo B: " + rectB.CalcularPerimetro());//4
+
+    }
+```
 
 ## Ejemplo 3.1
 
