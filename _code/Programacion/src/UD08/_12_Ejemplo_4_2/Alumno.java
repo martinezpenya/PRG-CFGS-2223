@@ -40,7 +40,7 @@ public class Alumno extends Persona {
     public String getNombre() {
         return "Alumno: " + this.nombre;
     }
-
+  
     @Override
     public void mostrar() {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("d/MM/yyyy");

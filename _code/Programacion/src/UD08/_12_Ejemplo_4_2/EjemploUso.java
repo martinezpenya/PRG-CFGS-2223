@@ -4,6 +4,12 @@ import java.time.LocalDate;
 
 public class EjemploUso {
 
+    public static int calcularEdad(final Alumno a) {
+        a.grupo="2SMX";
+        a=new Alumno("Juan", "Torres", LocalDate.of(1990, 10, 6), "2smx", 7.5);
+        return 14;
+    }
+
     public static void main(String[] args) {
         // Declaración de objetos
         Alumno alumno;
@@ -16,5 +22,8 @@ public class EjemploUso {
         // Utilización del método mostrar
         alumno.mostrar();
         profesor.mostrar();
+        System.out.println(calcularEdad(alumno));
+        alumno.mostrar();
+
     }
 }
