@@ -417,17 +417,17 @@ A la hora de destruir un objeto (método `finalize`) es importante llamar a los 
 Si la clase Persona tuviera un constructor de este tipo:
 
 ```java
-public Persona (String nombre, String apellidos, GregorianCalendar fechaNacim) {
+public Persona (String nombre, String apellidos, LocalDate fechaNacim) {
     this.nombe= nombre;
     this.apellidos= apellidos;
-    this.fechaNacim= new GregorianCalendar (fechaNacim);
+    this.fechaNacim= new LocalDate (fechaNacim);
 }
 ```
 
 Podrías llamarlo desde un constructor de una clase derivada (por ejemplo Alumno) de la siguiente forma:
 
 ```java
-public Alumno (String nombre, String apellidos, GregorianCalendar fechaNacim, String grupo, double notaMedia) {
+public Alumno (String nombre, String apellidos, LocalDate fechaNacim, String grupo, double notaMedia) {
 	super (nombre, apellidos, fechaNacim);
 	this.grupo= grupo;
 	this.notaMedia= notaMedia;
@@ -999,7 +999,7 @@ Esta forma de trabajar te va a permitir hasta cierto punto "desentenderte" del t
 
 > El polimorfismo puede llevarse a cabo tanto con superclases (abstractas o no) como con interfaces.
 
-Dada una superclase X, con un método m, y dos subclases A y B, que redefinen ese método m, podrías declarar un objeto O de tipo X que en durante la ejecución podrá ser de tipo A o de tipo B (algo desconocido en tiempo de compilación). Esto significa que al invocarse el método m de X (superclase), se estará en realidad invocando al método m de A o de B (alguna de sus subclases). Por ejemplo:
+Dada una superclase X, con un método m, y dos subclases A y B, que redefinen ese método m, podrías declarar un objeto O de tipo X que durante la ejecución podrá ser de tipo A o de tipo B (algo desconocido en tiempo de compilación). Esto significa que al invocarse el método m de X (superclase), se estará en realidad invocando al método m de A o de B (alguna de sus subclases). Por ejemplo:
 
 ```java
 // Declaración de una referencia a un objeto de tipo X
@@ -1034,7 +1034,7 @@ La conexión que tiene lugar durante una llamada a un método suele ser llamada 
 
 La ligadura dinámica hace posible que sea el tipo de objeto instanciado (obtenido mediante el constructor finalmente utilizado para crear el objeto) y no el tipo de la referencia (el tipo indicado en la declaración de la variable que apuntará al objeto) lo que determine qué versión del método va a ser invocada. El tipo de objeto al que apunta la variable de tipo referencia sólo podrá ser conocido durante la ejecución del programa y por eso el polimorfismo necesita la ligadura dinámica. 
 
-En el ejemplo anterior de la clase X y sus subclases A y B, la llamada al método m sólo puede resolverse mediante ligadura dinámica, pues es imposible saber en tiempo de compilación si el método m que debe ser invocado será el definido en la subclase A o el definido en la subclase B: // 
+En el ejemplo anterior de la clase X y sus subclases A y B, la llamada al método m sólo puede resolverse mediante ligadura dinámica, pues es imposible saber en tiempo de compilación si el método m que debe ser invocado será el definido en la subclase A o el definido en la subclase B:
 
 ```java
 //Llamada al método m (sin saber si será el método m de A o de B). 
@@ -2180,7 +2180,7 @@ Las interfaces `Human` y `Omnivore` heredan de varias interfaces:
 
 Supongamos una situación en la que nos interesa dejar constancia de que ciertas clases deben implementar una funcionalidad teórica determinada, diferente en cada clase afectada. Estamos hablando, pues, de la definición de un método teórico que algunas clases deberán implementar.
 
-Un ejemplo real puede ser el método `calculoImporteJubilacio()` aplicable, de manera diferente, a muchas tipologías de trabajadores y, por tanto, podríamos pensar en diseñar una clase `Trabajador` en que uno de sus métodos fuera `calculpImporteJubilacion()`. Esta solución es válida si estamos diseñando una jerarquía de clases a partir de la clase `Trabajador` de la que cuelguen las clases correspondientes a las diferentes tipologías de trabajadores (metalúrgicos, hostelería, informáticos, profesores ...). Además, disponemos del concepto de clase abstracta que cada subclase implemente obligatoriamente el método `calculoImporteJubilacion()`.
+Un ejemplo real puede ser el método `calculoImporteJubilacion()` aplicable, de manera diferente, a muchas tipologías de trabajadores y, por tanto, podríamos pensar en diseñar una clase `Trabajador` en que uno de sus métodos fuera `calculoImporteJubilacion()`. Esta solución es válida si estamos diseñando una jerarquía de clases a partir de la clase `Trabajador` de la que cuelguen las clases correspondientes a las diferentes tipologías de trabajadores (metalúrgicos, hostelería, informáticos, profesores...). Además, disponemos del concepto de clase abstracta que cada subclase implemente obligatoriamente el método `calculoImporteJubilacion()`.
 
 Pero, ¿y si resulta que ya tenemos las clases `Profesor`, `Informatico`, `Hostelero` en otras jerarquías de clases? La solución consiste en hacer que estas clases derivaran de la clase `Trabajador`, sin abandonar la derivación que pudieran tener, sería factible en lenguajes orientados a objetos que soportaran la herencia múltiple, pero esto no es factible en el lenguaje Java.
 

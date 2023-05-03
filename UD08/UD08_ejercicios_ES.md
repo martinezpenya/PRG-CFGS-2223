@@ -461,7 +461,7 @@ El diagrama UML sería:
      - boolean canta
      + void muestra()
      + void habla()
-     +volar()
+     + void volar()
     }     
  ```
 
