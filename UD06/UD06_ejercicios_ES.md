@@ -371,9 +371,9 @@ Los  buffers hacen que las operaciones de lectura-escritura  se realicen inicial
 
 # Aún más ejercicios
 
-1. (`CuentaLineas`) Escribe un programa que, sin utilizar la clase `Scanner`, muestre el número de lineas que contiene un fichero de texto. El nombre del fichero se solicitará al usuario al comienzo de la ejecución. 
+1. (`CuentaLineas`) Escribe un programa que, sin utilizar la clase `Scanner` para contar las lineas, muestre el número de lineas que contiene un fichero de texto. El nombre del fichero se solicitará al usuario al comienzo de la ejecución (para esto si puedes usar la clase `Scanner`). 
 
-2. (`CuentaPalabras`) Escribe un programa que, sin utilizar la clase `Scanner`, muestre el número de palabras que contiene un fichero de texto. El nombre del fichero se solicitará al usuario al comienzo de la ejecución. 
+2. (`CuentaPalabras`) Escribe un programa que, sin utilizar la clase `Scanner` para contar las lineas, muestre el número de palabras que contiene un fichero de texto. El nombre del fichero se solicitará al usuario al comienzo de la ejecución (para esto si puedes usar la clase `Scanner`). 
 
    > Sugerencia: Lee el fichero, línea a línea y utiliza la clase `StringTokenizer` o bien el método `split` de la clase `String` para averiguar el nº de palabras.
 
