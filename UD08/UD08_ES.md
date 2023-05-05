@@ -1038,7 +1038,7 @@ En el ejemplo anterior de la clase X y sus subclases A y B, la llamada al métod
 
 ```java
 //Llamada al método m (sin saber si será el método m de A o de B). 
-obj.m () // Esta llamada será resuelta en tiempo de ejecución (ligadura dinámica)
+obj.m() // Esta llamada será resuelta en tiempo de ejecución (ligadura dinámica)
 ```
 
 Revisa con cuidado el [Ejemplo 6.2](#ejemplo-6.2)
