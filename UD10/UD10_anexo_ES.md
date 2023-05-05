@@ -115,9 +115,35 @@ Una vez aparezca el estado en `Disponible`, podremos pasar al siguiente paso:
 
 ![Screenshot_20230404_120627](/assets/RDS11.png)
 
+### Abrir puertos para el acceso público
+
+Ahora abriremos el puerto necesario para la que la BD sea accesible desde el exterior, para ello haremos clic sobre el nombre de la base de datos:
+
+![Clic en el nombre de la BD](/assets/RDS12.png)
+
+Y en la siguiente ventana hacemos click sobre el `Grupo de seguridad de la VPC` :
+
+![Grupo de seguridad](/assets/RDS13bis.png)
+
+Una vez estamos en el apartado de Grupos de seguridad, debemos elegir la pestaña `Reglas de entrada`, y el botón `Editar reglas de entrada`:
+
+![Editar reglas de entrada](/assets/RDS14.png)
+
+Si hemos seguido correctamente la guia debería aparecer el puerto 3306 abierto, pero solo para la ip pública desde la que estamos accediendo, así que deberemos pulsar la x para eliminar esa ip:
+
+![Puerto 3306](/assets/RDS15.png)
+
+Y por último agrega la ip 0.0.0.0 para que sea acesible desde cualquier lugar:
+
+![ip 0.0.0.0](/assets/RDS16.png)
+
 ### Dirección pública de la BBDD
 
-Ahora necesitamos la URL de acceso a la BD desde el exterior, para ello haremos clic sobre el nombre de la base de datos:
+Ahora necesitamos la URL de acceso a la BD desde el exterior, primero volvemos al apartado RDS:
+
+![Buscar RDS](/assets/RDS01.png)
+
+y a continuación haremos clic sobre el nombre de la base de datos:
 
 ![Clic en el nombre de la BD](/assets/RDS12.png)
 

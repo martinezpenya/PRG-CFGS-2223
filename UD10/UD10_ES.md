@@ -47,7 +47,7 @@ Los drivers nos permiten conectarnos con una base de datos determinada. Existen 
 
 - JDBC-ODBC bridge plus ODBC driver (tipo 1): permite al programador acceder a fuentes de  datos ODBC existentes mediante JDBC. El JDBC-ODBC Bridge (puente JDBC-ODBC) implementa operaciones JDBC traduciéndolas a operaciones ODBC, se encuentra dentro del paquete *sun.jdbc.odbc* y contiene librerías nativas para acceder a ODBC.
 
-​	Al ser usuario de ODBC depende de las dll de ODBC y eso limita la cantidad de plataformas 	en donde se puede ejecutar la aplicación.
+​	Al ser usuario de ODBC depende de las dll de ODBC y eso limita la cantidad de plataformas en donde se puede ejecutar la aplicación.
 
 - Native-API partly-Java driver (tipo 2): son similares a los drivers de tipo1, en tanto en cuanto  también necesitan una configuración en la máquina cliente. Este tipo de driver convierte llamadas JDBC a llamadas de Oracle, Sybase, Informix, DB2 u otros SGBD. Tampoco se pueden utilizar dentro de applets al poseer código nativo.
 - JDBC-Net pure Java driver (tipo 3): Estos controladores están escritos en Java y se encargan de convertir las llamadas JDBC a un protocolo independiente de la base de datos y en la aplicación servidora utilizan las funciones nativas del sistema de gestión de base de datos mediante el uso de una biblioteca JDBC en el servidor. La ventaja de esta opción es la portabilidad.
@@ -169,10 +169,10 @@ Algunos de los métodos para obtener los datos del registro actual son:
 Existen métodos análogos a los anteriores para obtener valores de tipo int, long, float, double, boolean, Date, Time, Array, etc. Pueden consultarse todos en la [documentación oficial de Java](https://docs.oracle.com/en/java/javase/11/docs/api/java.sql/java/sql/ResultSet.html).
 
 
-- **int getInt(String columnLabel) 		int getInt(int columnIndex)**
-- **double getDouble(String columnLabel)	double getDouble(int columnIndex)**
-- **boolean getBoolean(String columnLabel)	boolean getBoolean(int columnIndex)**
-- **Date getDate(String columnLabel)		int getDate(int columnIndex)**
+- **int getInt(String columnLabel) int getInt(int columnIndex)**
+- **double getDouble(String columnLabel) double getDouble(int columnIndex)**
+- **boolean getBoolean(String columnLabel) boolean getBoolean(int columnIndex)**
+- **Date getDate(String columnLabel) int getDate(int columnIndex)**
 - etc.
 
 
@@ -206,22 +206,22 @@ Por ello el método *createStatement()* está sobrecargado (existen varias versi
 El **a****rgumento** **resultSetType** indica el tipo de ResultSet:
 
 - **ResultSet.TYPE_FORWARD_ONLY**: ResultSet por defecto, forward-only y no-actualizable.
-  - Solo 	permite movimiento 	hacia delante con next().
-  - Sus 	datos NO se actualizan. Es 	decir, no 	reflejará 	cambios producidos 	en 	la base de datos. Contiene 	una instantánea del momento en el que se realizó la consulta.
+  - Solo permite movimiento hacia delante con next().
+  - Sus datos NO se actualizan. Es decir, no reflejará cambios producidos en la base de datos. Contiene una instantánea del momento en el que se realizó la consulta.
 - **ResultSet.TYPE_SCROLL_INSENSITIVE**: ResultSet desplazable y no actualizable.
-  - Permite 	libertad 	de movimiento 	del cursor con otros 	métodos como first(), 	previous(), 	last(), 	etc. además de next().
-  - Sus datos 	NO 	se actualizan, como en el caso anterior.
+  - Permite libertad de movimiento del cursor con otros métodos como first(), previous(), last(), etc. además de next().
+  - Sus datos NO se actualizan, como en el caso anterior.
 - **ResultSet.TYPE_SCROLL_SENSITIVE**: ResultSet desplazable y actualizable.
-  - Permite libertad 	de movimientos del cursor, como en el caso anterior.
-  - Sus datos 	SÍ se actualizan. Es decir, mientras 	el ResultSet esté abierto se 	actualizará 	automáticamente con los cambios producidos en la base de datos. 	Esto puede suceder incluso mientras se está recorriendo el 	ResultSet, lo cual puede ser conveniente o contraproducente según 	el caso.
+  - Permite libertad de movimientos del cursor, como en el caso anterior.
+  - Sus datos SÍ se actualizan. Es decir, mientras el ResultSet esté abierto se actualizará automáticamente con los cambios producidos en la base de datos. Esto puede suceder incluso mientras se está recorriendo el ResultSet, lo cual puede ser conveniente o contraproducente según el caso.
 
 
-El **a****rgumento** **resultSet****Concurrency** indica la concurrencia del ResultSet:
+El **argumento** **resultSet.Concurrency** indica la concurrencia del ResultSet:
 
 - **ResultSet.CONCUR_READ_ONLY**: Solo lectura. Es el valor por defecto.
 - **ResultSet.CONCUR_UPDATABLE**: Permite modificar los datos almacenados en el ResultSet para luego aplicar los cambios sobre la base de datos (más adelante se verá cómo).
 
-> El `ResultSet` por defecto que se obtiene con `createStatement()` sin argumentos es el mismo que con `createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY)`. 	
+> El `ResultSet` por defecto que se obtiene con `createStatement()` sin argumentos es el mismo que con `createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY)`. 
 
 
 # Consultas (Query)
