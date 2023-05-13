@@ -26,7 +26,7 @@ typora-copy-images-to:${filename}/../assets
    - En las aulas normales, el `código` y la `superficie` y la `capacidad`.
    - En las aulas de música e informática el texto irá precedido por "Aula de música" o "Aula de informática", según corresponda.
 
-2. Un salón de **VideoJuegos** dispone de ordenadores en las que los clientes pueden jugar. Además de jugar en el establecimiento, la empresa alquila y vende juegos.
+2. Un salón de **VideoJuegos** dispone de ordenadores en los que los clientes pueden jugar. Además de jugar en el establecimiento, la empresa alquila y vende juegos.
 
    1. Diseñar la clase `Juego` siguiendo las siguientes especificaciones: 
       - Atributos protected: `titulo` (String), `fabricante` (String), `año` (int).
@@ -110,15 +110,15 @@ typora-copy-images-to:${filename}/../assets
       - Si un método es abstracto en una clase, no puede ser abstracto en las subclases.
 
    7. - Si un método se define final se tiene que reescribir en las subclases.
-      - Si un método se define final no se puede reescribir en las subclases
+      - Si un método se define final no se puede reescribir en las subclases.
 
-   8. - Una clase puede tener un método final y no ser una clase final
-      - Si una clase tiene un método final tiene que ser una clase final
+   8. - Una clase puede tener un método final y no ser una clase final.
+      - Si una clase tiene un método final tiene que ser una clase final.
    9. - Si una clase se define final no se pueden definir subclases de ella.
       - Si una clase se define final no se puede instanciar.
    10. - Un método definido final y abstract resultaría inútil, puesto que nunca se podría implementar en las subclases.
        - Un método definido final y abstract podría resultar útil.
-   11. - Una clase definida final y abstract resultaría inútil, puesto que no se podría instanciar ni heredar de ella..
+   11. - Una clase definida final y abstract resultaría inútil, puesto que no se podría instanciar ni heredar de ella.
        - Una clase definida final y abstract podría resultar útil.
    
 6. Dada las siguientes **definiciónes de clases**:
@@ -234,15 +234,15 @@ typora-copy-images-to:${filename}/../assets
    ```java
    public static void main(String[] args){
    	Montador m1 = new Carpintero();
-   	-Montador m2 = new Albañil();
+   	Montador m2 = new Albañil();
    	Obrero o1 = new Carpintero();
    	Obrero o2 = new Albañil();
-   	-o1.montar("Mesa");((Carpintero)o1).montar("mesa");
-    	-o2.levantarMuro();//((Albañil)o2).levantarMuro();
-   	-m1.saludar();//podemos hacer casting?
-   	m1.montar("Silla");//llamaremos a montar de Carpintero
+   	o1.montar("Mesa");
+    	o2.levantarMuro();
+   	m1.saludar();
+   	m1.montar("Silla");
    	((Albañil)o2).levantarMuro();
-   	((Albañil)o1).levantarMuro();//?
+   	((Albañil)o1).levantarMuro();
    }
    ```
 
