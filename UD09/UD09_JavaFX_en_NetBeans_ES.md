@@ -26,9 +26,9 @@ Sigue estos pasos para crear un proyecto `JavaFX` utilizando las herramientas ID
 - Descargar el SDK (versión 19) de `JavaFX` <https://gluonhq.com/products/javafx/> apropiado para tu sistema operativo.
 - Descomprímelo en la ubicación deseada, por ejemplo, `/Users/your-user/Downloads/javafx-sdk-19`. Es **IMPORTANTÍSIMO** que recuerdes la ruta (`path`) hasta esta librería.
 
-## Cree una nueva  biblioteca global en:
+## Cree una nueva  biblioteca global
 
-- `Tools` -> `Library` -> `New Library` (abajo a la izquierda)
+- En `Tools` -> `Library` -> `New Library` (abajo a la izquierda)
 - Nómbrala `JavaFX19` (por ejemplo) que incluya los archivos jar en la carpeta lib de JavaFX 19.
 
 <img src="/assets/NB01.png" alt="Libreria JavaFX19" style="zoom:50%;" />
@@ -67,7 +67,7 @@ Ir a `Propiedades` -> `Generar` -> `Compilar` y asegúrese de anular la selecci�
 
 Una vez que se establece el `classpath`, el IDE reconocerá las clases `JavaFX`.
 
-Por ejemplo, vamos comenzar
+Por ejemplo, vamos comenzar:
 
 1. heredando la clase principal de la clase `Application`.
 2. tendremos que importar las clases de la librería.
