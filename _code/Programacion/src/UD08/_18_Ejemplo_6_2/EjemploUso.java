@@ -23,6 +23,5 @@ public class EjemploUso {
         instrumento1.tocarAgudo();
         instrumento1.estirarCuerda();
         instrumento1.tocarNota("do");  // Ejemplo de ligadura dinámica (tiempo de ejecución)
-
     }
 }

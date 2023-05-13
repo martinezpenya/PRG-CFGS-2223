@@ -19,5 +19,5 @@ public class EjemploUso {
             obj = new Profesor("Profe", "Apellidos", LocalDate.of(1977, 3, 8));
         }
         System.out.format("Contenido del objeto: %s\n", obj.devolverContenidoString());
-    }
+    } 
 }

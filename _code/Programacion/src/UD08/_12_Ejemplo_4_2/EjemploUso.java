@@ -6,7 +6,6 @@ public class EjemploUso {
 
     public static int calcularEdad(final Alumno a) {
         a.grupo="2SMX";
-        a=new Alumno("Juan", "Torres", LocalDate.of(1990, 10, 6), "2smx", 7.5);
         return 14;
     }
 
