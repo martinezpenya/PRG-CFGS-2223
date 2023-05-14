@@ -492,7 +492,7 @@ public class E05_Label extends Application {
 
 La clase `Button` disponible a través de la API de JavaFX permite a los desarrolladores procesar una acción cuando un usuario hace clic en un botón. La clase `Button` es una extensión de la clase `Labeled`. Puede mostrar texto, una imagen o ambos.
 
-<img src="/button.png" alt="Button" style="zoom:50%;" />
+<img src="assets/button.png" alt="Button" style="zoom:50%;" />
 
 Puede crear un control `Button` en una aplicación JavaFX usando tres constructores de la clase Button como se muestra a continuación
 

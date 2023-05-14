@@ -141,7 +141,7 @@ Cuando escribamos en el txt de arriba, filtrara los nombre de las personas que c
    - Escribe tu nombre, DNI, dirección, teléfono en cada una de las etiquetas.
    - Establece el fondo de las etiquetas en blanco.
    - Establece el color del texto de las etiquetas en negro, azul, cian, verde respectivamente.
-   - Establece la fuente de cada etiqueta en TimesRoman/Ubuntu, negrita y 20 píxeles.
+   - Establece la fuente de cada etiqueta en TimesNewRoman/Ubuntu, negrita y 20 píxeles.
    - Establece el borde de cada etiqueta en un borde de línea con color amarillo.
 
 3. Ejercicio 3
