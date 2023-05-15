@@ -1061,8 +1061,6 @@ public class E09_TextBox extends Application {
 }
 ```
 
-
-
 ## Mucho más
 
 https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/ui_controls.htm
@@ -1181,7 +1179,7 @@ La filosofía del diseño de JavaFX es la misma que la filosofía de Swing. Sele
 
 ### Código completo
 
-El código se puede probar con un par de archivos .java. Hay un POJO para la clase `Cliente` utilizado por el`TableView`
+El código se puede probar con un par de archivos .java. Hay un POJO para la clase `Cliente` utilizado por el `TableView`
 
 **`Cliente.java`**
 
