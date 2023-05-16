@@ -128,24 +128,27 @@ Cuando escribamos en el txt de arriba, filtrara los nombre de las personas que c
    - Salsas: ketchup, barbacoa, mostaza y thai. Pueden pedirse varias de cada (+0,50 cada una).
    - Reparto a domicilio (precio estándar) o recogida en el local (-20% sobre el precio final).
 
-# Más ejercicios
+# Más ejercicios (Sin `SceneBuilder`)
 
 1. Ejercicio 1
-   Escriba un programa que muestre la siguiente `stage` usando más de un panel.
+   Escriba un programa que muestre la siguiente `stage` usando más de un contenedor. Los tres botones superiores se alinearan a la parte izquierda de la ventana, y los tres inferiores a la parte derecha.
 
    ![Más ejercicios 1](/assets/MasEjercicios1.png)
 
-2. Ejercicio 2
-   Escriba un programa que muestre cuatro líneas de texto con cuatro `Label`:
+![Más ejercicios 1](/assets/MasEjercicios1bis.png)
 
+1. Ejercicio 2
+   Escriba un programa que muestre cuatro líneas de texto con cuatro `Label`:
    - Escribe tu nombre, DNI, dirección, teléfono en cada una de las etiquetas.
    - Establece el fondo de las etiquetas en blanco.
    - Establece el color del texto de las etiquetas en negro, azul, cian, verde respectivamente.
    - Establece la fuente de cada etiqueta en TimesNewRoman/Ubuntu, negrita y 20 píxeles.
    - Establece el borde de cada etiqueta en un borde de línea con color amarillo.
 
-3. Ejercicio 3
-   Muestre un `stage` que contenga nueve etiquetas. Una etiqueta puede mostrar un icono de imagen para X, un icono de imagen para O, o nada. Lo que se muestra se decide al azar. Utilizar el Método `Math.random()` para generar un número entero 0, 1 o 2, que corresponde a mostrando un icono de imagen X, un icono O o nada.
+![Más ejercicios 3](/assets/MasEjercicios2.png)
+
+1. Ejercicio 3
+   Muestre un `stage` que contenga nueve etiquetas. Una etiqueta puede mostrar un icono de imagen para X, un icono de imagen para O, o nada. Lo que se muestra se decide al azar. Utilizar el Método `Math.random()` para generar un número entero 0, 1 o 2, que corresponde a mostrando un icono de imagen X, un icono O o nada (una imagen vacía).
 
    ![Más ejercicios 3](/assets/MasEjercicios3.png)
 
