@@ -21,7 +21,7 @@ Implementa las aplicaciones gráficas siguiendo las especificaciones de diseño 
 - Maneja las posibles excepciones que puedan producirse.
 - Puedes implementar clases adicionales si lo consideras oportuno.
 
-# Ejercicios
+# Ejercicios (con `SceneBuilder`)
 
 1. Crea con JavaFX la siguiente pantalla.
 
@@ -33,7 +33,7 @@ Cuando el usuario escriba números (controlarlo con excepciones) y pulse en suma
 
    ![Ejercicio 2](/assets/ej2_javafx.png)
 
-Cuando el usuario escriba números (controlarlo con excepciones) y según que operación elija, deberá hacer la operación y mostrarlo en el txtResultado. Tener en cuenta que la división, debemos controlar que el segundo operando no debe ser 0.
+Cuando el usuario escriba números (controlarlo con excepciones) y según que operación elija, deberá hacer la operación y mostrarlo en el txtResultado. Tener en cuenta que la división, debemos controlar que el segundo operando no debe ser 0. El proyecto debe seguir el modelo MVC.
 
 3. Crea la siguiente pantalla con `JavaFX`.
 

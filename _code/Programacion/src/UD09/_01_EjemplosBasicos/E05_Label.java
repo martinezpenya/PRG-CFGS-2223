@@ -16,6 +16,7 @@
  */
 package UD09._01_EjemplosBasicos;
 
+import java.net.URL;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -63,7 +64,7 @@ public class E05_Label extends Application {
         label2.setRotate(270);
 
         //Creamos la etiqueta con imágen
-        Image image = new Image("UD09/label.png");
+        Image image = new Image("UD09/_01_EjemplosBasicos/label.png");
         Label label3 = new Label("Search", new ImageView(image));
         label3.setGraphicTextGap(20);
         grid.add(label3, 2, 0);

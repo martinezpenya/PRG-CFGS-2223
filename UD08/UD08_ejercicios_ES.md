@@ -289,7 +289,7 @@ typora-copy-images-to:${filename}/../assets
    		Derivada derivada;
    		Derivada2 derivada2;
    		Base base;
-   		derivada2 = new Derivada2(); base = derivada2;
+   		derivada2 = new Derivada2();base = derivada2;
    		tmp = derivada2.metodo1(); System.out.println("1.-"+tmp);
    		tmp = derivada2.metodoIn2("EDA!!"); System.out.println("2.-"+tmp);
    		tmp = base.metodo1();System.out.println("3.-"+tmp);

@@ -78,7 +78,7 @@ El resultado de ejecutar el código se ve en la siguiente figura.
 
 Notas importantes:
 
-- Un nodo puede tener un máximo de 1 padre.
+- Un nodo puede tener un máximo 1 padre.
 - Un nodo en el gráfico de escena "activo" (adjunto a una escena actualmente visible) solo se puede modificar desde el subproceso de la aplicación JavaFX.
 
 ## Transformaciones

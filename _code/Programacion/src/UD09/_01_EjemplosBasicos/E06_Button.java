@@ -63,7 +63,7 @@ public class E06_Button extends Application {
         grid.add(label, 2, 1);
 
         //Creamos el botón con texto e imágen
-        Image image = new Image("UD09/ok.png");
+        Image image = new Image("UD09/_01_EjemplosBasicos/ok.png");
         Button button4 = new Button("Aceptar", new ImageView(image));
         grid.add(button4, 0, 2, 2, 1);
 
@@ -94,7 +94,7 @@ public class E06_Button extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Scene scene = new Scene(createContent(), 300, 200);
-        scene.getStylesheets().add("UD09/style.css");
+        scene.getStylesheets().add("UD09/_01_EjemplosBasicos/style.css");
         stage.setScene(scene);
 
         stage.setTitle("Ejemplo con Button");

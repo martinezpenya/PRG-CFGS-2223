@@ -80,7 +80,7 @@ public class E07_RadioButton extends Application {
         grupo.selectedToggleProperty().addListener(
                 (ObservableValue<? extends Toggle> ov, Toggle old_toggle, Toggle new_toggle) -> {
                     if (grupo.getSelectedToggle() != null) {
-                        image.setImage(new Image("UD09/" + grupo.getSelectedToggle().getUserData().toString() + ".png"));
+                        image.setImage(new Image("UD09/_01_EjemplosBasicos/" + grupo.getSelectedToggle().getUserData().toString() + ".png"));
                     }
                 });
                       
