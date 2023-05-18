@@ -86,6 +86,8 @@ Cuando escribamos en el txt de arriba, filtrara los nombre de las personas que c
 1. `ParOImpar`
    Aplicación gráfica que permita introducir un número entero y luego saber si dicho número es par o impar. Utiliza un `TextField` para introducir el valor, un `Button` con el texto “¿par o impar?” y un `Label` para mostrar “PAR” o “IMPAR” según el caso.
 
+   ![ParOImpar](/assets/Actividades01.png)
+
 2. `Minicalculadora1`
    Aplicación gráfica que permita introducir dos números reales y calcular el resultado de su suma, resta, multiplicación o división. Utiliza un Button distinto para cada operación y un único Label para mostrar el resultado.
 
@@ -94,6 +96,8 @@ Cuando escribamos en el txt de arriba, filtrara los nombre de las personas que c
 
 4. `Factorial`
    Aplicación de uso de JavaFX con FXML y controlador para calcular el factorial de un número.
+
+   ![Actividad 4 - Factorial](/assets/Actividades04.png)
 
 5. `ValidarletraNIF`
    Aplicación gráfica que permita introducir un NIF (8 números y una letra) e indique si la letra de dicho NIF es válida.
