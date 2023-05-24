@@ -11,8 +11,6 @@ typora-root-url: ${filename}/../
 typora-copy-images-to: ${filename}/../assets
 ---
 
-databaseaurora.cluster-ro-cm6pc9b4jil5.us-east-1.rds.amazonaws.com
-
 # Introducción
 
 La intención de este documento es la de dar una perspectiva más realista del uso del acceso a datos, ya que en lugar de usar la misma máquina del alumno como servidor de BBDD, vamos a desplegar el servidor MariaDB en una máquina alojada en la nube de Amazon (AWS).
