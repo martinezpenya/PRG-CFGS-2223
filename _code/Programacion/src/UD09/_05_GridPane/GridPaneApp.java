@@ -94,7 +94,7 @@ public class GridPaneApp extends Application {
         vbox.getChildren().addAll(gp, sep, buttonBar);
 
         //para mostrar las lineas de estructura descomenta la siguiente linea
-        //gp.setGridLinesVisible(true);
+        gp.setGridLinesVisible(true);
         
         Scene scene = new Scene(vbox);
 

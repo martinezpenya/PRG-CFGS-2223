@@ -16,7 +16,6 @@
  */
 package UD09._01_EjemplosBasicos;
 
-import java.net.URL;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

@@ -80,7 +80,7 @@ public class GridPaneAppv2 extends Application {
 
         Label lblDescription = new Label("Descripción");
         TextArea taDescription = new TextArea();
-
+        
         gp.add(lblTitle, 1, 0);  // empty item at 0,0
 
         gp.add(lblEmail, 0, 1);

@@ -39,7 +39,7 @@ public class StackPaneApp extends Application {
                 new Button("Hello StackPane")
         );
 
-        pane.setAlignment(Pos.CENTER_LEFT);
+        pane.setAlignment(Pos.TOP_RIGHT);
         
         stage.setScene(new Scene(pane, 300, 300));
         stage.show();
