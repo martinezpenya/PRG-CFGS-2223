@@ -1744,6 +1744,8 @@ Este ejemplo ampliado `GridPane`demostró la expansión de columnas. La misma ca
 
 El siguiente es el código completo para el ejemplo de GridPane de expansión.
 
+**`GridPaneAppv2.java`**
+
 ```java
 Package UD09._05_GridPane;
 

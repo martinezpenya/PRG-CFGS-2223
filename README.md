@@ -6,11 +6,7 @@
 
 [README_ES.md (contenido en Español)](README_ES.md) :es:
 
-
-
 # [IES Eduardo Primo Marqués](http://www.ieseduardoprimo.es) (Carlet)
-
-
 
 # Fuentes de información
 
@@ -23,19 +19,13 @@
 - [Apuntes IOC Programació Orientada a Objectes (Joan Arnedo Moreno)](https://ioc.xtec.cat/materials/FP/Recursos/fp_dam_m03_/web/fp_dam_m03_htmlindex/index.html)
 - [Apuntes Lionel](https://github.com/lionel-ict/ApuntesProgramacion)
 
-
-
 # Etiquetas:
 
-#fpinfor #PRG #programacion #CFGS #DAW #DAM #INFORMATICA #desarrollo #codificacion
-
-
+\#fpinfor #PRG #programacion #CFGS #DAW #DAM #INFORMATICA #desarrollo #codificacion
 
 # Converting from `MD` (MarkDown) to `PDF`
 
 More info in [fromMD2PDF](https://github.com/martinezpenya/fromMD2PDF) repository.
-
-
 
 # License
 

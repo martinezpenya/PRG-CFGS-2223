@@ -396,10 +396,6 @@ rs.deleteRow();
 
 
 
-
-
-
-
 # Ejemplos
 
 ## Ejemplo1

@@ -141,7 +141,7 @@ Cuando escribamos en el txt de arriba, filtrara los nombre de las personas que c
 
 ![Más ejercicios 1](/assets/MasEjercicios1bis.png)
 
-1. Ejercicio 2
+2. Ejercicio 2
    Escriba un programa que muestre cuatro líneas de texto con cuatro `Label`:
    - Escribe tu nombre, DNI, dirección, teléfono en cada una de las etiquetas.
    - Establece el fondo de las etiquetas en blanco.
@@ -151,8 +151,8 @@ Cuando escribamos en el txt de arriba, filtrara los nombre de las personas que c
 
 ![Más ejercicios 3](/assets/MasEjercicios2.png)
 
-1. Ejercicio 3
-   Muestre un `stage` que contenga nueve etiquetas. Una etiqueta puede mostrar un icono de imagen para X, un icono de imagen para O, o nada. Lo que se muestra se decide al azar. Utilizar el Método `Math.random()` para generar un número entero 0, 1 o 2, que corresponde a mostrando un icono de imagen X, un icono O o nada (una imagen vacía).
+3. Ejercicio 3
+   Muestre un `stage` que contenga nueve etiquetas. Una etiqueta puede mostrar un icono de imagen para X, un icono de imagen para O, o nada. Lo que se muestra se decide al azar. Utilizar el Método `Math.random()` para generar un número entero 0, 1 o 2, que corresponde a un icono de imagen X, un icono O o nada (una imagen vacía).
 
    ![Más ejercicios 3](/assets/MasEjercicios3.png)
 
@@ -165,3 +165,4 @@ Cuando escribamos en el txt de arriba, filtrara los nombre de las personas que c
 - [Apuntes José Luis Comesaña](https://www.sitiolibre.com/)
 - [Apuntes IOC Programació bàsica (Joan Arnedo Moreno)](https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m03_/web/fp_asx_m03_htmlindex/index.html)
 - [Apuntes IOC Programació Orientada a Objectes (Joan Arnedo Moreno)](https://ioc.xtec.cat/materials/FP/Recursos/fp_dam_m03_/web/fp_dam_m03_htmlindex/index.html)
+- https://examples.javacodegeeks.com/java-development/desktop-java/javafx/javafx-2d-shape-example/
